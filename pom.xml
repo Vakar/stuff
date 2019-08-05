@@ -7,6 +7,9 @@
   <groupId>vakar-space</groupId>
   <artifactId>stuff</artifactId>
   <version>0.1</version>
+  <modules>
+    <module>stuff-persistence</module>
+  </modules>
   <packaging>pom</packaging>
 
   <name>Parent POM</name>

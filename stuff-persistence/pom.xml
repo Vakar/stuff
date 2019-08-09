@@ -11,5 +11,58 @@
 
     <artifactId>stuff-persistence</artifactId>
 
+    <properties>
+        <hibernate.version>4.3.11.Final</hibernate.version>
+        <postgresql.version>42.2.6</postgresql.version>
+        <h2database.version>1.4.199</h2database.version>
+        <junit.version>4.12</junit.version>
+        <dbunit.version>2.5.4</dbunit.version>
+        <slf4j-simple.version>1.7.26</slf4j-simple.version>
+    </properties>
+
+    <dependencies>
+        <!-- Hibernate-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!-- Database driver-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <!-- Testing-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2database.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.28.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -1,0 +1,8 @@
+<?xml encoding="UTF-8"?>
+
+        <!ELEMENT dataset (STUFF)+>
+        <!ELEMENT STUFF EMPTY>
+        <!ATTLIST STUFF
+                COST CDATA #IMPLIED
+                ID CDATA #IMPLIED
+                NAME CDATA #IMPLIED>

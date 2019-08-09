@@ -1,0 +1,4 @@
+<!DOCTYPE dataset SYSTEM "stuff.dtd">
+<dataset>
+    <STUFF ID="1" NAME="stuff_one_name" COST="10.10"/>
+</dataset>

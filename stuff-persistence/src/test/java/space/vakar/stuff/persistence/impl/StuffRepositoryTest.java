@@ -62,11 +62,11 @@ public class StuffRepositoryTest extends DatabaseTestConfig {
     Assertion.assertEquals(getExpectedTable(CREATE_DATASET), getActualTable());
   }
 
-  public void testAddCollection() throws Exception {
-    List<Stuff> list = Collections.singletonList(stuffTwo);
-    repositoryStuff.add(list);
-    Assertion.assertEquals(getExpectedTable(CREATE_DATASET), getActualTable());
-  }
+//  public void testAddCollection() throws Exception {
+//    List<Stuff> list = Collections.singletonList(stuffTwo);
+//    repositoryStuff.add(list);
+//    Assertion.assertEquals(getExpectedTable(CREATE_DATASET), getActualTable());
+//  }
 
   public void testQueryById() {
     List<Stuff> stuffList = repositoryStuff.query(new HqlGetById(Stuff.class, stuffOne.getId()));

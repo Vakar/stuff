@@ -3,6 +3,8 @@ package space.vakar.stuff.persistence.model;
 import space.vakar.stuff.persistence.api.DomainEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -10,7 +12,10 @@ import java.util.Objects;
 @Entity
 public class Stuff implements DomainEntity {
 
-  @Id private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+
   private String name;
   private BigDecimal cost;
 

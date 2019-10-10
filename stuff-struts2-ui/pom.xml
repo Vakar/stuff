@@ -19,6 +19,7 @@
     <properties>
         <struts2.version>2.5.14.1</struts2.version>
         <log4j2.version>2.10.0</log4j2.version>
+        <h2database.version>1.4.199</h2database.version>
     </properties>
 
     <dependencyManagement>
@@ -87,10 +88,16 @@
             <version>1.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2database.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>basic-struts</finalName>
+        <finalName>stuff</finalName>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -106,6 +113,18 @@
                     <scanTargets>
                         <scanTarget>src/main/webapp/WEB-INF/web.xml</scanTarget>
                     </scanTargets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://192.168.88.245:8080/manager/text</url>
+                    <server>TomcatServer</server>
+                    <path>/stuff</path>
+                    <username>admin</username>
+                    <password>password</password>
                 </configuration>
             </plugin>
         </plugins>

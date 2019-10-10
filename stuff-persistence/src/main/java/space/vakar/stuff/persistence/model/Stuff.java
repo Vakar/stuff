@@ -2,14 +2,12 @@ package space.vakar.stuff.persistence.model;
 
 import space.vakar.stuff.persistence.api.DomainEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+@Table(name = "STUFF")
 public class Stuff implements DomainEntity {
 
   @Id

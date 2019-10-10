@@ -6,14 +6,14 @@
 <hibernate-configuration>
     <session-factory>
         <!-- SQL Dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 
         <!-- Database Connection Settings -->
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://euroshoe.mysql.tools:3306/euroshoe_stuff</property>
-        <property name="hibernate.connection.username">euroshoe_stuff</property>
-        <property name="hibernate.connection.password">erB!3)63Db</property>
-        <property name="show_sql">false</property>
+        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+        <property name="hibernate.connection.url">jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</property>
+        <property name="hibernate.connection.username">sa</property>
+
+        <property name="show_sql">true</property>
 
         <!-- Specifying Session Context -->
         <property name="hibernate.current_session_context_class">

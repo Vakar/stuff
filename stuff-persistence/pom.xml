@@ -17,6 +17,7 @@
         <h2database.version>1.4.199</h2database.version>
         <dbunit.version>2.5.4</dbunit.version>
         <slf4j-simple.version>1.7.26</slf4j-simple.version>
+        <mysql.version>5.1.37</mysql.version>
     </properties>
 
     <dependencies>
@@ -28,11 +29,17 @@
         </dependency>
         <!-- Database driver-->
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <!-- Testing-->
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
+            <scope>test</scope>
         </dependency>
-        <!-- Testing-->
         <dependency>
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>

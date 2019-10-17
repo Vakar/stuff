@@ -1,0 +1,9 @@
+<?xml encoding="UTF-8"?>
+
+        <!ELEMENT dataset (APP_USER)+>
+        <!ELEMENT APP_USER EMPTY>
+        <!ATTLIST APP_USER
+                ID CDATA #IMPLIED
+                USER_NAME CDATA #IMPLIED
+                EMAIL CDATA #IMPLIED
+                PSWD CDATA #IMPLIED>

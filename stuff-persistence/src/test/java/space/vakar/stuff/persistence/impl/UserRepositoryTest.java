@@ -7,7 +7,9 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
+import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
+import space.vakar.stuff.persistence.impl.hql.HqlFindByFieldValue;
 import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
 import space.vakar.stuff.persistence.impl.hql.HqlGetById;
 import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
@@ -24,6 +26,8 @@ public class UserRepositoryTest extends DatabaseTestConfig {
 
   private static final String TABLE_NAME = "APP_USER";
 
+  private static final String FIELD_USER_NAME = "userName";
+
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
   private static final String DATASET_FOLDER = "/datasets/user";
@@ -32,7 +36,11 @@ public class UserRepositoryTest extends DatabaseTestConfig {
   private static final String UPDATE_DATASET = DATASET_FOLDER + "/update.xml";
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
 
-  private User userOne = new User(1, "user1", "user1@domain.com", "one");
+  private static final String USER_ONE_NAME = "user1";
+  private static final String USERNAME_NOT_USED = "usernameNotUsed";
+  private static final String NEW_USER_EMAIL = "user1_new@domain.com";
+
+  private User userOne = new User(1, USER_ONE_NAME, "user1@domain.com", "one");
   private User userTwo = new User(2, "user2", "user2@domain.com", "two");
 
   public UserRepositoryTest(String name) {
@@ -72,8 +80,21 @@ public class UserRepositoryTest extends DatabaseTestConfig {
     assertEquals(userOne, actualUser);
   }
 
+  public void testFindByFieldValue_WhenValueExist(){
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, USER_ONE_NAME);
+    List<User> users = repositoryUser.query(findByFieldValue);
+    assertEquals(1, users.size());
+    assertEquals(userOne, users.get(0));
+  }
+
+  public void testFindByFieldValue_WhenValueDoesNotExist(){
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, USERNAME_NOT_USED);
+    List<User> users = repositoryUser.query(findByFieldValue);
+    assertTrue(users.isEmpty());
+  }
+
   public void testUpdate() throws Exception {
-    userOne.setEmail("user1_new@domain.com");
+    userOne.setEmail(NEW_USER_EMAIL);
     repositoryUser.update(userOne);
     Assertion.assertEquals(getExpectedTable(UPDATE_DATASET), getActualTable());
   }

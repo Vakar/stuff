@@ -1,7 +1,9 @@
 package space.vakar.stuff.persistence.impl;
 
+import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-import space.vakar.stuff.persistence.api.RepositoryService;
+import space.vakar.stuff.persistence.api.UserRepositoryService;
+import space.vakar.stuff.persistence.impl.hql.HqlFindByFieldValue;
 import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
 import space.vakar.stuff.persistence.impl.hql.HqlGetById;
 import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
@@ -9,9 +11,11 @@ import space.vakar.stuff.persistence.model.User;
 
 import java.util.List;
 
-public class UserService implements RepositoryService<User> {
+public class UserService implements UserRepositoryService {
 
     private Repository<User> repository = new RepositoryUser();
+
+    static final String FIELD_USER_NAME = "userName";
 
     @Override
     public void add(User entity) {
@@ -51,4 +55,10 @@ public class UserService implements RepositoryService<User> {
         return repository.query(new HqlGetAll(User.class));
     }
 
+    @Override
+    public boolean isUserNameAlreadyInUse(String userName) {
+        Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, userName);
+        List<User> users = repository.query(findByFieldValue);
+        return !users.isEmpty();
+    }
 }

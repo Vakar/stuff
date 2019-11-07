@@ -23,6 +23,15 @@
     </properties>
 
     <dependencies>
+
+        <!-- Project Dependencies -->
+        <dependency>
+            <groupId>vakar-space</groupId>
+            <artifactId>stuff-persistence</artifactId>
+            <version>0.1</version> <!-- TODO: Project version -->
+        </dependency>
+
+        <!-- Spring MVC-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -40,6 +49,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Hibernate Validation-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>

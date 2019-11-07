@@ -1,5 +1,6 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>Stuff</h2>
+<a href="registration">Registration</a>
 </body>
 </html>

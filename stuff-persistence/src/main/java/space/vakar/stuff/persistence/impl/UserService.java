@@ -16,6 +16,7 @@ public class UserService implements UserRepositoryService {
     private Repository<User> repository = new RepositoryUser();
 
     static final String FIELD_USER_NAME = "userName";
+    static final String FIELD_USER_EMAIL = "email";
 
     @Override
     public void add(User entity) {
@@ -58,6 +59,13 @@ public class UserService implements UserRepositoryService {
     @Override
     public boolean isUserNameAlreadyInUse(String userName) {
         Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, userName);
+        List<User> users = repository.query(findByFieldValue);
+        return !users.isEmpty();
+    }
+
+    @Override
+    public boolean isUserEmailAlreadyInUse(String userEmail) {
+        Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_EMAIL, userEmail);
         List<User> users = repository.query(findByFieldValue);
         return !users.isEmpty();
     }

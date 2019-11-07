@@ -32,7 +32,8 @@ public class UserServiceTest {
   private static final int ONCE = 1;
 
   private static final String USER_NAME = "user1";
-  private User user = new User(1, USER_NAME, "user1@domain.com", "one");
+  private static final String USER_EMAIL = "user1@domain.com";
+  private User user = new User(1, USER_NAME, USER_EMAIL, "one");
   private List<User> userList = Collections.singletonList(user);
 
   @Test
@@ -96,5 +97,19 @@ public class UserServiceTest {
     Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_NAME);
     when(repository.query(hql)).thenReturn(new ArrayList<>());
     assertFalse(service.isUserNameAlreadyInUse(USER_NAME));
+  }
+
+  @Test
+  public void isUserEmailAlreadyInUse_WhenUserEmailAlreadyUsed(){
+    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_EMAIL, USER_EMAIL);
+    when(repository.query(hql)).thenReturn(Collections.singletonList(user));
+    assertTrue(service.isUserEmailAlreadyInUse(USER_EMAIL));
+  }
+
+  @Test
+  public void isUserEmailAlreadyInUse_WhenUserEmailNotUsed(){
+    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_EMAIL, USER_EMAIL);
+    when(repository.query(hql)).thenReturn(new ArrayList<>());
+    assertFalse(service.isUserEmailAlreadyInUse(USER_EMAIL));
   }
 }

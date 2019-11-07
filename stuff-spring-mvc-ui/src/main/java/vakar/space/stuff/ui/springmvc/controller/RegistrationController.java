@@ -11,15 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vakar.space.stuff.ui.springmvc.model.RegistrationModel;
 import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
+import vakar.space.stuff.ui.springmvc.service.CaptchaService;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RegistrationController {
 
   private UserPresenter userPresenter;
+  private CaptchaService captchaService;
 
   @Autowired
-  public RegistrationController(UserPresenter userPresenter){
+  public RegistrationController(UserPresenter userPresenter, CaptchaService captchaService) {
     this.userPresenter = userPresenter;
+    this.captchaService = captchaService;
   }
 
   @GetMapping(value = "/registration")
@@ -31,8 +36,11 @@ public class RegistrationController {
   public String registerUser(
       @ModelAttribute("registration") @Validated RegistrationModel registration,
       BindingResult bindingResult,
-      Model model) {
-    if (bindingResult.hasErrors()) {
+      Model model,
+      HttpServletRequest request) {
+    String response = request.getParameter("g-recaptcha-response");
+    boolean isCaptchaSuccess = captchaService.processResponse(response);
+    if (!isCaptchaSuccess || bindingResult.hasErrors()) {
       return "registration";
     }
     userPresenter.saveUser(registration);

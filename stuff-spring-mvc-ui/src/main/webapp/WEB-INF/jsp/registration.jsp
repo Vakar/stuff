@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix = "form"%>
 <html>
 <head>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Registration</title>
 </head>
 
@@ -22,6 +23,12 @@
             <td><form:label path = "password">Password</form:label></td>
             <td><form:input path = "password"/></td>
             <td><form:errors path = "password"/></td>
+        </tr>
+        <tr>
+            <td colspan = "2">
+                <div class="g-recaptcha" data-sitekey="6LegrloUAAAAAJQLfyqBisoeNO0PNC10xbP2dYmR"></div>
+                <span id="captchaError" style="display:none"></span>
+            </td>
         </tr>
         <tr>
             <td colspan = "2">

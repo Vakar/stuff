@@ -1,43 +1,19 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html lang="en">
 <head>
     <title>Welcome to Stuff</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        .login-form {
-            width: 340px;
-            margin: 50px auto;
-        }
-
-        .login-form form {
-            margin-bottom: 15px;
-            background: #f7f7f7;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-        }
-
-        .login-form h2 {
-            margin: 0 0 15px;
-        }
-
-        .form-control, .btn {
-            min-height: 38px;
-            border-radius: 2px;
-        }
-
-        .btn {
-            font-size: 15px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />">
+    <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/js/jquery.slim.min.js" />"></script>
+    <script src="<c:url value="/resources/js/popper.min.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-<div align="center">
-    <h3>Welcome to Stuff</h3>
+<div>
+    <h3 class="text-center">Welcome to Stuff</h3>
 </div>
 
 <sec:authorize access="!isAuthenticated()">

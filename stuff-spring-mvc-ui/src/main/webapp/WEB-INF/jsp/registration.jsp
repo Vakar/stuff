@@ -1,41 +1,50 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix = "form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Registration</title>
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />">
+    <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/js/jquery.slim.min.js" />"></script>
+    <script src="<c:url value="/resources/js/popper.min.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
-<h2>User Registration</h2>
-<form:form method = "POST" action = "/registerUser" commandName = "registration">
-    <table>
-        <tr>
-            <td><form:label path = "userName">User Name</form:label></td>
-            <td><form:input path = "userName" /></td>
-            <td><form:errors path = "userName"/></td>
-        </tr>
-        <tr>
-            <td><form:label path = "eMail">E-mail</form:label></td>
-            <td><form:input path = "eMail" /></td>
-            <td><form:errors path = "eMail"/></td>
-        </tr>
-        <tr>
-            <td><form:label path = "password">Password</form:label></td>
-            <td><form:input path = "password"/></td>
-            <td><form:errors path = "password"/></td>
-        </tr>
-        <tr>
-            <td colspan = "2">
-                <div class="g-recaptcha" data-sitekey="6LegrloUAAAAAJQLfyqBisoeNO0PNC10xbP2dYmR"></div>
-                <span id="captchaError" style="display:none"></span>
-            </td>
-        </tr>
-        <tr>
-            <td colspan = "2">
-                <input type = "submit" value = "Submit"/>
-            </td>
-        </tr>
-    </table>
-</form:form>
+
+<div>
+    <h3 class="text-center">User Registration</h3>
+</div>
+
+<div class="login-form">
+    <form:form method="POST" action="/registerUser" commandName="registration">
+        <div class="form-group">
+            <form:label path="userName">User Name</form:label>
+            <form:input class="form-control" path="userName"/>
+            <form:errors class="form-text text-danger" path="userName"/>
+        </div>
+
+        <div class="form-group">
+            <form:label path="eMail">E-mail</form:label>
+            <form:input class="form-control" path="eMail"/>
+            <form:errors class="form-text text-danger" path="eMail"/>
+        </div>
+
+        <div class="form-group">
+            <form:label path="password">Password</form:label>
+            <form:input class="form-control" path="password"/>
+            <form:errors class="form-text text-danger" path="password"/>
+        </div>
+
+        <div class="form-group" align="center">
+            <div class="g-recaptcha" data-sitekey="6LegrloUAAAAAJQLfyqBisoeNO0PNC10xbP2dYmR"></div>
+        </div>
+
+        <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
+
+    </form:form>
+</div>
+
 </body>
 </html>

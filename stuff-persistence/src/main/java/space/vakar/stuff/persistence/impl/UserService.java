@@ -10,6 +10,7 @@ import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
 import space.vakar.stuff.persistence.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserService implements UserRepositoryService {
 
@@ -68,5 +69,12 @@ public class UserService implements UserRepositoryService {
         Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_EMAIL, userEmail);
         List<User> users = repository.query(findByFieldValue);
         return !users.isEmpty();
+    }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, username);
+        List<User> users = repository.query(findByFieldValue);
+        return users.isEmpty() ? Optional.empty() : Optional.of(users.get(0));
     }
 }

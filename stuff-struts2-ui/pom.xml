@@ -62,7 +62,7 @@
         <dependency>
             <groupId>vakar-space</groupId>
             <artifactId>stuff-persistence</artifactId>
-            <version>0.1</version> <!-- TODO: Project version -->
+            <version>${project.parent.version}</version>
         </dependency>
 
         <!-- Testing -->

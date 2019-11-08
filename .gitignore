@@ -5,3 +5,4 @@
 *.iml
 .idea/
 target/
+/stuff-persistence/src/main/resources/hibernate.properties

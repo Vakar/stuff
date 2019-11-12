@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <form:form method="POST" action="/stuff/save" commandName="stuffDto">
+    <form:form method="POST" action="/stuff/stuff/save" commandName="stuffDto">
         <div>
             <form:hidden path="id"/>
         </div>

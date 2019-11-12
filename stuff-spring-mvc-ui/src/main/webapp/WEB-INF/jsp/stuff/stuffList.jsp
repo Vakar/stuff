@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -12,7 +12,7 @@
 <sec:authorize access="isAuthenticated()">
     Welcome to your stuff <sec:authentication property="principal"/>!
     <div>
-        <a href="/logout">Logout</a>
+        <a href="<c:url value="/logout" />">Logout</a>
     </div>
 </sec:authorize>
 
@@ -23,8 +23,8 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Cost</th>
-                <th>Delete</th>
-                <th>Edit</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
             </tr>
             <c:forEach var="stuffDto" items="${stuffDtoList}">
                 <tr>
@@ -46,7 +46,7 @@
             </c:forEach>
         </table>
     </c:if>
-    <a href="/stuff/addView">Add new Stuff</a>
+    <a href="<c:url value="/stuff/addView" />">Add new Stuff</a>
 </div>
 
 </body>

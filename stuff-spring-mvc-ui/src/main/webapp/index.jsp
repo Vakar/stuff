@@ -18,7 +18,7 @@
 
 <sec:authorize access="!isAuthenticated()">
     <div class="login-form">
-        <form name='loginForm' action="/login" method="post">
+        <form name='loginForm' action="<c:url value="/login" />" method="post">
             <h2 class="text-center">Log in</h2>
             <div class="form-group">
                 <input type="text" class="form-control" name="username" placeholder="Username" required="required">
@@ -37,7 +37,7 @@
 <sec:authorize access="hasRole('USER')">
     <div class="login-form">
         <a class="btn btn-primary btn-block" href="<c:url value="/stuff/list" />">My Stuff</a>
-        <a class="btn btn-primary btn-block" href="/logout">Logout</a>
+        <a class="btn btn-primary btn-block" href="<c:url value="/logout" />">Logout</a>
     </div>
 </sec:authorize>
 </body>

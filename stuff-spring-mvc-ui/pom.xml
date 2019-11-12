@@ -85,4 +85,8 @@
 
     </dependencies>
 
+    <build>
+        <finalName>stuff</finalName>
+    </build>
+
 </project>

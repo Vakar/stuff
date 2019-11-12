@@ -1,8 +1,16 @@
 <?xml encoding="UTF-8"?>
 
-        <!ELEMENT dataset (STUFF)+>
+        <!ELEMENT dataset (APP_USER+, STUFF+)>
         <!ELEMENT STUFF EMPTY>
         <!ATTLIST STUFF
-                COST CDATA #IMPLIED
                 ID CDATA #IMPLIED
-                NAME CDATA #IMPLIED>
+                NAME CDATA #IMPLIED
+                COST CDATA #IMPLIED
+                OWNER_ID CDATA #IMPLIED>
+
+        <!ELEMENT APP_USER EMPTY>
+        <!ATTLIST APP_USER
+                ID CDATA #IMPLIED
+                USER_NAME CDATA #IMPLIED
+                EMAIL CDATA #IMPLIED
+                PSWD CDATA #IMPLIED>

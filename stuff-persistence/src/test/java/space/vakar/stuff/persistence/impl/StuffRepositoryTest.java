@@ -12,6 +12,7 @@ import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
 import space.vakar.stuff.persistence.impl.hql.HqlGetById;
 import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
 import space.vakar.stuff.persistence.model.Stuff;
+import space.vakar.stuff.persistence.model.User;
 
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
@@ -33,8 +34,9 @@ public class StuffRepositoryTest extends DatabaseTestConfig {
   private static final String UPDATE_DATASET = DATASET_FOLDER + "/update.xml";
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
 
-  private Stuff stuffOne = new Stuff(1, "stuff_one_name", new BigDecimal("10.1"));
-  private Stuff stuffTwo = new Stuff(2, "stuff_two_name", new BigDecimal("20"));
+  private User owner = new User(1, "username", "user1@domain.com", "one");
+  private Stuff stuffOne = new Stuff(1, "stuff_one_name", new BigDecimal("10.1"), owner);
+  private Stuff stuffTwo = new Stuff(2, "stuff_two_name", new BigDecimal("20"), owner);
 
   public StuffRepositoryTest(String name) {
     super(name);

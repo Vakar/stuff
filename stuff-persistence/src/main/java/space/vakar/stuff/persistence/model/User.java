@@ -3,68 +3,68 @@ package space.vakar.stuff.persistence.model;
 import space.vakar.stuff.persistence.api.DomainEntity;
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "APP_USER")
 public class User implements DomainEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-    @Column(name = "USER_NAME")
-    private String userName;
-    private String email;
-    private String pswd;
+  @Column(name = "USER_NAME") // TODO: table column and entity field should be rename to plane "username"
+  private String userName;
 
-    public User() {
-    }
+  private String email;
+  private String pswd;
 
-    public User(String userName, String email, String pswd) {
-        this.userName = userName;
-        this.email = email;
-        this.pswd = pswd;
-    }
+  public User() {}
 
-    public User(int id, String userName, String email, String pswd) {
-        this.id = id;
-        this.userName = userName;
-        this.email = email;
-        this.pswd = pswd;
-    }
+  public User(String userName, String email, String pswd) {
+    this.userName = userName;
+    this.email = email;
+    this.pswd = pswd;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public User(int id, String userName, String email, String pswd) {
+    this.id = id;
+    this.userName = userName;
+    this.email = email;
+    this.pswd = pswd;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getUserName() {
-        return userName;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  public String getUserName() {
+    return userName;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public String getPswd() {
-        return pswd;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void setPswd(String pswd) {
-        this.pswd = pswd;
-    }
+  public String getPswd() {
+    return pswd;
+  }
+
+  public void setPswd(String pswd) {
+    this.pswd = pswd;
+  }
 
     @Override
     public boolean equals(Object o) {

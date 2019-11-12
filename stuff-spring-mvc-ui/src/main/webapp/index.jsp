@@ -36,7 +36,7 @@
 
 <sec:authorize access="hasRole('USER')">
     <div class="login-form">
-        <a class="btn btn-primary btn-block" href="#">My Stuff</a>
+        <a class="btn btn-primary btn-block" href="<c:url value="/stuff/list" />">My Stuff</a>
         <a class="btn btn-primary btn-block" href="/logout">Logout</a>
     </div>
 </sec:authorize>

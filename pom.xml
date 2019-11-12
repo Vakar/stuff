@@ -9,7 +9,6 @@
     <version>0.1</version>
     <modules>
         <module>stuff-persistence</module>
-        <module>stuff-struts2-ui</module>
         <module>stuff-spring-mvc-ui</module>
     </modules>
     <packaging>pom</packaging>

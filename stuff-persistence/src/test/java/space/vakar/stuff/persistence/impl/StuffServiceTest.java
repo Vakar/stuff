@@ -7,7 +7,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-import space.vakar.stuff.persistence.api.RepositoryService;
+import space.vakar.stuff.persistence.api.StuffRepositoryService;
+import space.vakar.stuff.persistence.impl.hql.HqlFindByFieldValue;
 import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
 import space.vakar.stuff.persistence.impl.hql.HqlGetById;
 import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,7 +26,7 @@ public class StuffServiceTest {
 
   @Mock private Repository<Stuff> repository;
 
-  @InjectMocks private RepositoryService<Stuff> service = new StuffService();
+  @InjectMocks private StuffRepositoryService service = new StuffService();
 
   private static final int ONCE = 1;
 
@@ -77,5 +79,15 @@ public class StuffServiceTest {
     Hql hql = new HqlGetAll(Stuff.class);
     service.readAll();
     verify(repository, times(ONCE)).query(hql);
+  }
+
+  @Test
+  public void findStuffByUserIdTest(){
+    int userId = 1;
+    Hql hql = new HqlFindByFieldValue(Stuff.class, StuffService.FIELD_OWNER_ID, String.valueOf(userId));
+    when(repository.query(hql)).thenReturn(stuffList);
+    List<Stuff> actualStuffList = service.findStuffByUserId(userId);
+    verify(repository, times(ONCE)).query(hql);
+    assertEquals(stuffList, actualStuffList);
   }
 }

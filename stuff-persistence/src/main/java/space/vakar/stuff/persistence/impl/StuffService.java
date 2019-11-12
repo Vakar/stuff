@@ -1,7 +1,10 @@
 package space.vakar.stuff.persistence.impl;
 
+import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.api.RepositoryService;
+import space.vakar.stuff.persistence.api.StuffRepositoryService;
+import space.vakar.stuff.persistence.impl.hql.HqlFindByFieldValue;
 import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
 import space.vakar.stuff.persistence.impl.hql.HqlGetById;
 import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
@@ -10,9 +13,11 @@ import space.vakar.stuff.persistence.model.Stuff;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class StuffService implements RepositoryService<Stuff> {
+public class StuffService implements StuffRepositoryService {
 
   private Repository<Stuff> repository = new RepositoryStuff();
+
+  static final String FIELD_OWNER_ID = "owner";
 
   @Override
   public void add(Stuff entity) {
@@ -50,5 +55,11 @@ public class StuffService implements RepositoryService<Stuff> {
   @Override
   public List<Stuff> readAll() {
     return repository.query(new HqlGetAll(Stuff.class));
+  }
+
+  @Override
+  public List<Stuff> findStuffByUserId(int id) {
+    Hql hql = new HqlFindByFieldValue(Stuff.class, FIELD_OWNER_ID, String.valueOf(id));
+    return repository.query(hql);
   }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vakar.space.stuff.ui.springmvc.model.RegistrationModel;
 import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
-import vakar.space.stuff.ui.springmvc.service.CaptchaService;
+import vakar.space.stuff.ui.springmvc.captcha.GoogleReCaptchaService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,12 +19,12 @@ import javax.servlet.http.HttpServletRequest;
 public class RegistrationController {
 
   private UserPresenter userPresenter;
-  private CaptchaService captchaService;
+  private GoogleReCaptchaService googleReCaptchaService;
 
   @Autowired
-  public RegistrationController(UserPresenter userPresenter, CaptchaService captchaService) {
+  public RegistrationController(UserPresenter userPresenter, GoogleReCaptchaService googleReCaptchaService) {
     this.userPresenter = userPresenter;
-    this.captchaService = captchaService;
+    this.googleReCaptchaService = googleReCaptchaService;
   }
 
   @GetMapping(value = "/registration")
@@ -39,7 +39,7 @@ public class RegistrationController {
       Model model,
       HttpServletRequest request) {
     String response = request.getParameter("g-recaptcha-response");
-    boolean isCaptchaSuccess = captchaService.processResponse(response);
+    boolean isCaptchaSuccess = googleReCaptchaService.processResponse(response);
     if (!isCaptchaSuccess || bindingResult.hasErrors()) {
       return "registration";
     }

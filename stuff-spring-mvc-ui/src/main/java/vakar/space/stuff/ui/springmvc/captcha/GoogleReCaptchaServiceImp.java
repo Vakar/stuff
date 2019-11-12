@@ -1,32 +1,39 @@
-package vakar.space.stuff.ui.springmvc.service;
+package vakar.space.stuff.ui.springmvc.captcha;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
-import vakar.space.stuff.ui.springmvc.model.GoogleReCaptcha;
-import vakar.space.stuff.ui.springmvc.model.GoogleResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 
 @Service
-public class CaptchaServiceImp implements CaptchaService {
+public class GoogleReCaptchaServiceImp implements GoogleReCaptchaService {
 
-  @Autowired private GoogleReCaptcha googleReCaptcha;
+  private GoogleReCaptchaKeyHolder googleReCaptchaKeyHolder;
+  private RestOperations restTemplate;
+  private HttpServletRequest request;
 
-  @Autowired private RestOperations restTemplate;
-
-  @Autowired private HttpServletRequest request;
+  @Autowired
+  public GoogleReCaptchaServiceImp(
+      GoogleReCaptchaKeyHolder googleReCaptchaKeyHolder,
+      RestOperations restTemplate,
+      HttpServletRequest request) {
+    this.googleReCaptchaKeyHolder = googleReCaptchaKeyHolder;
+    this.restTemplate = restTemplate;
+    this.request = request;
+  }
 
   @Override
   public boolean processResponse(String response) {
-    String secretKey = googleReCaptcha.getSecretKey();
+    String secretKey = googleReCaptchaKeyHolder.getSecretKey();
     URI verifyUri =
         URI.create(
             String.format(
                 "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s",
                 secretKey, response, getClientIP()));
-    GoogleResponse googleResponse = restTemplate.getForObject(verifyUri, GoogleResponse.class);
+    GoogleResponse googleResponse =
+        restTemplate.getForObject(verifyUri, GoogleResponse.class);
     return googleResponse.isSuccess();
   }
 

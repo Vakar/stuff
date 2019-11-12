@@ -1,6 +1,6 @@
-package vakar.space.stuff.ui.springmvc.model;
+package vakar.space.stuff.ui.springmvc.captcha;
 
-public class GoogleReCaptcha {
+public class GoogleReCaptchaKeyHolder {
 
   private String siteKey;
   private String secretKey;

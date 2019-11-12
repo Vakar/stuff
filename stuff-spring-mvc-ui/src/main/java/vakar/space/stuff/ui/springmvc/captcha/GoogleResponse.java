@@ -1,4 +1,4 @@
-package vakar.space.stuff.ui.springmvc.model;
+package vakar.space.stuff.ui.springmvc.captcha;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -29,27 +29,27 @@ public class GoogleResponse {
     }
     for (ErrorCode error : errors) {
       switch (error) {
-        case InvalidResponse:
-        case MissingResponse:
+        case INVALID_RESPONSE:
+        case MISSING_RESPONSE:
           return true;
       }
     }
     return false;
   }
 
-  static enum ErrorCode {
-    MissingSecret,
-    InvalidSecret,
-    MissingResponse,
-    InvalidResponse;
+  enum ErrorCode {
+    MISSING_SECRET,
+    INVALID_SECRET,
+    MISSING_RESPONSE,
+    INVALID_RESPONSE;
 
-    private static Map<String, ErrorCode> errorsMap = new HashMap<String, ErrorCode>(4);
+    private static Map<String, ErrorCode> errorsMap = new HashMap<>(4);
 
     static {
-      errorsMap.put("missing-input-secret", MissingSecret);
-      errorsMap.put("invalid-input-secret", InvalidSecret);
-      errorsMap.put("missing-input-response", MissingResponse);
-      errorsMap.put("invalid-input-response", InvalidResponse);
+      errorsMap.put("missing-input-secret", MISSING_SECRET);
+      errorsMap.put("invalid-input-secret", INVALID_SECRET);
+      errorsMap.put("missing-input-response", MISSING_RESPONSE);
+      errorsMap.put("invalid-input-response", INVALID_RESPONSE);
     }
 
     @JsonCreator

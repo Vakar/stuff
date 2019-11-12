@@ -1,4 +1,4 @@
-package vakar.space.stuff.ui.springmvc.config;
+package vakar.space.stuff.ui.springmvc.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

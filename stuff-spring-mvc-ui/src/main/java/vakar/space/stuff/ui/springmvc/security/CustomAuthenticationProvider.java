@@ -1,4 +1,4 @@
-package vakar.space.stuff.ui.springmvc.service;
+package vakar.space.stuff.ui.springmvc.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;

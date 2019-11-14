@@ -4,18 +4,17 @@ import java.util.List;
 
 public interface RepositoryService<T> {
 
-    void add(T entity);
+  void add(T entity);
 
-    void add(Iterable<T> entities);
+  void add(Iterable<T> entities);
 
-    void update(T entity);
+  void update(T entity);
 
-    void remove(T entity);
+  void remove(T entity);
 
-    void remove(int id);
+  void remove(int id);
 
-    T readById(int id);
+  T readById(int id);
 
-    List<T> readAll();
-
+  List<T> readAll();
 }

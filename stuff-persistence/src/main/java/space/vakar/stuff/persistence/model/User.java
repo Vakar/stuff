@@ -1,9 +1,12 @@
 package space.vakar.stuff.persistence.model;
 
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import space.vakar.stuff.persistence.api.DomainEntity;
-
-import javax.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name = "APP_USER")
@@ -62,29 +65,40 @@ public class User implements DomainEntity {
     this.pswd = pswd;
   }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(pswd, user.pswd);
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    User user = (User) o;
+    return id == user.id
+        && Objects.equals(username, user.username)
+        && Objects.equals(email, user.email)
+        && Objects.equals(pswd, user.pswd);
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, email, pswd);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, username, email, pswd);
+  }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", pswd='" + pswd + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "User{"
+        + "id="
+        + id
+        + ", userName='"
+        + username
+        + '\''
+        + ", email='"
+        + email
+        + '\''
+        + ", pswd='"
+        + pswd
+        + '\''
+        + '}';
+  }
 }

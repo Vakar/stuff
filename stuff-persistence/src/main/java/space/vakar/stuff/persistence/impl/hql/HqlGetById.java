@@ -1,8 +1,7 @@
 package space.vakar.stuff.persistence.impl.hql;
 
-import space.vakar.stuff.persistence.api.Hql;
-
 import java.util.Objects;
+import space.vakar.stuff.persistence.api.Hql;
 
 public class HqlGetById implements Hql {
 
@@ -21,8 +20,12 @@ public class HqlGetById implements Hql {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     HqlGetById that = (HqlGetById) o;
     return id == that.id && Objects.equals(clazz, that.clazz);
   }

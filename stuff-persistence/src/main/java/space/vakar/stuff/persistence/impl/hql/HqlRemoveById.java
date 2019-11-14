@@ -19,8 +19,12 @@ public class HqlRemoveById implements space.vakar.stuff.persistence.api.Hql {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     HqlRemoveById that = (HqlRemoveById) o;
     return id == that.id && Objects.equals(clazz, that.clazz);
   }

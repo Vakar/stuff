@@ -1,5 +1,6 @@
 package space.vakar.stuff.persistence.impl;
 
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,8 +10,6 @@ import org.hibernate.service.ServiceRegistry;
 import space.vakar.stuff.persistence.api.DomainEntity;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-
-import java.util.List;
 
 class AbstractRepository<T extends DomainEntity> implements Repository<T> {
 

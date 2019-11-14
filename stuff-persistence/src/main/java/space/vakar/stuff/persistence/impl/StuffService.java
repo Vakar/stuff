@@ -1,17 +1,15 @@
 package space.vakar.stuff.persistence.impl;
 
+import java.math.BigDecimal;
+import java.util.List;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-import space.vakar.stuff.persistence.api.RepositoryService;
 import space.vakar.stuff.persistence.api.StuffRepositoryService;
 import space.vakar.stuff.persistence.impl.hql.HqlFindByFieldValue;
 import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
 import space.vakar.stuff.persistence.impl.hql.HqlGetById;
 import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
 import space.vakar.stuff.persistence.model.Stuff;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 public class StuffService implements StuffRepositoryService {
 
@@ -48,7 +46,9 @@ public class StuffService implements StuffRepositoryService {
   public Stuff readById(int id) {
     List<Stuff> stuffList = repository.query(new HqlGetById(Stuff.class, id));
     Stuff stuff = new Stuff(0, "", BigDecimal.ZERO);
-    if (!stuffList.isEmpty()) stuff = stuffList.get(0);
+    if (!stuffList.isEmpty()) {
+      stuff = stuffList.get(0);
+    }
     return stuff;
   }
 

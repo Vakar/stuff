@@ -1,10 +1,15 @@
 package space.vakar.stuff.persistence.model;
 
-import space.vakar.stuff.persistence.api.DomainEntity;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import space.vakar.stuff.persistence.api.DomainEntity;
 
 @Entity
 @Table(name = "STUFF")
@@ -74,8 +79,12 @@ public class Stuff implements DomainEntity {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     Stuff stuff = (Stuff) o;
     return id == stuff.id && Objects.equals(name, stuff.name) && Objects.equals(cost, stuff.cost);
   }

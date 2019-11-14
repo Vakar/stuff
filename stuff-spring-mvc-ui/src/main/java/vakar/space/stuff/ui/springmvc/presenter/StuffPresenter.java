@@ -37,7 +37,7 @@ public class StuffPresenter {
     Optional<User> userOptional = userService.findUserByUsername(username);
     if (userOptional.isPresent()) {
       User user = userOptional.get();
-      stuff.setOwner(user);
+      stuff.setUser(user);
     }
     if (stuff.getId() > 0) {
       stuffService.update(stuff);

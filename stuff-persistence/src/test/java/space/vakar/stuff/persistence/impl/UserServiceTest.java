@@ -50,7 +50,7 @@ public class UserServiceTest {
 
   @Test
   public void update() {
-    user.setUserName("user1_new");
+    user.setUsername("user1_new");
     user.setEmail("user1_new@domain.com");
     user.setPswd("one_new");
     service.update(user);

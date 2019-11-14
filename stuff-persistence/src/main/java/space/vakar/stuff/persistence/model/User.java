@@ -13,25 +13,21 @@ public class User implements DomainEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "USER_NAME") // TODO: table column and entity field should be rename to plane "username"
-  private String userName;
-
+  private String username;
   private String email;
   private String pswd;
 
   public User() {}
 
-  public User(String userName, String email, String pswd) {
-    this.userName = userName;
+  public User(String username, String email, String pswd) {
+    this.username = username;
     this.email = email;
     this.pswd = pswd;
   }
 
-  public User(int id, String userName, String email, String pswd) {
+  public User(int id, String username, String email, String pswd) {
+    this(username, email, pswd);
     this.id = id;
-    this.userName = userName;
-    this.email = email;
-    this.pswd = pswd;
   }
 
   public int getId() {
@@ -42,12 +38,12 @@ public class User implements DomainEntity {
     this.id = id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getEmail() {
@@ -72,21 +68,21 @@ public class User implements DomainEntity {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                Objects.equals(userName, user.userName) &&
+                Objects.equals(username, user.username) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(pswd, user.pswd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userName, email, pswd);
+        return Objects.hash(id, username, email, pswd);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", pswd='" + pswd + '\'' +
                 '}';

@@ -26,8 +26,6 @@ public class UserRepositoryTest extends DatabaseTestConfig {
 
   private static final String TABLE_NAME = "APP_USER";
 
-  private static final String FIELD_USER_NAME = "userName";
-
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
   private static final String DATASET_FOLDER = "/datasets/user";
@@ -81,14 +79,14 @@ public class UserRepositoryTest extends DatabaseTestConfig {
   }
 
   public void testFindByFieldValue_WhenValueExist(){
-    Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, USER_ONE_NAME);
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_ONE_NAME);
     List<User> users = repositoryUser.query(findByFieldValue);
     assertEquals(1, users.size());
     assertEquals(userOne, users.get(0));
   }
 
   public void testFindByFieldValue_WhenValueDoesNotExist(){
-    Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_NAME, USERNAME_NOT_USED);
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USERNAME_NOT_USED);
     List<User> users = repositoryUser.query(findByFieldValue);
     assertTrue(users.isEmpty());
   }

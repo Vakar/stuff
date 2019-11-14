@@ -6,11 +6,11 @@
                 ID CDATA #IMPLIED
                 NAME CDATA #IMPLIED
                 COST CDATA #IMPLIED
-                OWNER_ID CDATA #IMPLIED>
+                USER_ID CDATA #IMPLIED>
 
         <!ELEMENT APP_USER EMPTY>
         <!ATTLIST APP_USER
                 ID CDATA #IMPLIED
-                USER_NAME CDATA #IMPLIED
+                USERNAME CDATA #IMPLIED
                 EMAIL CDATA #IMPLIED
                 PSWD CDATA #IMPLIED>

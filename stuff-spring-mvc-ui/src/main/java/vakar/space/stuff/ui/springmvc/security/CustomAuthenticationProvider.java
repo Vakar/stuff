@@ -39,7 +39,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     private boolean authorizedUser(String username, String password) {
         Optional<User> userOpt = userPresenter.findUserByUsername(username);
         return userOpt
-                .filter(user -> username.equals(user.getUserName()) && password.equals(user.getPswd()))
+                .filter(user -> username.equals(user.getUsername()) && password.equals(user.getPswd()))
                 .isPresent();
     }
 

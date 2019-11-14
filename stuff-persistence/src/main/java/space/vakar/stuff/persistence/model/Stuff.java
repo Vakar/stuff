@@ -18,8 +18,7 @@ public class Stuff implements DomainEntity {
   private BigDecimal cost;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "OWNER_ID")
-  private User owner;
+  private User user;
 
   public Stuff() {}
 
@@ -34,11 +33,11 @@ public class Stuff implements DomainEntity {
     this.cost = cost;
   }
 
-  public Stuff(int id, String name, BigDecimal cost, User owner) {
+  public Stuff(int id, String name, BigDecimal cost, User user) {
     this.id = id;
     this.name = name;
     this.cost = cost;
-    this.owner = owner;
+    this.user = user;
   }
 
   public int getId() {
@@ -65,12 +64,12 @@ public class Stuff implements DomainEntity {
     this.cost = cost;
   }
 
-  public User getOwner() {
-    return owner;
+  public User getUser() {
+    return user;
   }
 
-  public void setOwner(User owner) {
-    this.owner = owner;
+  public void setUser(User user) {
+    this.user = user;
   }
 
   @Override

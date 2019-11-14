@@ -1,6 +1,6 @@
 <!DOCTYPE dataset SYSTEM "stuff.dtd">
 <dataset>
-    <APP_USER ID="1" USER_NAME="username" EMAIL="user1@domain.com" PSWD="one"/>
-    <STUFF ID="1" NAME="stuff_one_name" COST="10.10" OWNER_ID="1"/>
-    <STUFF ID="2" NAME="stuff_two_name" COST="20" OWNER_ID="1"/>
+    <APP_USER ID="1" USERNAME="username" EMAIL="user1@domain.com" PSWD="one"/>
+    <STUFF ID="1" NAME="stuff_one_name" COST="10.10" USER_ID="1"/>
+    <STUFF ID="2" NAME="stuff_two_name" COST="20" USER_ID="1"/>
 </dataset>

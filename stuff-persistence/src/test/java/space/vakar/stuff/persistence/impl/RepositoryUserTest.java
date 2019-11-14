@@ -10,6 +10,8 @@ import org.h2.tools.RunScript;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.model.User;
+import space.vakar.stuff.persistence.util.DatabaseTestConfig;
+import space.vakar.stuff.persistence.util.PropertiesUtil;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

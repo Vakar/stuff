@@ -1,4 +1,4 @@
-package space.vakar.stuff.persistence.impl;
+package space.vakar.stuff.persistence.util;
 
 public class PropertiesNotFoundException extends RuntimeException {
   public PropertiesNotFoundException(String message, Throwable exception) {

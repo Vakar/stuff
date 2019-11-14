@@ -1,4 +1,4 @@
-package space.vakar.stuff.persistence.impl;
+package space.vakar.stuff.persistence.util;
 
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;

@@ -9,11 +9,11 @@
 <table>
     <tr>
         <td>User Name</td>
-        <td>${userName}</td>
+        <td>${username}</td>
     </tr>
     <tr>
         <td>E-mail</td>
-        <td>${eMail}</td>
+        <td>${email}</td>
     </tr>
     <tr>
         <td>Password</td>

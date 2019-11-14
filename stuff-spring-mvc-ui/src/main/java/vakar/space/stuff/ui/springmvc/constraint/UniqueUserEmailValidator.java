@@ -1,10 +1,9 @@
 package vakar.space.stuff.ui.springmvc.constraint;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
 
 public class UniqueUserEmailValidator implements ConstraintValidator<UniqueUserEmail, String> {
 
@@ -15,6 +14,6 @@ public class UniqueUserEmailValidator implements ConstraintValidator<UniqueUserE
   }
 
   public boolean isValid(String value, ConstraintValidatorContext context) {
-      return value != null && !userPresenter.isUserEmailAlreadyInUse(value);
+    return value != null && !userPresenter.isUserEmailAlreadyInUse(value);
   }
 }

@@ -1,5 +1,6 @@
 package vakar.space.stuff.ui.springmvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import vakar.space.stuff.ui.springmvc.captcha.GoogleReCaptchaService;
 import vakar.space.stuff.ui.springmvc.model.RegistrationModel;
 import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
-import vakar.space.stuff.ui.springmvc.captcha.GoogleReCaptchaService;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RegistrationController {
@@ -22,7 +21,8 @@ public class RegistrationController {
   private GoogleReCaptchaService googleReCaptchaService;
 
   @Autowired
-  public RegistrationController(UserPresenter userPresenter, GoogleReCaptchaService googleReCaptchaService) {
+  public RegistrationController(
+      UserPresenter userPresenter, GoogleReCaptchaService googleReCaptchaService) {
     this.userPresenter = userPresenter;
     this.googleReCaptchaService = googleReCaptchaService;
   }
@@ -44,8 +44,8 @@ public class RegistrationController {
       return "registration";
     }
     userPresenter.saveUser(registration);
-    model.addAttribute("userName", registration.getUserName());
-    model.addAttribute("eMail", registration.geteMail());
+    model.addAttribute("username", registration.getUsername());
+    model.addAttribute("email", registration.getEmail());
     model.addAttribute("password", registration.getPassword());
     return "result";
   }

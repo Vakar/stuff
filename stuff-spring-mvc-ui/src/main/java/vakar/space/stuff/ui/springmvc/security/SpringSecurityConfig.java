@@ -12,30 +12,29 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationProvider customAuthProvider;
+  @Autowired private AuthenticationProvider customAuthProvider;
 
-    @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(customAuthProvider);
-    }
+  @Override
+  protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+    auth.authenticationProvider(customAuthProvider);
+  }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf()
-                .disable()
-                .authorizeRequests()
-                .antMatchers("/stuff/**")
-                .access("hasRole('USER')")
-                .and()
-                .formLogin()
-                .loginPage("/index.jsp")
-                .loginProcessingUrl("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .deleteCookies("JSESSIONID");
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.csrf()
+        .disable()
+        .authorizeRequests()
+        .antMatchers("/stuff/**")
+        .access("hasRole('USER')")
+        .and()
+        .formLogin()
+        .loginPage("/index.jsp")
+        .loginProcessingUrl("/login")
+        .usernameParameter("username")
+        .passwordParameter("password")
+        .and()
+        .logout()
+        .logoutUrl("/logout")
+        .deleteCookies("JSESSIONID");
+  }
 }

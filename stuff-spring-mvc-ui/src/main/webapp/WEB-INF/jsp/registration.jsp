@@ -21,14 +21,14 @@
     <form:form method="POST" action="/stuff/registerUser" commandName="registration">
         <div class="form-group">
             <form:label path="userName">User Name</form:label>
-            <form:input class="form-control" path="userName"/>
-            <form:errors class="form-text text-danger" path="userName"/>
+            <form:input class="form-control" path="username"/>
+            <form:errors class="form-text text-danger" path="username"/>
         </div>
 
         <div class="form-group">
             <form:label path="eMail">E-mail</form:label>
-            <form:input class="form-control" path="eMail"/>
-            <form:errors class="form-text text-danger" path="eMail"/>
+            <form:input class="form-control" path="email"/>
+            <form:errors class="form-text text-danger" path="email"/>
         </div>
 
         <div class="form-group">

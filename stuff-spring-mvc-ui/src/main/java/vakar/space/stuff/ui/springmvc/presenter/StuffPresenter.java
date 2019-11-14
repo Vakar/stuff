@@ -1,5 +1,8 @@
 package vakar.space.stuff.ui.springmvc.presenter;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import space.vakar.stuff.persistence.api.StuffRepositoryService;
@@ -8,10 +11,6 @@ import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 import vakar.space.stuff.ui.springmvc.model.StuffDto;
 import vakar.space.stuff.ui.springmvc.util.Mapper;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Component
 public class StuffPresenter {

@@ -1,10 +1,9 @@
 package vakar.space.stuff.ui.springmvc.constraint;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import vakar.space.stuff.ui.springmvc.presenter.UserPresenter;
 
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 

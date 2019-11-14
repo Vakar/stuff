@@ -1,12 +1,11 @@
 package vakar.space.stuff.ui.springmvc.model;
 
+import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import vakar.space.stuff.ui.springmvc.constraint.UniqueUserEmail;
 import vakar.space.stuff.ui.springmvc.constraint.UniqueUsername;
-
-import javax.validation.constraints.Pattern;
 
 public class RegistrationModel {
 
@@ -15,30 +14,30 @@ public class RegistrationModel {
   @NotBlank
   @Length(max = 64)
   @UniqueUsername
-  private String userName;
+  private String username;
 
   @NotBlank
   @UniqueUserEmail
-  @Email private String eMail;
+  @Email private String email;
 
   @Length(min = 8)
   @Pattern(regexp = REGEX_PSWD_VALIDATION)
   private String password;
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
-  public String geteMail() {
-    return eMail;
+  public String getEmail() {
+    return email;
   }
 
-  public void seteMail(String eMail) {
-    this.eMail = eMail;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getPassword() {

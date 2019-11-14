@@ -16,7 +16,7 @@ public class Config {
   }
 
   @Bean
-  public StuffRepositoryService stuffService(){
+  public StuffRepositoryService stuffService() {
     return new StuffService();
   }
 }

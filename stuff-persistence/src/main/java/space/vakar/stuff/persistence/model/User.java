@@ -20,47 +20,103 @@ public class User implements DomainEntity {
   private String email;
   private String pswd;
 
+  /** Default constructor. */
   public User() {}
 
+  /**
+   * {@link User} parametrised constructor.
+   *
+   * @param username {@link User} name
+   * @param email {@link User} email
+   * @param pswd {@link User} password
+   */
   public User(String username, String email, String pswd) {
     this.username = username;
     this.email = email;
     this.pswd = pswd;
   }
 
+  /**
+   * {@link User} parametrised constructor.
+   *
+   * @param id {@link User} entity id
+   * @param username {@link User} name
+   * @param email {@link User} email
+   * @param pswd {@link User} password
+   */
   public User(int id, String username, String email, String pswd) {
     this(username, email, pswd);
     this.id = id;
   }
 
+  /**
+   * Get {@link User} entity id.
+   *
+   * @return {@link User} entity id
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   * Set {@link User} entity id.
+   *
+   * @param id {@link User} entity id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   * Get {@link User} name.
+   *
+   * @return {@link User} name
+   */
   public String getUsername() {
     return username;
   }
 
+  /**
+   * Set {@link User} name.
+   *
+   * @param username {@link User} name
+   */
   public void setUsername(String username) {
     this.username = username;
   }
 
+  /**
+   * Get {@link User} email.
+   *
+   * @return {@link User} email
+   */
   public String getEmail() {
     return email;
   }
 
+  /**
+   * Set {@link User} email.
+   *
+   * @param email {@link User} email
+   */
   public void setEmail(String email) {
     this.email = email;
   }
 
+  /**
+   * Get {@link User} password.
+   *
+   * @return {@link User} password
+   */
   public String getPswd() {
     return pswd;
   }
 
+  /**
+   * Set {@link User} password.
+   *
+   * @param pswd {@link User} password
+   */
   public void setPswd(String pswd) {
     this.pswd = pswd;
   }

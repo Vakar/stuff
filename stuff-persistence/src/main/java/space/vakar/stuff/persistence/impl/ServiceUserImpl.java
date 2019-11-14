@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-import space.vakar.stuff.persistence.api.UserRepositoryService;
 import space.vakar.stuff.persistence.model.User;
 
-public class UserService implements UserRepositoryService {
+public class ServiceUserImpl implements space.vakar.stuff.persistence.api.ServiceUser {
 
   private Repository<User> repository = new RepositoryUser();
 

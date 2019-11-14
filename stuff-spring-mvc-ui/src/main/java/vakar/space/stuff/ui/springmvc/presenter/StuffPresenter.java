@@ -5,8 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import space.vakar.stuff.persistence.api.StuffRepositoryService;
-import space.vakar.stuff.persistence.api.UserRepositoryService;
+import space.vakar.stuff.persistence.api.ServiceStuff;
+import space.vakar.stuff.persistence.api.ServiceUser;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 import vakar.space.stuff.ui.springmvc.model.StuffDto;
@@ -15,42 +15,42 @@ import vakar.space.stuff.ui.springmvc.util.Mapper;
 @Component
 public class StuffPresenter {
 
-  private StuffRepositoryService stuffService;
-  private UserRepositoryService userService;
+  private ServiceStuff serviceStuff;
+  private ServiceUser serviceUser;
 
   @Autowired
-  public StuffPresenter(StuffRepositoryService stuffService, UserRepositoryService userService) {
-    this.stuffService = stuffService;
-    this.userService = userService;
+  public StuffPresenter(ServiceStuff serviceStuff, ServiceUser serviceUser) {
+    this.serviceStuff = serviceStuff;
+    this.serviceUser = serviceUser;
   }
 
   public List<StuffDto> findStuffByUser(User user) {
     int id = user.getId();
-    return stuffService.findStuffByUserId(id).stream()
+    return serviceStuff.findStuffByUserId(id).stream()
         .map(Mapper::from)
         .collect(Collectors.toList());
   }
 
   public void save(StuffDto model, String username) {
     Stuff stuff = Mapper.from(model);
-    Optional<User> userOptional = userService.findUserByUsername(username);
+    Optional<User> userOptional = serviceUser.findUserByUsername(username);
     if (userOptional.isPresent()) {
       User user = userOptional.get();
       stuff.setUser(user);
     }
     if (stuff.getId() > 0) {
-      stuffService.update(stuff);
+      serviceStuff.update(stuff);
     } else {
-      stuffService.add(stuff);
+      serviceStuff.add(stuff);
     }
   }
 
   public void delete(int id) {
-    stuffService.remove(id);
+    serviceStuff.remove(id);
   }
 
   public StuffDto readById(int id) {
-    Stuff stuff = stuffService.readById(id);
+    Stuff stuff = serviceStuff.readById(id);
     return Mapper.from(stuff);
   }
 }

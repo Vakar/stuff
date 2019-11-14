@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-import space.vakar.stuff.persistence.api.UserRepositoryService;
+import space.vakar.stuff.persistence.api.ServiceUser;
 import space.vakar.stuff.persistence.model.User;
 
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserServiceTest {
+public class ServiceUserImplTest {
 
   @Mock private Repository<User> repository;
 
-  @InjectMocks private UserRepositoryService service = new UserService();
+  @InjectMocks private ServiceUser service = new ServiceUserImpl();
 
   private static final int ONCE = 1;
 
@@ -83,7 +83,7 @@ public class UserServiceTest {
 
   @Test
   public void isUserNameAlreadyInUse_WhenUsernameAlreadyUsed() {
-    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_NAME);
+    Hql hql = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_NAME, USER_NAME);
     when(repository.query(hql)).thenReturn(Collections.singletonList(user));
     assertTrue(service.isUserNameAlreadyInUse(USER_NAME));
     verify(repository, times(ONCE)).query(hql);
@@ -91,7 +91,7 @@ public class UserServiceTest {
 
   @Test
   public void isUserNameAlreadyInUse_WhenUsernameNotUsed() {
-    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_NAME);
+    Hql hql = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_NAME, USER_NAME);
     when(repository.query(hql)).thenReturn(new ArrayList<>());
     assertFalse(service.isUserNameAlreadyInUse(USER_NAME));
     verify(repository, times(ONCE)).query(hql);
@@ -99,7 +99,7 @@ public class UserServiceTest {
 
   @Test
   public void isUserEmailAlreadyInUse_WhenUserEmailAlreadyUsed(){
-    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_EMAIL, USER_EMAIL);
+    Hql hql = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_EMAIL, USER_EMAIL);
     when(repository.query(hql)).thenReturn(Collections.singletonList(user));
     assertTrue(service.isUserEmailAlreadyInUse(USER_EMAIL));
     verify(repository, times(ONCE)).query(hql);
@@ -107,7 +107,7 @@ public class UserServiceTest {
 
   @Test
   public void isUserEmailAlreadyInUse_WhenUserEmailNotUsed(){
-    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_EMAIL, USER_EMAIL);
+    Hql hql = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_EMAIL, USER_EMAIL);
     when(repository.query(hql)).thenReturn(new ArrayList<>());
     assertFalse(service.isUserEmailAlreadyInUse(USER_EMAIL));
     verify(repository, times(ONCE)).query(hql);
@@ -115,7 +115,7 @@ public class UserServiceTest {
 
   @Test
   public void findUserByUsername_WhenUserExist(){
-    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_NAME);
+    Hql hql = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_NAME, USER_NAME);
     when(repository.query(hql)).thenReturn(Collections.singletonList(user));
     assertEquals(Optional.of(user), service.findUserByUsername(USER_NAME));
     verify(repository, times(ONCE)).query(hql);
@@ -123,7 +123,7 @@ public class UserServiceTest {
 
   @Test
   public void findUserByUsername_WhenUserDoesNotExist(){
-    Hql hql = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_NAME);
+    Hql hql = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_NAME, USER_NAME);
     when(repository.query(hql)).thenReturn(new ArrayList<>());
     assertEquals(Optional.empty(), service.findUserByUsername(USER_NAME));
     verify(repository, times(ONCE)).query(hql);

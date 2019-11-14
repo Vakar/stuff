@@ -3,7 +3,7 @@ package space.vakar.stuff.persistence.api;
 import java.util.List;
 import space.vakar.stuff.persistence.model.Stuff;
 
-public interface StuffRepositoryService extends RepositoryService<Stuff> {
+public interface ServiceStuff extends Service<Stuff> {
   /**
    * Find all {@link Stuff} entities that belong to specific user.
    *

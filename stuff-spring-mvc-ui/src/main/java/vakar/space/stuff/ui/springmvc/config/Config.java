@@ -2,21 +2,21 @@ package vakar.space.stuff.ui.springmvc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import space.vakar.stuff.persistence.api.StuffRepositoryService;
-import space.vakar.stuff.persistence.api.UserRepositoryService;
-import space.vakar.stuff.persistence.impl.StuffService;
-import space.vakar.stuff.persistence.impl.UserService;
+import space.vakar.stuff.persistence.api.ServiceStuff;
+import space.vakar.stuff.persistence.api.ServiceUser;
+import space.vakar.stuff.persistence.impl.ServiceStuffImpl;
+import space.vakar.stuff.persistence.impl.ServiceUserImpl;
 
 @Configuration
 public class Config {
 
   @Bean
-  public UserRepositoryService userService() {
-    return new UserService();
+  public ServiceUser userService() {
+    return new ServiceUserImpl();
   }
 
   @Bean
-  public StuffRepositoryService stuffService() {
-    return new StuffService();
+  public ServiceStuff stuffService() {
+    return new ServiceStuffImpl();
   }
 }

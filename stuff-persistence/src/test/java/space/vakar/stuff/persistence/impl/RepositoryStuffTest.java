@@ -7,37 +7,35 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
-import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
+import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Properties;
 
-public class UserRepositoryTest extends DatabaseTestConfig {
+public class RepositoryStuffTest extends DatabaseTestConfig {
 
-  private Repository<User> repositoryUser = new RepositoryUser();
+  private Repository<Stuff> repositoryStuff = new RepositoryStuff();
   private DataFileLoader loader = new FlatXmlDataFileLoader();
 
-  private static final String TABLE_NAME = "APP_USER";
+  private static final String TABLE_NAME = "STUFF";
 
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
-  private static final String DATASET_FOLDER = "/datasets/user";
+  private static final String DATASET_FOLDER = "/datasets/stuff";
   private static final String START_DATASET = DATASET_FOLDER + "/start.xml";
   private static final String CREATE_DATASET = DATASET_FOLDER + "/create.xml";
   private static final String UPDATE_DATASET = DATASET_FOLDER + "/update.xml";
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
 
-  private static final String USER_ONE_NAME = "user1";
-  private static final String USERNAME_NOT_USED = "usernameNotUsed";
-  private static final String NEW_USER_EMAIL = "user1_new@domain.com";
+  private User owner = new User(1, "username", "user1@domain.com", "one");
+  private Stuff stuffOne = new Stuff(1, "stuff_one_name", new BigDecimal("10.1"), owner);
+  private Stuff stuffTwo = new Stuff(2, "stuff_two_name", new BigDecimal("20"), owner);
 
-  private User userOne = new User(1, USER_ONE_NAME, "user1@domain.com", "one");
-  private User userTwo = new User(2, "user2", "user2@domain.com", "two");
-
-  public UserRepositoryTest(String name) {
+  public RepositoryStuffTest(String name) {
     super(name);
   }
 
@@ -58,48 +56,36 @@ public class UserRepositoryTest extends DatabaseTestConfig {
   }
 
   public void testAdd() throws Exception {
-    repositoryUser.add(userTwo);
+    repositoryStuff.add(stuffTwo);
     Assertion.assertEquals(getExpectedTable(CREATE_DATASET), getActualTable());
   }
 
   public void testQueryById() {
-    List<User> userList = repositoryUser.query(new HqlGetById(User.class, userOne.getId()));
-    User actualUser = userList.get(0);
-    assertEquals(userOne, actualUser);
+    List<Stuff> stuffList = repositoryStuff.query(new HqlGetById(Stuff.class, stuffOne.getId()));
+    Stuff actualStuff = stuffList.get(0);
+    assertEquals(stuffOne, actualStuff);
   }
 
-  public void testQueryAll() {
-    List<User> userList = repositoryUser.query(new HqlGetAll(User.class));
-    User actualUser = userList.get(0);
-    assertEquals(userOne, actualUser);
-  }
-
-  public void testFindByFieldValue_WhenValueExist(){
-    Hql findByFieldValue = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USER_ONE_NAME);
-    List<User> users = repositoryUser.query(findByFieldValue);
-    assertEquals(1, users.size());
-    assertEquals(userOne, users.get(0));
-  }
-
-  public void testFindByFieldValue_WhenValueDoesNotExist(){
-    Hql findByFieldValue = new HqlFindByFieldValue(User.class, UserService.FIELD_USER_NAME, USERNAME_NOT_USED);
-    List<User> users = repositoryUser.query(findByFieldValue);
-    assertTrue(users.isEmpty());
+  public void testQueryAll(){
+    List<Stuff> stuffList = repositoryStuff.query(new HqlGetAll(Stuff.class));
+    Stuff actualStuff = stuffList.get(0);
+    assertEquals(stuffOne, actualStuff);
   }
 
   public void testUpdate() throws Exception {
-    userOne.setEmail(NEW_USER_EMAIL);
-    repositoryUser.update(userOne);
+    stuffOne.setName("stuff_one_new_name");
+    stuffOne.setCost(new BigDecimal("22.13"));
+    repositoryStuff.update(stuffOne);
     Assertion.assertEquals(getExpectedTable(UPDATE_DATASET), getActualTable());
   }
 
   public void testRemove() throws Exception {
-    repositoryUser.remove(userOne);
+    repositoryStuff.remove(stuffOne);
     Assertion.assertEquals(getExpectedTable(DELETE_DATASET), getActualTable());
   }
 
   public void testRemoveById() throws Exception {
-    repositoryUser.remove(new HqlRemoveById(User.class, userOne.getId()));
+    repositoryStuff.remove(new HqlRemoveById(Stuff.class, stuffOne.getId()));
     Assertion.assertEquals(getExpectedTable(DELETE_DATASET), getActualTable());
   }
 

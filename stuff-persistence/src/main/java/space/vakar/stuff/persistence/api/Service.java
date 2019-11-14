@@ -2,7 +2,7 @@ package space.vakar.stuff.persistence.api;
 
 import java.util.List;
 
-public interface RepositoryService<T> {
+public interface Service<T> {
 
   /**
    * Save entity in database.

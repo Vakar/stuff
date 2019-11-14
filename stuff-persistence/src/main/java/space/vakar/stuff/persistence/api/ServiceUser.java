@@ -3,7 +3,7 @@ package space.vakar.stuff.persistence.api;
 import java.util.Optional;
 import space.vakar.stuff.persistence.model.User;
 
-public interface UserRepositoryService extends RepositoryService<User> {
+public interface ServiceUser extends Service<User> {
 
   /**
    * Check is user with specific name already exist or not.

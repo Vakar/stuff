@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.util.List;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
-import space.vakar.stuff.persistence.api.StuffRepositoryService;
+import space.vakar.stuff.persistence.api.ServiceStuff;
 import space.vakar.stuff.persistence.model.Stuff;
 
-public class StuffService implements StuffRepositoryService {
+public class ServiceStuffImpl implements ServiceStuff {
 
   private Repository<Stuff> repository = new RepositoryStuff();
 

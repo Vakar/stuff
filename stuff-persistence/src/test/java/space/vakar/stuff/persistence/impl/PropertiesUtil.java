@@ -1,7 +1,5 @@
 package space.vakar.stuff.persistence.impl;
 
-import space.vakar.stuff.persistence.api.StuffPersistenceException;
-
 import java.util.Properties;
 
 class PropertiesUtil {
@@ -19,7 +17,7 @@ class PropertiesUtil {
     try {
       properties.load(PropertiesUtil.class.getResourceAsStream(fileName));
     } catch (Exception e) {
-      throw new StuffPersistenceException(e.getMessage(), e);
+      throw new PropertiesNotFoundException(e.getMessage(), e);
     }
     return properties;
   }

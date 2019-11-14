@@ -1,14 +1,14 @@
-package space.vakar.stuff.persistence.impl.hql;
+package space.vakar.stuff.persistence.impl;
 
 import java.util.Objects;
 import space.vakar.stuff.persistence.api.Hql;
 
-public class HqlGetById implements Hql {
+class HqlGetById implements Hql {
 
   private final Class clazz;
   private final int id;
 
-  public HqlGetById(Class clazz, int id) {
+  HqlGetById(Class clazz, int id) {
     this.clazz = clazz;
     this.id = id;
   }

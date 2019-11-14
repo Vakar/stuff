@@ -1,13 +1,13 @@
-package space.vakar.stuff.persistence.impl.hql;
+package space.vakar.stuff.persistence.impl;
 
 import java.util.Objects;
 import space.vakar.stuff.persistence.api.Hql;
 
-public class HqlGetAll implements Hql {
+class HqlGetAll implements Hql {
 
   private Class clazz;
 
-  public HqlGetAll(Class clazz) {
+  HqlGetAll(Class clazz) {
     this.clazz = clazz;
   }
 

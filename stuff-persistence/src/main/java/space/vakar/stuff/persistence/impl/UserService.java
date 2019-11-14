@@ -5,10 +5,6 @@ import java.util.Optional;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.api.UserRepositoryService;
-import space.vakar.stuff.persistence.impl.hql.HqlFindByFieldValue;
-import space.vakar.stuff.persistence.impl.hql.HqlGetAll;
-import space.vakar.stuff.persistence.impl.hql.HqlGetById;
-import space.vakar.stuff.persistence.impl.hql.HqlRemoveById;
 import space.vakar.stuff.persistence.model.User;
 
 public class UserService implements UserRepositoryService {

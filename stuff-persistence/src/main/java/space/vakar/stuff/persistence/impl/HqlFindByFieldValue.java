@@ -1,15 +1,15 @@
-package space.vakar.stuff.persistence.impl.hql;
+package space.vakar.stuff.persistence.impl;
 
 import java.util.Objects;
 import space.vakar.stuff.persistence.api.Hql;
 
-public class HqlFindByFieldValue implements Hql {
+class HqlFindByFieldValue implements Hql {
 
   private final Class clazz;
   private final String fieldName;
   private final String value;
 
-  public HqlFindByFieldValue(Class clazz, String fieldName, String value) {
+  HqlFindByFieldValue(Class clazz, String fieldName, String value) {
     this.clazz = clazz;
     this.fieldName = fieldName;
     this.value = value;

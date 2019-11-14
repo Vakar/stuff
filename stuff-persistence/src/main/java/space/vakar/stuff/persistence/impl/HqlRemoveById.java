@@ -1,13 +1,13 @@
-package space.vakar.stuff.persistence.impl.hql;
+package space.vakar.stuff.persistence.impl;
 
 import java.util.Objects;
 
-public class HqlRemoveById implements space.vakar.stuff.persistence.api.Hql {
+class HqlRemoveById implements space.vakar.stuff.persistence.api.Hql {
 
   private final Class clazz;
   private final int id;
 
-  public HqlRemoveById(Class clazz, int id) {
+  HqlRemoveById(Class clazz, int id) {
     this.clazz = clazz;
     this.id = id;
   }

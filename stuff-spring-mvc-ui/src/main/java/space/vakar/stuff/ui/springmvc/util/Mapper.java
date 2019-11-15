@@ -1,10 +1,9 @@
 package space.vakar.stuff.ui.springmvc.util;
 
-import space.vakar.stuff.persistence.model.Stuff;
-import space.vakar.stuff.ui.springmvc.model.StuffDto;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import space.vakar.stuff.persistence.model.Stuff;
+import space.vakar.stuff.ui.springmvc.model.StuffDto;
 
 public class Mapper {
 

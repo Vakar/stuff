@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import space.vakar.stuff.ui.springmvc.captcha.GoogleReCaptchaService;
-import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 import space.vakar.stuff.ui.springmvc.model.RegistrationModel;
+import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 
 @Controller
 public class RegistrationController {

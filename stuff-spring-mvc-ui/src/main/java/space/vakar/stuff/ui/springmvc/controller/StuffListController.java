@@ -1,8 +1,6 @@
 package space.vakar.stuff.ui.springmvc.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.ui.springmvc.model.StuffDto;
 import space.vakar.stuff.ui.springmvc.model.StuffListModel;
-import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 import space.vakar.stuff.ui.springmvc.presenter.StuffPresenter;
+import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 
 @Controller
 @RequestMapping("/stuff")

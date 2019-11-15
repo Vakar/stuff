@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.ui.springmvc.model.StuffDto;
+import space.vakar.stuff.ui.springmvc.model.StuffListModel;
 import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 import space.vakar.stuff.ui.springmvc.presenter.StuffPresenter;
 
@@ -33,12 +34,12 @@ public class StuffListController {
   public ModelAndView list(Principal principal) {
     String username = principal.getName();
     Optional<User> userOptional = userPresenter.findUserByUsername(username);
-    List<StuffDto> stuffDtoList = new ArrayList<>();
+    StuffListModel stuffListModel = new StuffListModel();
     if (userOptional.isPresent()) {
       User user = userOptional.get();
-      stuffDtoList.addAll(stuffPresenter.findStuffByUser(user));
+      stuffListModel = stuffPresenter.findStuffByUser(user);
     }
-    return new ModelAndView(Views.STUFF_LIST_PAGE, "stuffDtoList", stuffDtoList);
+    return new ModelAndView(Views.STUFF_LIST_PAGE, "stuffListModel", stuffListModel);
   }
 
   @GetMapping("/addView")

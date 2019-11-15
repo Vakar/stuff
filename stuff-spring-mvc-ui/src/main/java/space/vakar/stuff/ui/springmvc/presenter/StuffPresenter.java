@@ -1,8 +1,9 @@
 package space.vakar.stuff.ui.springmvc.presenter;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import space.vakar.stuff.persistence.api.ServiceStuff;
@@ -10,6 +11,7 @@ import space.vakar.stuff.persistence.api.ServiceUser;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.ui.springmvc.model.StuffDto;
+import space.vakar.stuff.ui.springmvc.model.StuffListModel;
 import space.vakar.stuff.ui.springmvc.util.Mapper;
 
 @Component
@@ -24,11 +26,19 @@ public class StuffPresenter {
     this.serviceUser = serviceUser;
   }
 
-  public List<StuffDto> findStuffByUser(User user) {
-    int id = user.getId();
-    return serviceStuff.findStuffByUserId(id).stream()
-        .map(Mapper::from)
-        .collect(Collectors.toList());
+  public StuffListModel findStuffByUser(User user) {
+    int userId = user.getId();
+    List<Stuff> stuffList = serviceStuff.findStuffByUserId(userId);
+    List<StuffDto> stuffDtoList = Mapper.from(stuffList);
+    BigDecimal totalSum = sumAllStuffCosts(stuffDtoList);
+    return new StuffListModel(stuffDtoList, totalSum);
+  }
+
+  private BigDecimal sumAllStuffCosts(List<StuffDto> stuffDtoList) {
+    return stuffDtoList.stream()
+        .map(StuffDto::getCost)
+        .filter(Objects::nonNull)
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 
   public void save(StuffDto model, String username) {

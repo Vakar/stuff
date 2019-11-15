@@ -17,7 +17,7 @@
 </sec:authorize>
 
 <div>
-    <c:if test="${not empty stuffDtoList}">
+    <c:if test="${not empty stuffListModel.stuffDtoList}">
         <table>
             <caption>Stuff Table</caption>
             <tr>
@@ -26,7 +26,7 @@
                 <th scope="col">Delete</th>
                 <th scope="col">Edit</th>
             </tr>
-            <c:forEach var="stuffDto" items="${stuffDtoList}">
+            <c:forEach var="stuffDto" items="${stuffListModel.stuffDtoList}">
                 <tr>
                     <td>${stuffDto.name}</td>
                     <td>${stuffDto.cost}</td>
@@ -44,6 +44,12 @@
                     </td>
                 </tr>
             </c:forEach>
+            <tr>
+                <td>Total sum:</td>
+                <td>${stuffListModel.totalSum}</td>
+                <td></td>
+                <td></td>
+            </tr>
         </table>
     </c:if>
     <a href="<c:url value="/stuff/addView" />">Add new Stuff</a>

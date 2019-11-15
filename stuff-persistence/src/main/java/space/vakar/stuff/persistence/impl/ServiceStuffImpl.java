@@ -11,7 +11,7 @@ public class ServiceStuffImpl implements ServiceStuff {
 
   private Repository<Stuff> repository = new RepositoryStuff();
 
-  static final String FIELD_OWNER_ID = "owner";
+  static final String FIELD_USER_ID = "user";
 
   @Override
   public void add(Stuff entity) {
@@ -55,7 +55,7 @@ public class ServiceStuffImpl implements ServiceStuff {
 
   @Override
   public List<Stuff> findStuffByUserId(int id) {
-    Hql hql = new HqlFindByFieldValue(Stuff.class, FIELD_OWNER_ID, String.valueOf(id));
+    Hql hql = new HqlFindByFieldValue(Stuff.class, FIELD_USER_ID, String.valueOf(id));
     return repository.query(hql);
   }
 }

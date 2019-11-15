@@ -80,7 +80,7 @@ public class ServiceStuffImplTest {
   @Test
   public void findStuffByUserIdTest(){
     int userId = 1;
-    Hql hql = new HqlFindByFieldValue(Stuff.class, ServiceStuffImpl.FIELD_OWNER_ID, String.valueOf(userId));
+    Hql hql = new HqlFindByFieldValue(Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(userId));
     when(repository.query(hql)).thenReturn(stuffList);
     List<Stuff> actualStuffList = service.findStuffByUserId(userId);
     verify(repository, times(ONCE)).query(hql);

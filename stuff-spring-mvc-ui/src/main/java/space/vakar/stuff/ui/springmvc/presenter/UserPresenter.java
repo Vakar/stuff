@@ -2,6 +2,7 @@ package space.vakar.stuff.ui.springmvc.presenter;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import space.vakar.stuff.persistence.api.ServiceUser;
 import space.vakar.stuff.persistence.model.User;
@@ -10,10 +11,12 @@ import space.vakar.stuff.ui.springmvc.model.RegistrationModel;
 @Component
 public class UserPresenter {
 
+  private PasswordEncoder passwordEncoder;
   private ServiceUser serviceUser;
 
   @Autowired
-  public UserPresenter(ServiceUser serviceUser) {
+  public UserPresenter(PasswordEncoder passwordEncoder, ServiceUser serviceUser) {
+    this.passwordEncoder = passwordEncoder;
     this.serviceUser = serviceUser;
   }
 
@@ -21,7 +24,8 @@ public class UserPresenter {
     String userName = model.getUsername();
     String email = model.getEmail();
     String pswd = model.getPassword();
-    User user = new User(userName, email, pswd);
+    String passwordHash = passwordEncoder.encode(pswd);
+    User user = new User(userName, email, passwordHash);
     serviceUser.add(user);
   }
 

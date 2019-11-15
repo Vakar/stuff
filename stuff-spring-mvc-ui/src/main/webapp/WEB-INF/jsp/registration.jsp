@@ -20,13 +20,13 @@
 <div class="login-form">
     <form:form method="POST" action="/stuff/registerUser" commandName="registration">
         <div class="form-group">
-            <form:label path="userName">User Name</form:label>
+            <form:label path="username">User Name</form:label>
             <form:input class="form-control" path="username"/>
             <form:errors class="form-text text-danger" path="username"/>
         </div>
 
         <div class="form-group">
-            <form:label path="eMail">E-mail</form:label>
+            <form:label path="email">E-mail</form:label>
             <form:input class="form-control" path="email"/>
             <form:errors class="form-text text-danger" path="email"/>
         </div>

@@ -34,9 +34,11 @@ public class RepositoryUserTest extends DatabaseTestConfig {
 
   private static final String USER_ONE_NAME = "user1";
   private static final String USERNAME_NOT_USED = "usernameNotUsed";
+  private static final String USER_ONE_EMAIL = "user1@domain.com";
+  private static final String EMAIL_NOT_USED = "notUsed@domain.com";
   private static final String NEW_USER_EMAIL = "user1_new@domain.com";
 
-  private User userOne = new User(1, USER_ONE_NAME, "user1@domain.com", "one");
+  private User userOne = new User(1, USER_ONE_NAME, USER_ONE_EMAIL, "one");
   private User userTwo = new User(2, "user2", "user2@domain.com", "two");
 
   public RepositoryUserTest(String name) {
@@ -76,15 +78,28 @@ public class RepositoryUserTest extends DatabaseTestConfig {
     assertEquals(userOne, actualUser);
   }
 
-  public void testFindByFieldValue_WhenValueExist(){
+  public void testFindUserByUsername_WhenValueExist(){
     Hql findByFieldValue = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_NAME, USER_ONE_NAME);
     List<User> users = repositoryUser.query(findByFieldValue);
     assertEquals(1, users.size());
     assertEquals(userOne, users.get(0));
   }
 
-  public void testFindByFieldValue_WhenValueDoesNotExist(){
+  public void testFindUserByUsername_WhenValueDoesNotExist(){
     Hql findByFieldValue = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_NAME, USERNAME_NOT_USED);
+    List<User> users = repositoryUser.query(findByFieldValue);
+    assertTrue(users.isEmpty());
+  }
+
+  public void testFindUserByEmail_WhenValueExist(){
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_EMAIL, USER_ONE_EMAIL);
+    List<User> users = repositoryUser.query(findByFieldValue);
+    assertEquals(1, users.size());
+    assertEquals(userOne, users.get(0));
+  }
+
+  public void testFindUserByEmail_WhenValueDoesNotExist(){
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, ServiceUserImpl.FIELD_USER_EMAIL, EMAIL_NOT_USED);
     List<User> users = repositoryUser.query(findByFieldValue);
     assertTrue(users.isEmpty());
   }

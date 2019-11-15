@@ -7,6 +7,7 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
+import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
@@ -15,6 +16,7 @@ import space.vakar.stuff.persistence.util.PropertiesUtil;
 
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
@@ -32,6 +34,8 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
   private static final String CREATE_DATASET = DATASET_FOLDER + "/create.xml";
   private static final String UPDATE_DATASET = DATASET_FOLDER + "/update.xml";
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
+
+  private static final int USER_ID = 1;
 
   private User owner = new User(1, "username", "user1@domain.com", "one");
   private Stuff stuffOne = new Stuff(1, "stuff_one_name", new BigDecimal("10.1"), owner);
@@ -72,6 +76,12 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
     List<Stuff> stuffList = repositoryStuff.query(new HqlGetAll(Stuff.class));
     Stuff actualStuff = stuffList.get(0);
     assertEquals(stuffOne, actualStuff);
+  }
+
+  public void testQueryByUserId(){
+    Hql hql = new HqlFindByFieldValue(Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(USER_ID));
+    List<Stuff> stuffList = repositoryStuff.query(hql);
+    assertEquals(Collections.singletonList(stuffOne), stuffList);
   }
 
   public void testUpdate() throws Exception {

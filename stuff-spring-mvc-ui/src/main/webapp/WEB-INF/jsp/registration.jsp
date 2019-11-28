@@ -3,48 +3,52 @@
 <html>
 <head>
     <title>Registration</title>
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />">
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
-    <script src="<c:url value="/resources/js/jquery.slim.min.js" />"></script>
-    <script src="<c:url value="/resources/js/popper.min.js" />"></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
+    <%--INCLUDE PAGE DEPENDENCIES--%>
+    <jsp:include page="/WEB-INF/jsp/comons/pageDependencies.jsp"/>
 </head>
 
 <body>
 
-<div>
-    <h3 class="text-center">User Registration</h3>
+<%--CONTAINER START--%>
+<div class="container mb-3 mt-3">
+
+    <%--PAGE HEADER START--%>
+    <div class="page-header text-center">
+        <h1 class="display-4">User Registration</h1>
+    </div>
+    <%--PAGE HEADER END--%>
+
+    <%--REGISTRATION FORM START--%>
+    <div class="login-form">
+        <form:form method="POST" action="/stuff/registerUser" commandName="registration">
+            <div class="form-group">
+                <form:label path="username">User Name</form:label>
+                <form:input class="form-control" path="username"/>
+                <form:errors class="form-text text-danger" path="username"/>
+            </div>
+            <div class="form-group">
+                <form:label path="email">E-mail</form:label>
+                <form:input class="form-control" path="email"/>
+                <form:errors class="form-text text-danger" path="email"/>
+            </div>
+            <div class="form-group">
+                <form:label path="password">Password</form:label>
+                <form:input class="form-control" path="password"/>
+                <form:errors class="form-text text-danger" path="password"/>
+            </div>
+            <div class="form-group" align="center">
+                <div class="g-recaptcha"
+                     data-sitekey="6LegrloUAAAAAJQLfyqBisoeNO0PNC10xbP2dYmR"></div>
+            </div>
+            <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
+        </form:form>
+    </div>
+    <%--REGISTRATION FORM END--%>
+
 </div>
-
-<div class="login-form">
-    <form:form method="POST" action="/stuff/registerUser" commandName="registration">
-        <div class="form-group">
-            <form:label path="username">User Name</form:label>
-            <form:input class="form-control" path="username"/>
-            <form:errors class="form-text text-danger" path="username"/>
-        </div>
-
-        <div class="form-group">
-            <form:label path="email">E-mail</form:label>
-            <form:input class="form-control" path="email"/>
-            <form:errors class="form-text text-danger" path="email"/>
-        </div>
-
-        <div class="form-group">
-            <form:label path="password">Password</form:label>
-            <form:input class="form-control" path="password"/>
-            <form:errors class="form-text text-danger" path="password"/>
-        </div>
-
-        <div class="form-group" align="center">
-            <div class="g-recaptcha" data-sitekey="6LegrloUAAAAAJQLfyqBisoeNO0PNC10xbP2dYmR"></div>
-        </div>
-
-        <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
-
-    </form:form>
-</div>
+<%--CONTAINER END--%>
 
 </body>
 </html>

@@ -1,9 +1,7 @@
 package space.vakar.stuff.ui.springmvc.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import space.vakar.stuff.ui.springmvc.captcha.GoogleReCaptchaService;
 import space.vakar.stuff.ui.springmvc.model.RegistrationModel;
 import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RegistrationController {
@@ -36,7 +35,6 @@ public class RegistrationController {
   public String registerUser(
       @ModelAttribute("registration") @Validated RegistrationModel registration,
       BindingResult bindingResult,
-      Model model,
       HttpServletRequest request) {
     String response = request.getParameter("g-recaptcha-response");
     boolean isCaptchaSuccess = googleReCaptchaService.processResponse(response);
@@ -44,10 +42,7 @@ public class RegistrationController {
       return "registration";
     }
     userPresenter.saveUser(registration);
-    model.addAttribute("username", registration.getUsername());
-    model.addAttribute("email", registration.getEmail());
-    model.addAttribute("password", registration.getPassword());
-    return "result";
+    return Views.LOGIN_PAGE;
   }
 
   @ModelAttribute("registration")

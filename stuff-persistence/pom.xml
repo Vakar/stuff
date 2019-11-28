@@ -12,10 +12,12 @@
     <artifactId>stuff-persistence</artifactId>
 
     <properties>
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <mariadb.client.version>2.5.2</mariadb.client.version>
-        <h2database.version>1.4.199</h2database.version>
         <dbunit.version>2.5.4</dbunit.version>
+        <h2database.version>1.4.199</h2database.version>
+        <hibernate.version>5.2.18.Final</hibernate.version>
+        <javassist.version>3.23.1-GA</javassist.version>
+        <jaxb.version>2.3.2</jaxb.version>
+        <mariadb.client.version>2.5.2</mariadb.client.version>
         <slf4j-simple.version>1.7.26</slf4j-simple.version>
     </properties>
 
@@ -39,6 +41,22 @@
             <version>${mariadb.client.version}</version>
         </dependency>
 
+        <!-- Additional dependencies for hibernate -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
+        </dependency>
 
         <!-- Testing-->
         <dependency>

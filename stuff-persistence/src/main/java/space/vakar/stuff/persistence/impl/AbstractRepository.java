@@ -1,7 +1,7 @@
 package space.vakar.stuff.persistence.impl;
 
 import java.util.List;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -10,6 +10,8 @@ import org.hibernate.service.ServiceRegistry;
 import space.vakar.stuff.persistence.api.DomainEntity;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
+import space.vakar.stuff.persistence.model.Stuff;
+import space.vakar.stuff.persistence.model.User;
 
 class AbstractRepository<T extends DomainEntity> implements Repository<T> {
 
@@ -46,11 +48,12 @@ class AbstractRepository<T extends DomainEntity> implements Repository<T> {
     getSession().getTransaction().commit();
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void remove(Hql hql) {
     getSession().beginTransaction();
     String hqlStr = hql.getHql();
-    Query query = getSession().createQuery(hqlStr);
+    Query<T> query = getSession().createQuery(hqlStr);
     query.executeUpdate();
     getSession().getTransaction().commit();
   }
@@ -59,8 +62,8 @@ class AbstractRepository<T extends DomainEntity> implements Repository<T> {
   @Override
   public List<T> query(Hql hql) {
     getSession().beginTransaction();
-    Query query = getSession().createQuery(hql.getHql());
-    List<T> list = (List<T>) query.list();
+    Query<T> query = getSession().createQuery(hql.getHql());
+    List<T> list = query.list();
     getSession().getTransaction().commit();
     return list;
   }
@@ -68,6 +71,8 @@ class AbstractRepository<T extends DomainEntity> implements Repository<T> {
   private static SessionFactory buildSessionFactory() {
     Configuration configObj = new Configuration();
     configObj.configure(HIBERNATE_CONFIG);
+    configObj.addAnnotatedClass(User.class);
+    configObj.addAnnotatedClass(Stuff.class);
     ServiceRegistry serviceRegistryObj =
         new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
     return configObj.buildSessionFactory(serviceRegistryObj);

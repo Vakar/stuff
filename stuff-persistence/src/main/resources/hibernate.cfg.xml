@@ -15,9 +15,5 @@
         <property name="hibernate.c3p0.max_size">20</property>
         <property name="hibernate.c3p0.acquire_increment">5</property>
         <property name="hibernate.c3p0.timeout">240</property>
-
-        <!-- Mapping With Model Class Containing Annotations -->
-        <mapping class="space.vakar.stuff.persistence.model.Stuff"/>
-        <mapping class="space.vakar.stuff.persistence.model.User"/>
     </session-factory>
 </hibernate-configuration>

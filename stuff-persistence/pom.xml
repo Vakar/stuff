@@ -13,11 +13,10 @@
 
     <properties>
         <hibernate.version>4.3.11.Final</hibernate.version>
-        <postgresql.version>42.2.6</postgresql.version>
+        <mariadb.client.version>2.5.2</mariadb.client.version>
         <h2database.version>1.4.199</h2database.version>
         <dbunit.version>2.5.4</dbunit.version>
         <slf4j-simple.version>1.7.26</slf4j-simple.version>
-        <mysql.version>5.1.37</mysql.version>
     </properties>
 
     <dependencies>
@@ -35,10 +34,11 @@
         </dependency>
         <!-- Database driver-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>${mariadb.client.version}</version>
         </dependency>
+
 
         <!-- Testing-->
         <dependency>

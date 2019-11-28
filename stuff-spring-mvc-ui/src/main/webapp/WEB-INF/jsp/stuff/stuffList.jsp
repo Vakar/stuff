@@ -6,20 +6,24 @@
 <html lang="en">
 <head>
     <title>Stuff List</title>
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />">
+    <link rel="stylesheet" href="<c:url value="/resources/css/loginForm.css" />">
+    <script src="<c:url value="/resources/js/jquery.slim.min.js" />"></script>
+    <script src="<c:url value="/resources/js/popper.min.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
 
-<sec:authorize access="isAuthenticated()">
-    Welcome to your stuff <sec:authentication property="principal"/>!
-    <div>
-        <a href="<c:url value="/logout" />">Logout</a>
-    </div>
-</sec:authorize>
+<%--INCLUDE TOP NAVIGATION BAR--%>
+<jsp:include page="../comons/navbar.jsp"/>
+
+<div id="welcomeContent" class="text-center">
+    <h5>Welcome to your stuff <sec:authentication property="principal"/>!</h5>
+</div>
 
 <div>
     <c:if test="${not empty stuffListModel.stuffDtoList}">
         <table>
-            <caption>Stuff Table</caption>
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Cost</th>

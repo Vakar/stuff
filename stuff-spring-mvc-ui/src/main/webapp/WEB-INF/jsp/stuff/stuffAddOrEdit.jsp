@@ -1,10 +1,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Edit Stuff</title>
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />">
+    <link rel="stylesheet" href="<c:url value="/resources/css/loginForm.css" />">
+    <script src="<c:url value="/resources/js/jquery.slim.min.js" />"></script>
+    <script src="<c:url value="/resources/js/popper.min.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
+
+<%--INCLUDE TOP NAVIGATION BAR--%>
+<jsp:include page="../comons/navbar.jsp"/>
+
 <div>
     <form:form method="POST" action="/stuff/stuff/save" commandName="stuffDto">
         <div>

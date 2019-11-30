@@ -14,14 +14,23 @@
     </modules>
     <packaging>pom</packaging>
 
-    <name>Parent POM</name>
+    <url>http://vakar.space/stuff</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Dependencies -->
+        <junit.version>4.12</junit.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <junit.version>4.12</junit.version>
         <mockito-core.version>2.28.2</mockito-core.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Reporting plugins -->
+        <jacoco-maven.version>0.8.4</jacoco-maven.version>
+        <maven-checkstyle.version>3.1.0</maven-checkstyle.version>
+        <maven-javadoc.version>3.1.1</maven-javadoc.version>
+        <maven-jxr.version>2.3</maven-jxr.version>
+        <maven-project-info-reports.version>3.0.0</maven-project-info-reports.version>
+        <maven-site.version>3.7.1</maven-site.version>
+        <spotbugs-maven.version>3.1.12.2</spotbugs-maven.version>
         <!-- Report Files properties -->
         <checkstyle.file.path>development/checkstyle/google_checks.xml</checkstyle.file.path>
     </properties>
@@ -46,17 +55,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
+                <version>${maven-jxr.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${maven-javadoc.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven-checkstyle.version}</version>
                 <configuration>
                     <configLocation>${checkstyle.file.path}</configLocation>
                     <linkXRef>true</linkXRef>
@@ -65,7 +74,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.12.2</version>
+                <version>${spotbugs-maven.version}</version>
             </plugin>
         </plugins>
     </reporting>
@@ -75,17 +84,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>${maven-site.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven-project-info-reports.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.4</version>
+                <version>${jacoco-maven.version}</version>
                 <executions>
                     <execution>
                         <goals>

@@ -8,29 +8,37 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ErrorController {
 
+  private static final String ERROR_PAGE = "errorPage";
+  private static final String ERROR_ATTRIBUTE_NAME = "errorMsg";
+  private static final String HTTP_ERROR_400_MESSAGE = "Http Error Code: 400. Bad Request";
+  private static final String HTTP_ERROR_401_MESSAGE = "Http Error Code: 401. Unauthorized";
+  private static final String HTTP_ERROR_404_MESSAGE = "Http Error Code: 404. Resource not found";
+  private static final String HTTP_ERROR_500_MESSAGE =
+      "Http Error Code: 500. Internal Server Error";
+  private static final String HTTP_ERROR_UNKNOWN_MESSAGE = "Oops, something went wrong!!!";
+
   @GetMapping(value = "errors")
   public ModelAndView renderErrorPage(HttpServletRequest httpRequest) {
-
-    ModelAndView errorPage = new ModelAndView("errorPage");
-    String errorMsg = "";
+    String errorMsg;
     int httpErrorCode = getErrorCode(httpRequest);
     switch (httpErrorCode) {
       case 400:
-        errorMsg = "Http Error Code: 400. Bad Request";
+        errorMsg = HTTP_ERROR_400_MESSAGE;
         break;
       case 401:
-        errorMsg = "Http Error Code: 401. Unauthorized";
+        errorMsg = HTTP_ERROR_401_MESSAGE;
         break;
       case 404:
-        errorMsg = "Http Error Code: 404. Resource not found";
+        errorMsg = HTTP_ERROR_404_MESSAGE;
         break;
       case 500:
-        errorMsg = "Http Error Code: 500. Internal Server Error";
+        errorMsg = HTTP_ERROR_500_MESSAGE;
         break;
       default:
-        errorMsg = "Oops, something went wrong!!!";
+        errorMsg = HTTP_ERROR_UNKNOWN_MESSAGE;
     }
-    errorPage.addObject("errorMsg", errorMsg);
+    ModelAndView errorPage = new ModelAndView(ERROR_PAGE);
+    errorPage.addObject(ERROR_ATTRIBUTE_NAME, errorMsg);
     return errorPage;
   }
 

@@ -40,7 +40,7 @@
             </div>
             <div class="form-group" align="center">
                 <div class="g-recaptcha"
-                     data-sitekey="6LegrloUAAAAAJQLfyqBisoeNO0PNC10xbP2dYmR"></div>
+                     data-sitekey="${reCaptchaSiteKey}"></div>
             </div>
             <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
         </form:form>

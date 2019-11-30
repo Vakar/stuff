@@ -5,5 +5,5 @@
 *.iml
 .idea/
 target/
-/stuff-persistence/src/main/resources/hibernate.properties
+/stuff-spring-mvc-ui/src/main/resources/hibernate.properties
 /stuff-spring-mvc-ui/src/main/resources/googleReCaptcha.properties

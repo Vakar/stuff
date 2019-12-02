@@ -6,7 +6,7 @@
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <%--INCLUDE PAGE DEPENDENCIES--%>
-    <jsp:include page="/WEB-INF/jsp/comons/pageDependencies.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/commons/pageDependencies.jsp"/>
 </head>
 
 <body>

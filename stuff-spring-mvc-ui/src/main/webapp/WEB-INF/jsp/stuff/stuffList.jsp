@@ -7,12 +7,12 @@
 <head>
     <title>Stuff List</title>
     <%--INCLUDE PAGE DEPENDENCIES--%>
-    <jsp:include page="../comons/pageDependencies.jsp"/>
+    <jsp:include page="../commons/pageDependencies.jsp"/>
 </head>
 <body>
 
 <%--INCLUDE TOP NAVIGATION BAR--%>
-<jsp:include page="../comons/navbar.jsp"/>
+<jsp:include page="../commons/navbar.jsp"/>
 
 <%--CONTAINER START--%>
 <div class="container mb-3 mt-3">

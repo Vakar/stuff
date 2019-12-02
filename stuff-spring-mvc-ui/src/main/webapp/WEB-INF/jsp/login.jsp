@@ -6,7 +6,7 @@
     <title>Welcome to Stuff</title>
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
     <%--INCLUDE PAGE DEPENDENCIES--%>
-    <jsp:include page="/WEB-INF/jsp/comons/pageDependencies.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/commons/pageDependencies.jsp"/>
 </head>
 <body onload='document.loginForm.username.focus();'>
 

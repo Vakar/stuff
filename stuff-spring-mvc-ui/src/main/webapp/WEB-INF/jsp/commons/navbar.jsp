@@ -6,7 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
-        <form class="form-inline my-2 my-lg-0" action="<c:url value="/logout" />" method="get">
+        <form class="form-inline my-2 my-lg-0" action="<c:url value="/logout" />" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
         </form>
     </div>

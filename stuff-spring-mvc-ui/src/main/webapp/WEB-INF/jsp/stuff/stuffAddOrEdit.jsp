@@ -30,6 +30,7 @@
                 <form:input path="cost" cssClass="form-control"/>
                 <form:errors path="cost" cssClass="text-danger"/>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button class="btn btn-primary" type="submit">Submit</button>
         </form:form>
     </div>

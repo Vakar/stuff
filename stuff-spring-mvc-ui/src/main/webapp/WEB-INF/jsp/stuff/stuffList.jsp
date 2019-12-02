@@ -43,12 +43,14 @@
                         <td class="text-center">
                             <form action="<c:url value="/stuff/delete" />" method="post">
                                 <input type="hidden" name="id" value="${stuffDto.id}">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <input type="submit" value="Delete">
                             </form>
                         </td>
                         <td class="text-center">
                             <form action="<c:url value="/stuff/editView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuffDto.id}">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <input type="submit" value="Edit">
                             </form>
                         </td>

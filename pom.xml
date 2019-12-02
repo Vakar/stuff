@@ -17,12 +17,12 @@
     <url>http://vakar.space/stuff</url>
 
     <properties>
-        <!-- Dependencies -->
-        <junit.version>4.12</junit.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <mockito-core.version>2.28.2</mockito-core.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Dependencies -->
+        <junit.version>4.12</junit.version>
+        <mockito-core.version>3.2.0</mockito-core.version>
         <!-- Reporting plugins -->
         <jacoco-maven.version>0.8.4</jacoco-maven.version>
         <maven-checkstyle.version>3.1.0</maven-checkstyle.version>

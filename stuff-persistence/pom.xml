@@ -12,8 +12,8 @@
     <artifactId>stuff-persistence</artifactId>
 
     <properties>
-        <dbunit.version>2.5.4</dbunit.version>
-        <h2database.version>1.4.199</h2database.version>
+        <dbunit.version>2.6.0</dbunit.version>
+        <h2database.version>1.4.200</h2database.version>
         <hibernate.version>5.2.18.Final</hibernate.version>
         <javassist.version>3.23.1-GA</javassist.version>
         <jaxb.version>2.3.2</jaxb.version>

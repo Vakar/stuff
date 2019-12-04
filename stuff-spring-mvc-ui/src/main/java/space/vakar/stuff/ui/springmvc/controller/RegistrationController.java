@@ -1,6 +1,9 @@
 package space.vakar.stuff.ui.springmvc.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +19,8 @@ import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 
 @Controller
 public class RegistrationController {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
 
   private static final String REGISTRATION_VIEW_PAGE = "registration";
 
@@ -52,6 +57,7 @@ public class RegistrationController {
       return REGISTRATION_VIEW_PAGE;
     }
     userPresenter.saveUser(registration);
+    LOGGER.info("Successfully save new user with username: {}", registration.getUsername());
     return Views.LOGIN_PAGE;
   }
 

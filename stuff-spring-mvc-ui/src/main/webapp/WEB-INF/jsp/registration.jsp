@@ -11,16 +11,16 @@
 
 <body>
 
-<%--CONTAINER START--%>
+<%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
-    <%--PAGE HEADER START--%>
+    <%--PAGE HEADER | START--%>
     <div class="page-header text-center">
         <h1 class="display-4">User Registration</h1>
     </div>
-    <%--PAGE HEADER END--%>
+    <%--PAGE HEADER | END--%>
 
-    <%--REGISTRATION FORM START--%>
+    <%--REGISTRATION FORM | START--%>
     <div class="login-form">
         <form:form method="POST" action="/stuff/registerUser" commandName="registration">
             <div class="form-group">
@@ -46,10 +46,10 @@
             <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
         </form:form>
     </div>
-    <%--REGISTRATION FORM END--%>
+    <%--REGISTRATION FORM | END--%>
 
 </div>
-<%--CONTAINER END--%>
+<%--CONTAINER | END--%>
 
 </body>
 </html>

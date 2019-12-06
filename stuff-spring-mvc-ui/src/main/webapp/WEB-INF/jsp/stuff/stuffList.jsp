@@ -14,16 +14,16 @@
 <%--INCLUDE TOP NAVIGATION BAR--%>
 <jsp:include page="../commons/navbar.jsp"/>
 
-<%--CONTAINER START--%>
+<%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
-    <%--PAGE HEADER START--%>
+    <%--PAGE HEADER | START--%>
     <div class="page-header text-center">
         <h1 class="display-4">Welcome to your stuff <sec:authentication property="principal"/>!</h1>
     </div>
-    <%--PAGE HEADER END--%>
+    <%--PAGE HEADER | END--%>
 
-    <%--STUFF TABLE START--%>
+    <%--STUFF TABLE | START--%>
     <div>
         <c:if test="${not empty stuffListModel.stuffDtoList}">
             <table class="table table-bordered">
@@ -76,18 +76,18 @@
             </table>
         </c:if>
     </div>
-    <%--STUFF TABLE END--%>
+    <%--STUFF TABLE | END--%>
 
-    <%--ADD NEW STUFF BUTTON START--%>
+    <%--ADD NEW STUFF BUTTON | START--%>
     <div class="float-right">
         <a class="btn btn-info" role="button" href="<c:url value="/stuff/addView" />"
            title="Add new stuff to list.">Add
             new Stuff</a>
     </div>
-    <%--ADD NEW STUFF BUTTON END--%>
+    <%--ADD NEW STUFF BUTTON | END--%>
 
 </div>
-<%--CONTAINER END--%>
+<%--CONTAINER | END--%>
 
 <%--INCLUDE FOOTER--%>
 <jsp:include page="../commons/footer.jsp"/>

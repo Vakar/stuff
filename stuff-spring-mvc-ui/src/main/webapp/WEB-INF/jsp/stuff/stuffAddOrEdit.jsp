@@ -11,10 +11,10 @@
 <%--INCLUDE TOP NAVIGATION BAR--%>
 <jsp:include page="../commons/navbar.jsp"/>
 
-<%--CONTAINER START--%>
+<%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
-    <%--ADD NEW STUFF FORM START--%>
+    <%--ADD NEW STUFF FORM | START--%>
     <div>
         <form:form method="POST" action="/stuff/stuff/save" commandName="stuffDto">
             <div>
@@ -44,10 +44,10 @@
             <button class="btn btn-primary" type="submit">Submit</button>
         </form:form>
     </div>
-    <%--ADD NEW STUFF FORM END--%>
+    <%--ADD NEW STUFF FORM | END--%>
 
 </div>
-<%--CONTAINER END--%>
+<%--CONTAINER | END--%>
 
 <%--INCLUDE FOOTER--%>
 <jsp:include page="../commons/footer.jsp"/>

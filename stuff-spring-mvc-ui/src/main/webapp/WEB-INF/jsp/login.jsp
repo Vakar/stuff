@@ -10,16 +10,16 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-<%--CONTAINER START--%>
+<%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
-    <%--PAGE HEADER START--%>
+    <%--PAGE HEADER | START--%>
     <div class="page-header text-center">
         <h1 class="display-4">Welcome to Stuff!</h1>
     </div>
-    <%--PAGE HEADER END--%>
+    <%--PAGE HEADER | END--%>
 
-    <%--AUTHORIZATION SECTION START--%>
+    <%--AUTHORIZATION SECTION | START--%>
     <div class="login-form">
         <form name='loginForm' action="<c:url value="/login" />" method="post">
             <h2 class="text-center">Log in</h2>
@@ -38,10 +38,10 @@
         </form>
         <p class="text-center"><a href="registration">Create an Account</a></p>
     </div>
-    <%--AUTHORIZATION SECTION END--%>
+    <%--AUTHORIZATION SECTION | END--%>
 
 </div>
-<%--CONTAINER END--%>
+<%--CONTAINER | END--%>
 
 </body>
 </html>

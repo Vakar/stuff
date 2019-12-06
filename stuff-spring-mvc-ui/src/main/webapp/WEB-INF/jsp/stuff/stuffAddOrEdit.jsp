@@ -26,6 +26,16 @@
                 <form:errors path="name" cssClass="text-danger"/>
             </div>
             <div class="form-group">
+                <form:label path="brand">Stuff Brand</form:label>
+                <form:input path="brand" cssClass="form-control"/>
+                <form:errors path="brand" cssClass="text-danger"/>
+            </div>
+            <div class="form-group">
+                <form:label path="description">Stuff Description</form:label>
+                <form:textarea path="description" cssClass="form-control"/>
+                <form:errors path="description" cssClass="text-danger"/>
+            </div>
+            <div class="form-group">
                 <form:label path="cost">Stuff Cost</form:label>
                 <form:input path="cost" cssClass="form-control"/>
                 <form:errors path="cost" cssClass="text-danger"/>

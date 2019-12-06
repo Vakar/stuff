@@ -12,7 +12,6 @@ import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.ui.springmvc.model.StuffDto;
 import space.vakar.stuff.ui.springmvc.model.StuffListModel;
-import space.vakar.stuff.ui.springmvc.util.Mapper;
 
 @Component
 public class StuffPresenter {

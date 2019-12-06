@@ -15,6 +15,14 @@ public class StuffDto {
   @Length(max = 128)
   private String name = "";
 
+  @NotBlank
+  @Length(max = 128)
+  private String brand = "";
+
+  @NotBlank
+  @Length(max = 1024)
+  private String description = "";
+
   @DecimalMin(value = "0.0", inclusive = false)
   @Digits(integer = 7, fraction = 2)
   private BigDecimal cost = BigDecimal.ZERO;
@@ -35,6 +43,22 @@ public class StuffDto {
     this.name = name;
   }
 
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   public BigDecimal getCost() {
     return cost;
   }
@@ -45,23 +69,29 @@ public class StuffDto {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    StuffDto that = (StuffDto) o;
-    return id == that.id && Objects.equals(name, that.name) && Objects.equals(cost, that.cost);
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    StuffDto stuffDto = (StuffDto) o;
+    return id == stuffDto.id &&
+            Objects.equals(name, stuffDto.name) &&
+            Objects.equals(brand, stuffDto.brand) &&
+            Objects.equals(description, stuffDto.description) &&
+            Objects.equals(cost, stuffDto.cost);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, cost);
+    return Objects.hash(id, name, brand, description, cost);
   }
 
   @Override
   public String toString() {
-    return "StuffDto{" + "id=" + id + ", name='" + name + '\'' + ", cost=" + cost + '}';
+    return "StuffDto{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", brand='" + brand + '\'' +
+            ", description='" + description + '\'' +
+            ", cost=" + cost +
+            '}';
   }
 }

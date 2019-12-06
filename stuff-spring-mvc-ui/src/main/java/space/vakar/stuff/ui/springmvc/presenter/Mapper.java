@@ -1,4 +1,4 @@
-package space.vakar.stuff.ui.springmvc.util;
+package space.vakar.stuff.ui.springmvc.presenter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +13,8 @@ public class Mapper {
     Stuff stuff = new Stuff();
     stuff.setId(model.getId());
     stuff.setName(model.getName());
+    stuff.setBrand(model.getBrand());
+    stuff.setDescription(model.getDescription());
     stuff.setCost(model.getCost());
     return stuff;
   }
@@ -21,6 +23,8 @@ public class Mapper {
     StuffDto dto = new StuffDto();
     dto.setId(stuff.getId());
     dto.setName(stuff.getName());
+    dto.setBrand(stuff.getBrand());
+    dto.setDescription(stuff.getDescription());
     dto.setCost(stuff.getCost());
     return dto;
   }

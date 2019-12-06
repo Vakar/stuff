@@ -38,8 +38,12 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
   private static final int USER_ID = 1;
 
   private User owner = new User(1, "username", "user1@domain.com", "one");
-  private Stuff stuffOne = new Stuff(1, "stuff_one_name", new BigDecimal("10.1"), owner);
-  private Stuff stuffTwo = new Stuff(2, "stuff_two_name", new BigDecimal("20"), owner);
+  private Stuff stuffOne =
+      new Stuff(
+          1, "stuff_one_name", "noname", "stuff_one_description", new BigDecimal("10.1"), owner);
+  private Stuff stuffTwo =
+      new Stuff(
+          2, "stuff_two_name", "brand_name", "stuff_two_description", new BigDecimal("20"), owner);
 
   public RepositoryStuffTest(String name) {
     super(name);
@@ -72,14 +76,16 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
     assertEquals(stuffOne, actualStuff);
   }
 
-  public void testQueryAll(){
+  public void testQueryAll() {
     List<Stuff> stuffList = repositoryStuff.query(new HqlGetAll(Stuff.class));
     Stuff actualStuff = stuffList.get(0);
     assertEquals(stuffOne, actualStuff);
   }
 
-  public void testQueryByUserId(){
-    Hql hql = new HqlFindByFieldValue(Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(USER_ID));
+  public void testQueryByUserId() {
+    Hql hql =
+        new HqlFindByFieldValue(
+            Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(USER_ID));
     List<Stuff> stuffList = repositoryStuff.query(hql);
     assertEquals(Collections.singletonList(stuffOne), stuffList);
   }

@@ -1,5 +1,5 @@
 <!DOCTYPE dataset SYSTEM "stuff.dtd">
 <dataset>
-    <APP_USER ID="1" USER_NAME="username" EMAIL="user1@domain.com" PSWD="one"/>
+    <APP_USER ID="1" USERNAME="username" EMAIL="user1@domain.com" PSWD="one"/>
     <STUFF/>
 </dataset>

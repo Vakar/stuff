@@ -5,6 +5,8 @@
         <!ATTLIST STUFF
                 ID CDATA #IMPLIED
                 NAME CDATA #IMPLIED
+                BRAND CDATA #IMPLIED
+                DESCRIPTION CDATA #IMPLIED
                 COST CDATA #IMPLIED
                 USER_ID CDATA #IMPLIED>
 

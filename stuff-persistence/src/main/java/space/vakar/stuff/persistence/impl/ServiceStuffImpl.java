@@ -1,6 +1,5 @@
 package space.vakar.stuff.persistence.impl;
 
-import java.math.BigDecimal;
 import java.util.List;
 import space.vakar.stuff.persistence.api.Hql;
 import space.vakar.stuff.persistence.api.Repository;
@@ -41,7 +40,7 @@ public class ServiceStuffImpl implements ServiceStuff {
   @Override
   public Stuff readById(int id) {
     List<Stuff> stuffList = repository.query(new HqlGetById(Stuff.class, id));
-    Stuff stuff = new Stuff(0, "", BigDecimal.ZERO);
+    Stuff stuff = Stuff.EMPTY_STUFF;
     if (!stuffList.isEmpty()) {
       stuff = stuffList.get(0);
     }

@@ -26,7 +26,8 @@ public class ServiceStuffImplTest {
 
   private static final int ONCE = 1;
 
-  private Stuff stuff = new Stuff(1, "stuff_one_name", new BigDecimal("10.1"));
+  private Stuff stuff = new Stuff(
+          1, "stuff_one_name", "noname", "stuff_one_description", new BigDecimal("10.1"), null);
   private List<Stuff> stuffList = Collections.singletonList(stuff);
 
   @Test

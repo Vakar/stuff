@@ -7,12 +7,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired private AuthenticationProvider customAuthProvider;
+  @Autowired private UserDetailsService userDetailsService;
 
   @Override
   protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
@@ -34,6 +36,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .logout()
         .logoutUrl("/logout")
-        .deleteCookies("JSESSIONID");
+        .deleteCookies("JSESSIONID")
+        .and()
+        .rememberMe()
+        .userDetailsService(userDetailsService);
   }
 }

@@ -1,8 +1,8 @@
-package space.vakar.stuff.persistence.api;
+package space.vakar.stuff.persistence.impl;
 
 import java.util.List;
 
-public interface Repository<T extends DomainEntity> {
+interface Repository<T> {
 
   /**
    * Save entity in database.

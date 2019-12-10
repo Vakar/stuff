@@ -1,7 +1,6 @@
 package space.vakar.stuff.persistence.impl;
 
 import java.util.Objects;
-import space.vakar.stuff.persistence.api.Hql;
 
 class HqlFindByFieldValue implements Hql {
 

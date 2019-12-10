@@ -1,6 +1,6 @@
-package space.vakar.stuff.persistence.api;
+package space.vakar.stuff.persistence.impl;
 
-public interface Hql {
+interface Hql {
 
   /**
    * This method return HQL string.

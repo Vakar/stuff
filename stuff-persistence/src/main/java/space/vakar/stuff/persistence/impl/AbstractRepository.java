@@ -1,5 +1,6 @@
 package space.vakar.stuff.persistence.impl;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.function.BiConsumer;
 
@@ -12,13 +13,10 @@ import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import space.vakar.stuff.persistence.api.DomainEntity;
-import space.vakar.stuff.persistence.api.Hql;
-import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 
-class AbstractRepository<T extends DomainEntity> implements Repository<T> {
+class AbstractRepository<T extends Serializable> implements Repository<T> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRepository.class);
 

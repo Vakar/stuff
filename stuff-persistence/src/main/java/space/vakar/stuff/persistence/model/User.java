@@ -1,16 +1,16 @@
 package space.vakar.stuff.persistence.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import space.vakar.stuff.persistence.api.DomainEntity;
 
 @Entity
 @Table(name = "APP_USER")
-public class User implements DomainEntity {
+public class User implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

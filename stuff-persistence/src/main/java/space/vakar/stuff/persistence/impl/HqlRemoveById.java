@@ -2,7 +2,7 @@ package space.vakar.stuff.persistence.impl;
 
 import java.util.Objects;
 
-class HqlRemoveById implements space.vakar.stuff.persistence.api.Hql {
+class HqlRemoveById implements Hql {
 
   private final Class clazz;
   private final int id;

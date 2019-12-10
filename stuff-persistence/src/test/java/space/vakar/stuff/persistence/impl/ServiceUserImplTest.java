@@ -5,8 +5,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import space.vakar.stuff.persistence.api.Hql;
-import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.api.ServiceUser;
 import space.vakar.stuff.persistence.model.User;
 

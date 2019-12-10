@@ -2,8 +2,7 @@ package space.vakar.stuff.persistence.impl;
 
 import java.util.List;
 import java.util.Optional;
-import space.vakar.stuff.persistence.api.Hql;
-import space.vakar.stuff.persistence.api.Repository;
+
 import space.vakar.stuff.persistence.model.User;
 
 public class ServiceUserImpl implements space.vakar.stuff.persistence.api.ServiceUser {

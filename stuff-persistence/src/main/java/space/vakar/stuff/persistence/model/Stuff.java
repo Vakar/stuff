@@ -1,5 +1,6 @@
 package space.vakar.stuff.persistence.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -9,11 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import space.vakar.stuff.persistence.api.DomainEntity;
 
 @Entity
 @Table(name = "STUFF")
-public class Stuff implements DomainEntity {
+public class Stuff implements Serializable {
 
   public static final Stuff EMPTY_STUFF = new Stuff(0, "", "", "", BigDecimal.ZERO, null);
 

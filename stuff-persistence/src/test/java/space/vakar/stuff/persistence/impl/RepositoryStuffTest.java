@@ -7,8 +7,6 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
-import space.vakar.stuff.persistence.api.Hql;
-import space.vakar.stuff.persistence.api.Repository;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.persistence.util.DatabaseTestConfig;

@@ -1,6 +1,6 @@
 package space.vakar.stuff.persistence.impl;
 
-public class RepositoryException extends RuntimeException {
+class RepositoryException extends RuntimeException {
 
   /**
    * Current module exception.

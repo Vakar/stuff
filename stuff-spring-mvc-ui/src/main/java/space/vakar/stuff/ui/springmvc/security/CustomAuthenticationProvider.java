@@ -36,7 +36,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
       throw new AuthenticationCredentialsNotFoundException("Invalid Credentials!");
     }
     List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-    grantedAuthorities.add(() -> "ROLE_USER");
+    grantedAuthorities.add(Role.ROLE_USER::value);
     return new UsernamePasswordAuthenticationToken(userName, password, grantedAuthorities);
   }
 

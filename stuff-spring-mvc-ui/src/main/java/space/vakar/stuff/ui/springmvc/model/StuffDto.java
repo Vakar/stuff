@@ -69,14 +69,18 @@ public class StuffDto {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     StuffDto stuffDto = (StuffDto) o;
-    return id == stuffDto.id &&
-            Objects.equals(name, stuffDto.name) &&
-            Objects.equals(brand, stuffDto.brand) &&
-            Objects.equals(description, stuffDto.description) &&
-            Objects.equals(cost, stuffDto.cost);
+    return id == stuffDto.id
+        && Objects.equals(name, stuffDto.name)
+        && Objects.equals(brand, stuffDto.brand)
+        && Objects.equals(description, stuffDto.description)
+        && Objects.equals(cost, stuffDto.cost);
   }
 
   @Override
@@ -86,12 +90,20 @@ public class StuffDto {
 
   @Override
   public String toString() {
-    return "StuffDto{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", brand='" + brand + '\'' +
-            ", description='" + description + '\'' +
-            ", cost=" + cost +
-            '}';
+    return "StuffDto{"
+        + "id="
+        + id
+        + ", name='"
+        + name
+        + '\''
+        + ", brand='"
+        + brand
+        + '\''
+        + ", description='"
+        + description
+        + '\''
+        + ", cost="
+        + cost
+        + '}';
   }
 }

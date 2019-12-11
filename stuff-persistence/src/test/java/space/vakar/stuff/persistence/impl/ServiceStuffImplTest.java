@@ -24,8 +24,15 @@ public class ServiceStuffImplTest {
 
   private static final int ONCE = 1;
 
-  private Stuff stuff = new Stuff(
-          1, "stuff_one_name", "noname", "stuff_one_description", new BigDecimal("10.1"), null);
+  private Stuff stuff =
+      new Stuff(
+          1,
+          "stuff_one_name",
+          "noname",
+          "stuff_one_description",
+          new BigDecimal("10.1"),
+          "picture".getBytes(),
+          null);
   private List<Stuff> stuffList = Collections.singletonList(stuff);
 
   @Test
@@ -77,9 +84,11 @@ public class ServiceStuffImplTest {
   }
 
   @Test
-  public void findStuffByUserIdTest(){
+  public void findStuffByUserIdTest() {
     int userId = 1;
-    Hql hql = new HqlFindByFieldValue(Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(userId));
+    Hql hql =
+        new HqlFindByFieldValue(
+            Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(userId));
     when(repository.query(hql)).thenReturn(stuffList);
     List<Stuff> actualStuffList = service.findStuffByUserId(userId);
     verify(repository, times(ONCE)).query(hql);

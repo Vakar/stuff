@@ -8,6 +8,7 @@
                 BRAND CDATA #IMPLIED
                 DESCRIPTION CDATA #IMPLIED
                 COST CDATA #IMPLIED
+                PICTURE CDATA #IMPLIED
                 USER_ID CDATA #IMPLIED>
 
         <!ELEMENT APP_USER EMPTY>

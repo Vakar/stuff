@@ -6,6 +6,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 public class StuffDto {
 
@@ -26,6 +27,8 @@ public class StuffDto {
   @DecimalMin(value = "0.0", inclusive = false)
   @Digits(integer = 7, fraction = 2)
   private BigDecimal cost = BigDecimal.ZERO;
+
+  private MultipartFile picture;
 
   public int getId() {
     return id;
@@ -67,43 +70,40 @@ public class StuffDto {
     this.cost = cost;
   }
 
+  public MultipartFile getPicture() {
+    return picture;
+  }
+
+  public void setPicture(MultipartFile picture) {
+    this.picture = picture;
+  }
+
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     StuffDto stuffDto = (StuffDto) o;
-    return id == stuffDto.id
-        && Objects.equals(name, stuffDto.name)
-        && Objects.equals(brand, stuffDto.brand)
-        && Objects.equals(description, stuffDto.description)
-        && Objects.equals(cost, stuffDto.cost);
+    return id == stuffDto.id &&
+            Objects.equals(name, stuffDto.name) &&
+            Objects.equals(brand, stuffDto.brand) &&
+            Objects.equals(description, stuffDto.description) &&
+            Objects.equals(cost, stuffDto.cost) &&
+            Objects.equals(picture, stuffDto.picture);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, brand, description, cost);
+    return Objects.hash(id, name, brand, description, cost, picture);
   }
 
   @Override
   public String toString() {
-    return "StuffDto{"
-        + "id="
-        + id
-        + ", name='"
-        + name
-        + '\''
-        + ", brand='"
-        + brand
-        + '\''
-        + ", description='"
-        + description
-        + '\''
-        + ", cost="
-        + cost
-        + '}';
+    return "StuffDto{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", brand='" + brand + '\'' +
+            ", description='" + description + '\'' +
+            ", cost=" + cost +
+            '}';
   }
 }

@@ -2,6 +2,7 @@ package space.vakar.stuff.persistence.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "STUFF")
 public class Stuff implements Serializable {
 
-  public static final Stuff EMPTY_STUFF = new Stuff(0, "", "", "", BigDecimal.ZERO, null);
+  public static final Stuff EMPTY_STUFF = new Stuff(0, "", "", "", BigDecimal.ZERO, new byte[1] ,null);
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,7 @@ public class Stuff implements Serializable {
   private String brand;
   private String description;
   private BigDecimal cost;
+  private byte[] picture;
 
   @ManyToOne(fetch = FetchType.LAZY)
   private User user;
@@ -42,12 +44,13 @@ public class Stuff implements Serializable {
    * @param cost {@link Stuff} cost
    * @param user {@link User} owner of this {@link Stuff}
    */
-  public Stuff(int id, String name, String brand, String description, BigDecimal cost, User user) {
+  public Stuff(int id, String name, String brand, String description, BigDecimal cost,byte[] picture, User user) {
     this.id = id;
     this.name = name;
     this.brand = brand;
     this.description = description;
     this.cost = cost;
+    this.picture = picture;
     this.user = user;
   }
 
@@ -159,39 +162,53 @@ public class Stuff implements Serializable {
     this.user = user;
   }
 
+  /**
+   * Get picture of stuff.
+   *
+   * @return picture of {@link Stuff}
+   */
+  public byte[] getPicture() {
+    return picture;
+  }
+
+  /**
+   * Set picture of stuff.
+   *
+   * @param picture picture of {@link Stuff}
+   */
+  public void setPicture(byte[] picture) {
+    this.picture = picture;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Stuff stuff = (Stuff) o;
-    return id == stuff.id
-        && Objects.equals(name, stuff.name)
-        && Objects.equals(brand, stuff.brand)
-        && Objects.equals(description, stuff.description)
-        && Objects.equals(cost, stuff.cost);
+    return id == stuff.id &&
+            Objects.equals(name, stuff.name) &&
+            Objects.equals(brand, stuff.brand) &&
+            Objects.equals(description, stuff.description) &&
+            Objects.equals(cost, stuff.cost) &&
+            Arrays.equals(picture, stuff.picture);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, brand, description, cost);
+    int result = Objects.hash(id, name, brand, description, cost);
+    result = 31 * result + Arrays.hashCode(picture);
+    return result;
   }
 
   @Override
   public String toString() {
-    return "Stuff{"
-        + "id="
-        + id
-        + ", name='"
-        + name
-        + '\''
-        + ", brand='"
-        + brand
-        + '\''
-        + ", description='"
-        + description
-        + '\''
-        + ", cost="
-        + cost
-        + '}';
+    return "Stuff{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", brand='" + brand + '\'' +
+            ", description='" + description + '\'' +
+            ", cost=" + cost +
+            ", picture=" + Arrays.toString(picture) +
+            '}';
   }
 }

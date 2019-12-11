@@ -34,14 +34,27 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
 
   private static final int USER_ID = 1;
+  private static final byte[] PICTURE_MOCK = "picture".getBytes();
 
   private User owner = new User(1, "username", "user1@domain.com", "one");
   private Stuff stuffOne =
       new Stuff(
-          1, "stuff_one_name", "noname", "stuff_one_description", new BigDecimal("10.1"), owner);
+          1,
+          "stuff_one_name",
+          "noname",
+          "stuff_one_description",
+          new BigDecimal("10.1"),
+          PICTURE_MOCK,
+          owner);
   private Stuff stuffTwo =
       new Stuff(
-          2, "stuff_two_name", "brand_name", "stuff_two_description", new BigDecimal("20"), owner);
+          2,
+          "stuff_two_name",
+          "brand_name",
+          "stuff_two_description",
+          new BigDecimal("20"),
+          PICTURE_MOCK,
+          owner);
 
   public RepositoryStuffTest(String name) {
     super(name);

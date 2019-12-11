@@ -3,7 +3,7 @@
 <head>
     <title>Stuff view</title>
     <%--INCLUDE PAGE DEPENDENCIES--%>
-    <jsp:include page="../commons/pageDependencies.jsp"/>
+    <jsp:include page="../commons/style.jsp"/>
 </head>
 <body>
 
@@ -62,6 +62,10 @@
 
 <%--INCLUDE FOOTER--%>
 <jsp:include page="../commons/footer.jsp"/>
+
+<%--IMPORT JS FILES | START--%>
+<jsp:include page="../commons/js.jsp"/>
+<%--IMPORT JS FILES | END--%>
 
 </body>
 </html>

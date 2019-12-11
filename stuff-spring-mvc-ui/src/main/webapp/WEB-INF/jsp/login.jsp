@@ -6,7 +6,7 @@
     <title>Welcome to Stuff</title>
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
     <%--INCLUDE PAGE DEPENDENCIES--%>
-    <jsp:include page="/WEB-INF/jsp/commons/pageDependencies.jsp"/>
+    <jsp:include page="/WEB-INF/jsp/commons/style.jsp"/>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -46,6 +46,10 @@
 
 </div>
 <%--CONTAINER | END--%>
+
+<%--IMPORT JS FILES | START--%>
+<jsp:include page="commons/js.jsp"/>
+<%--IMPORT JS FILES | END--%>
 
 </body>
 </html>

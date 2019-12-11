@@ -4,7 +4,7 @@
 <head>
     <title>Edit Stuff</title>
     <%--INCLUDE PAGE DEPENDENCIES--%>
-    <jsp:include page="../commons/pageDependencies.jsp"/>
+    <jsp:include page="../commons/style.jsp"/>
 </head>
 <body>
 
@@ -64,6 +64,7 @@
 <jsp:include page="../commons/footer.jsp"/>
 
 <%--IMPORT JS FILES | START--%>
+<jsp:include page="../commons/js.jsp"/>
 <script src="<c:url value="/resources/js/showUploadImg.js" />"></script>
 <%--IMPORT JS FILES | END--%>
 

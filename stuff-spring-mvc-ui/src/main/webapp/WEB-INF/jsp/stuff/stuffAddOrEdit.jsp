@@ -1,5 +1,5 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Edit Stuff</title>
@@ -14,14 +14,22 @@
 <%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
+    <%--STUFF IMG | START--%>
+    <div>
+        <img src="<c:url value="/stuff/picture/${stuffDto.id}"/>" class="rounded mx-auto d-block"
+             style="max-width: 200px" alt="no picture" id="output">
+    </div>
+    <%--STUFF IMG | END--%>
+
     <%--ADD NEW STUFF FORM | START--%>
     <div>
-        <form:form method="POST" action="/stuff/stuff/save" commandName="stuffDto" enctype="multipart/form-data">
+        <form:form method="POST" action="/stuff/stuff/save" commandName="stuffDto"
+                   enctype="multipart/form-data">
             <div>
                 <form:hidden path="id"/>
             </div>
             <div class="form-group">
-                <input type="file" name="picture">
+                <input type="file" name="picture" onchange="loadFile(event)">
             </div>
             <div class="form-group">
                 <form:label path="name">Stuff Name</form:label>
@@ -54,6 +62,10 @@
 
 <%--INCLUDE FOOTER--%>
 <jsp:include page="../commons/footer.jsp"/>
+
+<%--IMPORT JS FILES | START--%>
+<script src="<c:url value="/resources/js/showUploadImg.js" />"></script>
+<%--IMPORT JS FILES | END--%>
 
 </body>
 </html>

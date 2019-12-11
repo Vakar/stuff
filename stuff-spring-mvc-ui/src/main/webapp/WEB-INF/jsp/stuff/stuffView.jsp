@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Stuff view</title>
@@ -17,6 +18,13 @@
         <h1 class="display-4">Stuff information</h1>
     </div>
     <%--PAGE HEADER | END--%>
+
+    <%--STUFF IMG | START--%>
+    <div>
+        <img src="<c:url value="/stuff/picture/${stuff.id}"/>" class="rounded mx-auto d-block"
+             style="max-width: 200px" alt="no picture">
+    </div>
+    <%--STUFF IMG | END--%>
 
     <%--STUFF TABLE | START--%>
     <div>

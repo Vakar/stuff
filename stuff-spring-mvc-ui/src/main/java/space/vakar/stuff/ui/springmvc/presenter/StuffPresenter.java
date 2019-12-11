@@ -62,4 +62,9 @@ public class StuffPresenter {
     Stuff stuff = serviceStuff.readById(id);
     return Mapper.from(stuff);
   }
+
+  public byte[] getPictureById(int id){
+    Stuff stuff = serviceStuff.readById(id);
+    return stuff.getPicture();
+  }
 }

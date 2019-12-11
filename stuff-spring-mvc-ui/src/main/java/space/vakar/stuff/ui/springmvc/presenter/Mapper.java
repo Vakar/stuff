@@ -22,9 +22,9 @@ public class Mapper {
     stuff.setBrand(model.getBrand());
     stuff.setDescription(model.getDescription());
     stuff.setCost(model.getCost());
-    try{
+    try {
       stuff.setPicture(model.getPicture().getBytes());
-    } catch (IOException e){
+    } catch (IOException e) {
       LOGGER.error("Can't get stuff picture data!", e);
       throw new IllegalArgumentException("Can't get stuff picture data!");
     }

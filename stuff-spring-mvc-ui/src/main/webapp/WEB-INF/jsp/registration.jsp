@@ -42,7 +42,6 @@
                 <div class="g-recaptcha"
                      data-sitekey="${reCaptchaSiteKey}"></div>
             </div>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
         </form:form>
     </div>

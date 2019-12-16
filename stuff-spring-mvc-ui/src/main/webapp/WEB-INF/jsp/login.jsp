@@ -36,7 +36,6 @@
                 <label for="remember-me" class="form-check-label">remember me</label>
             </div>
             <div class="form-group">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
             </div>
         </form>

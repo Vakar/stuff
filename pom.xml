@@ -7,7 +7,7 @@
 
     <groupId>vakar-space</groupId>
     <artifactId>stuff</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <modules>
         <module>stuff-persistence</module>
         <module>stuff-spring-mvc-ui</module>

@@ -48,6 +48,10 @@ public class StuffPresenter {
       stuff.setUser(user);
     }
     if (stuff.getId() > 0) {
+      if (stuff.getPicture().length == 0) {
+        int id = stuff.getId();
+        stuff.setPicture(getPictureById(id));
+      }
       serviceStuff.update(stuff);
     } else {
       serviceStuff.add(stuff);

@@ -30,6 +30,11 @@
             <artifactId>stuff-persistence</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>vakar-space</groupId>
+            <artifactId>stuff-email</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
 
         <!-- Spring MVC-->
         <dependency>

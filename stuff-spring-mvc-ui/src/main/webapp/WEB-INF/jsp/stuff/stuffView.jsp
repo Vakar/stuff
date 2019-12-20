@@ -57,6 +57,15 @@
     </div>
     <%--STUFF TABLE | END--%>
 
+    <%--STUFF EDITE BUTTON | START--%>
+    <div class="float-right">
+        <form action="<c:url value="/stuff/editView"/>" method="post">
+            <input type="hidden" name="id" value="${stuff.id}">
+            <input type="submit" class="btn btn-info" value="Edit">
+        </form>
+    </div>
+    <%--STUFF EDITE BUTTON | END--%>
+
 </div>
 <%--CONTAINER | START--%>
 

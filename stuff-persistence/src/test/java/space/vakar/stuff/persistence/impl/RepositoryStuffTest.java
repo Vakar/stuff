@@ -43,7 +43,7 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
           "stuff_one_name",
           "noname",
           "stuff_one_description",
-          new BigDecimal("10.1"),
+          new BigDecimal("10.10"),
           PICTURE_MOCK,
           owner);
   private Stuff stuffTwo =

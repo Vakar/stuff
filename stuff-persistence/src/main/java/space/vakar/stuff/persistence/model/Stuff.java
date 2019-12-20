@@ -1,5 +1,7 @@
 package space.vakar.stuff.persistence.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -9,8 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "STUFF")
@@ -22,10 +27,21 @@ public class Stuff implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @NotNull
   private String name;
+
+  @NotNull
   private String brand;
+
+  @NotNull
+  @Length(max = 1024)
   private String description;
+
+  @NotNull
   private BigDecimal cost;
+
+  @Lob
+  @NotNull
   private byte[] picture;
 
   @ManyToOne(fetch = FetchType.LAZY)

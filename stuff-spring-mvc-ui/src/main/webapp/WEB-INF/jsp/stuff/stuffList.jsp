@@ -8,6 +8,8 @@
     <title>Stuff List</title>
     <%--INCLUDE PAGE DEPENDENCIES--%>
     <jsp:include page="../commons/style.jsp"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -31,9 +33,9 @@
                 <tr>
                     <th class="text-center" scope="col">Name</th>
                     <th class="text-center" scope="col">Cost</th>
-                    <th class="text-center" scope="col">Delete</th>
-                    <th class="text-center" scope="col">Edit</th>
                     <th class="text-center" scope="col">View</th>
+                    <th class="text-center" scope="col">Edit</th>
+                    <th class="text-center" scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,21 +44,27 @@
                         <td>${stuffDto.name}</td>
                         <td class="text-right">${stuffDto.cost}</td>
                         <td class="text-center">
-                            <form action="<c:url value="/stuff/delete" />" method="post">
+                            <form action="<c:url value="/stuff/seeView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuffDto.id}">
-                                <input type="submit" value="Delete">
+                                <button type="submit" class="btn btn-link">
+                                    <i class="fa fa-eye text-info"></i>
+                                </button>
                             </form>
                         </td>
                         <td class="text-center">
                             <form action="<c:url value="/stuff/editView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuffDto.id}">
-                                <input type="submit" value="Edit">
+                                <button type="submit" class="btn btn-link">
+                                    <i class="fa fa-pencil text-dark"></i>
+                                </button>
                             </form>
                         </td>
                         <td class="text-center">
-                            <form action="<c:url value="/stuff/seeView"/>" method="post">
+                            <form action="<c:url value="/stuff/delete" />" method="post">
                                 <input type="hidden" name="id" value="${stuffDto.id}">
-                                <input type="submit" value="View">
+                                <button type="submit" class="btn btn-link">
+                                    <i class="fa fa-remove text-danger"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

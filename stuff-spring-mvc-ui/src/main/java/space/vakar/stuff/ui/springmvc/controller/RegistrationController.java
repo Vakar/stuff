@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import space.vakar.stuff.ui.springmvc.captcha.GoogleReCaptchaKeyHolder;
-import space.vakar.stuff.ui.springmvc.captcha.GoogleReCaptchaService;
+import space.vakar.stuff.captcha.api.GoogleReCaptchaService;
+import space.vakar.stuff.captcha.model.GoogleReCaptchaKeyHolder;
 import space.vakar.stuff.ui.springmvc.model.RegistrationModel;
 import space.vakar.stuff.ui.springmvc.presenter.UserPresenter;
 
@@ -52,13 +52,16 @@ public class RegistrationController {
       BindingResult bindingResult,
       HttpServletRequest request) {
     String response = request.getParameter("g-recaptcha-response");
-    boolean isCaptchaSuccess = googleReCaptchaService.processResponse(response);
-    if (!isCaptchaSuccess || bindingResult.hasErrors()) {
+    if (!isCaptchaSuccess(response) || bindingResult.hasErrors()) {
       return REGISTRATION_VIEW_PAGE;
     }
     userPresenter.saveUser(registration);
     LOGGER.info("Successfully save new user with username: {}", registration.getUsername());
     return Views.LOGIN_PAGE;
+  }
+
+  private boolean isCaptchaSuccess(String resp) {
+    return resp == null || googleReCaptchaService.processResponse(resp);
   }
 
   @ModelAttribute("registration")

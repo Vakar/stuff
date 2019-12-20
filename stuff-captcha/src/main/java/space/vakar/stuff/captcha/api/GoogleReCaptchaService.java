@@ -1,4 +1,4 @@
-package space.vakar.stuff.ui.springmvc.captcha;
+package space.vakar.stuff.captcha.api;
 
 public interface GoogleReCaptchaService {
 

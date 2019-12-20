@@ -1,10 +1,14 @@
-package space.vakar.stuff.ui.springmvc.captcha;
+package space.vakar.stuff.captcha.imp;
 
-import java.net.URI;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
+import space.vakar.stuff.captcha.api.GoogleReCaptchaService;
+import space.vakar.stuff.captcha.model.GoogleReCaptchaKeyHolder;
+import space.vakar.stuff.captcha.model.GoogleResponse;
+
+import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 
 @Service
 public class GoogleReCaptchaServiceImp implements GoogleReCaptchaService {

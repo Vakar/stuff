@@ -1,4 +1,4 @@
-package space.vakar.stuff.ui.springmvc.captcha;
+package space.vakar.stuff.captcha.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;

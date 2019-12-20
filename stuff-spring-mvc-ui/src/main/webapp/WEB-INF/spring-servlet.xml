@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven/>
-    <context:component-scan base-package="space.vakar.stuff.ui.springmvc"/>
+    <context:component-scan base-package="space.vakar.stuff"/>
     <mvc:default-servlet-handler/>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

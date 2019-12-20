@@ -1,4 +1,4 @@
-package space.vakar.stuff.ui.springmvc.captcha;
+package space.vakar.stuff.captcha;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
+import space.vakar.stuff.captcha.model.GoogleReCaptchaKeyHolder;
 
 @Configuration
 @PropertySource("classpath:googleReCaptcha.properties")

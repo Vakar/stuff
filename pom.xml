@@ -12,6 +12,7 @@
         <module>stuff-persistence</module>
         <module>stuff-spring-mvc-ui</module>
         <module>stuff-email</module>
+        <module>stuff-captcha</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -27,12 +27,17 @@
         <!-- Project Dependencies -->
         <dependency>
             <groupId>vakar-space</groupId>
-            <artifactId>stuff-persistence</artifactId>
+            <artifactId>stuff-captcha</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>vakar-space</groupId>
             <artifactId>stuff-email</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>vakar-space</groupId>
+            <artifactId>stuff-persistence</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
@@ -83,13 +88,6 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
-        </dependency>
-
-        <!-- Jackson -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
         </dependency>
 
     </dependencies>

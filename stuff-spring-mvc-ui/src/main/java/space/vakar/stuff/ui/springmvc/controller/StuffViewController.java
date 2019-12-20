@@ -25,13 +25,16 @@ public class StuffViewController {
 
   @PostMapping("/seeView")
   public ModelAndView seeStuff(@RequestParam("id") int id) {
+    ModelAndView modelAndView = new ModelAndView(Views.STUFF_VIEW_PAGE);
     StuffDto stuff = stuffPresenter.readById(id);
-    return new ModelAndView(Views.STUFF_VIEW_PAGE, "stuff", stuff);
+    modelAndView.addObject("stuff", stuff);
+    modelAndView.addObject("isPictureExists", stuffPresenter.isPictureExists(id));
+    return modelAndView;
   }
 
   @GetMapping(value = "/picture/{id}")
   @ResponseBody
-  public byte[] helloWorld(@PathVariable int id)  {
+  public byte[] picture(@PathVariable int id) {
     return stuffPresenter.getPictureById(id);
   }
 }

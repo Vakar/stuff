@@ -71,4 +71,8 @@ public class StuffPresenter {
     Stuff stuff = serviceStuff.readById(id);
     return stuff.getPicture();
   }
+
+  public boolean isPictureExists(int id) {
+    return getPictureById(id).length > 0;
+  }
 }

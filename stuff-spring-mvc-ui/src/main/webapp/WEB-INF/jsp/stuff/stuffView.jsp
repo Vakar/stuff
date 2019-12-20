@@ -20,10 +20,22 @@
     <%--PAGE HEADER | END--%>
 
     <%--STUFF IMG | START--%>
-    <div>
-        <img src="<c:url value="/stuff/picture/${stuff.id}"/>" class="rounded mx-auto d-block"
-             style="max-width: 200px" alt="no picture">
-    </div>
+    <c:choose>
+        <c:when test="${isPictureExists}">
+            <div>
+                <img src="<c:url value="/stuff/picture/${stuff.id}"/>"
+                     class="rounded mx-auto d-block"
+                     style="max-width: 200px" alt="stuff picture">
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div>
+                <img src="<c:url value="/resources/img/no-image-available.png" />"
+                     class="rounded mx-auto d-block"
+                     style="max-width: 200px" alt="no picture">
+            </div>
+        </c:otherwise>
+    </c:choose>
     <%--STUFF IMG | END--%>
 
     <%--STUFF TABLE | START--%>

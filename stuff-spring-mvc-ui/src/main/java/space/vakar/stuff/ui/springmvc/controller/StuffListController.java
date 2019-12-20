@@ -42,13 +42,19 @@ public class StuffListController {
 
   @GetMapping("/addView")
   public ModelAndView addView() {
-    return new ModelAndView(Views.STUFF_ADD_OR_EDIT_PAGE, "stuffDto", new StuffDto());
+    ModelAndView modelAndView = new ModelAndView(Views.STUFF_ADD_OR_EDIT_PAGE);
+    modelAndView.addObject("stuffDto", new StuffDto());
+    modelAndView.addObject("isPictureExists", false);
+    return modelAndView;
   }
 
   @PostMapping("/editView")
   public ModelAndView edit(@RequestParam("id") int id) {
+    ModelAndView modelAndView = new ModelAndView(Views.STUFF_ADD_OR_EDIT_PAGE);
     StuffDto stuffDto = stuffPresenter.readById(id);
-    return new ModelAndView(Views.STUFF_ADD_OR_EDIT_PAGE, "stuffDto", stuffDto);
+    modelAndView.addObject("stuffDto", stuffDto);
+    modelAndView.addObject("isPictureExists", stuffPresenter.isPictureExists(id));
+    return modelAndView;
   }
 
   @PostMapping("/delete")

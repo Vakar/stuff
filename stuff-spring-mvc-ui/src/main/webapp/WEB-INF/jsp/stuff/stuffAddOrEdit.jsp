@@ -15,10 +15,22 @@
 <div class="container mb-3 mt-3">
 
     <%--STUFF IMG | START--%>
-    <div>
-        <img src="<c:url value="/stuff/picture/${stuffDto.id}"/>" class="rounded mx-auto d-block"
-             style="max-width: 200px" alt="no picture" id="output">
-    </div>
+    <c:choose>
+        <c:when test="${isPictureExists}">
+            <div>
+                <img src="<c:url value="/stuff/picture/${stuffDto.id}"/>"
+                     class="rounded mx-auto d-block"
+                     style="max-width: 200px" alt="stuff picture" id="output">
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div>
+                <img src="<c:url value="/resources/img/no-image-available.png" />"
+                     class="rounded mx-auto d-block"
+                     style="max-width: 200px" alt="no picture" id="output">
+            </div>
+        </c:otherwise>
+    </c:choose>
     <%--STUFF IMG | END--%>
 
     <%--ADD NEW STUFF FORM | START--%>

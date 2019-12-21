@@ -1,0 +1,6 @@
+<!DOCTYPE dataset SYSTEM "password_recovery.dtd">
+
+<dataset>
+    <APP_USER ID="1" USERNAME="username" EMAIL="user1@domain.com" PSWD="one"/>
+    <PASSWORD_RECOVERY_TOKEN TOKEN="adc528ed-a1ec-47f4-92c1-2d5f6eb6fbd8" USER_ID="1"/>
+</dataset>

@@ -13,6 +13,7 @@ import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import space.vakar.stuff.persistence.model.PasswordRecoveryToken;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 
@@ -29,6 +30,7 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
     config.configure(HIBERNATE_CONFIG);
     config.addAnnotatedClass(User.class);
     config.addAnnotatedClass(Stuff.class);
+    config.addAnnotatedClass(PasswordRecoveryToken.class);
     ServiceRegistry serviceRegistry =
         new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
     return config.buildSessionFactory(serviceRegistry);

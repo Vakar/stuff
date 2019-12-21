@@ -29,7 +29,6 @@ public class RepositoryPasswordRecoveryTokenTokenTest extends DatabaseTestConfig
   private static final String DATASET_FOLDER = "/datasets/password_recovery";
   private static final String START_DATASET = DATASET_FOLDER + "/start.xml";
   private static final String CREATE_DATASET = DATASET_FOLDER + "/create.xml";
-  private static final String UPDATE_DATASET = DATASET_FOLDER + "/update.xml";
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
 
   private static final int USER_ID = 1;

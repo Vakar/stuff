@@ -3,4 +3,5 @@
 <dataset>
     <APP_USER ID="1" USERNAME="username" EMAIL="user1@domain.com" PSWD="one"/>
     <PASSWORD_RECOVERY_TOKEN/>
+    <STUFF/>
 </dataset>

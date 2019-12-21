@@ -4,8 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import space.vakar.stuff.persistence.api.ServiceResetPassword;
 import space.vakar.stuff.persistence.api.ServiceStuff;
 import space.vakar.stuff.persistence.api.ServiceUser;
+import space.vakar.stuff.persistence.impl.ServiceResetPasswordImp;
 import space.vakar.stuff.persistence.impl.ServiceStuffImpl;
 import space.vakar.stuff.persistence.impl.ServiceUserImpl;
 
@@ -20,6 +22,11 @@ public class Config {
   @Bean
   public ServiceStuff stuffService() {
     return new ServiceStuffImpl();
+  }
+
+  @Bean
+  public ServiceResetPassword passwordRecoveryTokenService() {
+    return new ServiceResetPasswordImp();
   }
 
   @Bean

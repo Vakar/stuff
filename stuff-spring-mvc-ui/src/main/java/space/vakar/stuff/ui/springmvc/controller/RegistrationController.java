@@ -55,7 +55,7 @@ public class RegistrationController {
     if (!isCaptchaSuccess(response) || bindingResult.hasErrors()) {
       return REGISTRATION_VIEW_PAGE;
     }
-    userPresenter.saveUser(registration);
+    userPresenter.registerUser(registration);
     LOGGER.info("Successfully save new user with username: {}", registration.getUsername());
     return Views.LOGIN_PAGE;
   }

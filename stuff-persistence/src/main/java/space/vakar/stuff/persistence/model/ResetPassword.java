@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "RESET_PASSWORD")
@@ -16,6 +17,11 @@ public class ResetPassword implements Serializable {
   @NotNull @OneToOne private User user;
 
   public ResetPassword() {}
+
+  public ResetPassword(User user) {
+    this.id = UUID.randomUUID().toString();
+    this.user = user;
+  }
 
   public ResetPassword(String id, User user) {
     this.id = id;

@@ -10,6 +10,9 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
+<%--INCLUDE TOP NAVIGATION BAR--%>
+<jsp:include page="commons/navbar.jsp"/>
+
 <%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
@@ -30,6 +33,7 @@
             <div class="form-group">
                 <input type="password" class="form-control" name="password"
                        placeholder="Password" required="required">
+                <p class="text-right"><a href="forgotPassword">Forgot password?</a></p>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me"/>
@@ -45,6 +49,9 @@
 
 </div>
 <%--CONTAINER | END--%>
+
+<%--INCLUDE FOOTER--%>
+<jsp:include page="commons/footer.jsp"/>
 
 <%--IMPORT JS FILES | START--%>
 <jsp:include page="commons/js.jsp"/>

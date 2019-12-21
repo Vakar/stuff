@@ -1,8 +1,8 @@
-<!DOCTYPE dataset SYSTEM "password_recovery.dtd">
+<!DOCTYPE dataset SYSTEM "reset_password.dtd">
 
 <dataset>
     <APP_USER ID="1" USERNAME="username" EMAIL="user1@domain.com" PSWD="one"/>
-    <PASSWORD_RECOVERY_TOKEN TOKEN="123e4567-e89b-42d3-a456-556642440000" USER_ID="1"/>
-    <PASSWORD_RECOVERY_TOKEN TOKEN="639b4940-9320-47b7-95d4-376f7dc368e6" USER_ID="1"/>
+    <RESET_PASSWORD ID="123e4567-e89b-42d3-a456-556642440000" USER_ID="1"/>
+    <RESET_PASSWORD ID="639b4940-9320-47b7-95d4-376f7dc368e6" USER_ID="1"/>
     <STUFF/>
 </dataset>

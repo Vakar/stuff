@@ -72,4 +72,11 @@ public class ServiceUserImpl implements space.vakar.stuff.persistence.api.Servic
     List<User> users = repository.query(findByFieldValue);
     return users.isEmpty() ? Optional.empty() : Optional.of(users.get(0));
   }
+
+  @Override
+  public Optional<User> findUserByEmail(String email) {
+    Hql findByFieldValue = new HqlFindByFieldValue(User.class, FIELD_USER_EMAIL, email);
+    List<User> users = repository.query(findByFieldValue);
+    return users.isEmpty() ? Optional.empty() : Optional.of(users.get(0));
+  }
 }

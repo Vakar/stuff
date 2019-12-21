@@ -1,7 +1,8 @@
 package space.vakar.stuff.persistence.api;
 
-import java.util.Optional;
 import space.vakar.stuff.persistence.model.User;
+
+import java.util.Optional;
 
 public interface ServiceUser extends Service<User> {
 
@@ -25,7 +26,15 @@ public interface ServiceUser extends Service<User> {
    * Find user by user name.
    *
    * @param username user name
-   * @return entity object
+   * @return optional user entity object
    */
   Optional<User> findUserByUsername(String username);
+
+  /**
+   * Find user by user email.
+   *
+   * @param email user email
+   * @return optional user entity object
+   */
+  Optional<User> findUserByEmail(String email);
 }

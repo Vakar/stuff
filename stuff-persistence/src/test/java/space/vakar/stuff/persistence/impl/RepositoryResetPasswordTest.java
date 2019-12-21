@@ -7,7 +7,7 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
-import space.vakar.stuff.persistence.model.PasswordRecoveryToken;
+import space.vakar.stuff.persistence.model.ResetPassword;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.persistence.util.DatabaseTestConfig;
 import space.vakar.stuff.persistence.util.PropertiesUtil;
@@ -17,12 +17,12 @@ import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
-public class RepositoryPasswordRecoveryTokenTokenTest extends DatabaseTestConfig {
+public class RepositoryResetPasswordTest extends DatabaseTestConfig {
 
-  private Repository<PasswordRecoveryToken> repository = new RepositoryPasswordRecoveryToken();
+  private Repository<ResetPassword> repository = new RepositoryResetPassword();
   private DataFileLoader loader = new FlatXmlDataFileLoader();
 
-  private static final String TABLE_NAME = "PASSWORD_RECOVERY_TOKEN";
+  private static final String TABLE_NAME = "RESET_PASSWORD";
 
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
@@ -32,13 +32,13 @@ public class RepositoryPasswordRecoveryTokenTokenTest extends DatabaseTestConfig
   private static final String DELETE_DATASET = DATASET_FOLDER + "/delete.xml";
 
   private static final int USER_ID = 1;
-  private static final UUID UUID_1 = UUID.fromString("123e4567-e89b-42d3-a456-556642440000");
-  private static final UUID UUID_2 = UUID.fromString("639b4940-9320-47b7-95d4-376f7dc368e6");
+  private static final String UUID_1 = "123e4567-e89b-42d3-a456-556642440000";
+  private static final String UUID_2 = "639b4940-9320-47b7-95d4-376f7dc368e6";
   private User user = new User(USER_ID, "username", "user1@domain.com", "one");
-  private PasswordRecoveryToken token1 = new PasswordRecoveryToken(UUID_1, user);
-  private PasswordRecoveryToken token2 = new PasswordRecoveryToken(UUID_2, user);
+  private ResetPassword token1 = new ResetPassword(UUID_1, user);
+  private ResetPassword token2 = new ResetPassword(UUID_2, user);
 
-  public RepositoryPasswordRecoveryTokenTokenTest(String name) {
+  public RepositoryResetPasswordTest(String name) {
     super(name);
   }
 
@@ -69,10 +69,11 @@ public class RepositoryPasswordRecoveryTokenTokenTest extends DatabaseTestConfig
   }
 
   public void testQueryById() {
-    Hql hql =
-        new HqlFindByFieldValue(PasswordRecoveryToken.class, "token", token1.getToken().toString());
-    List<PasswordRecoveryToken> tokenList = repository.query(hql);
-    PasswordRecoveryToken actualToken = tokenList.get(0);
+    Hql hql = new HqlFindByFieldValue(ResetPassword.class, "id", token1.getId());
+    System.out.println(UUID.randomUUID().toString().length());
+    List<ResetPassword> tokenList = repository.query(hql);
+    ResetPassword actualToken = tokenList.get(0);
+    System.out.println(actualToken);
     assertEquals(token1, actualToken);
   }
 

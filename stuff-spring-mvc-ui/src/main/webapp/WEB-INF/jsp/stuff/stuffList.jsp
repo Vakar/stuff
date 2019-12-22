@@ -27,7 +27,7 @@
 
     <%--STUFF TABLE | START--%>
     <div>
-        <c:if test="${not empty stuffListModel.stuffDtoList}">
+        <c:if test="${not empty stuffList.stuff}">
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
@@ -39,13 +39,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="stuffDto" items="${stuffListModel.stuffDtoList}">
+                <c:forEach var="stuff" items="${stuffList.stuff}">
                     <tr>
-                        <td>${stuffDto.name}</td>
-                        <td class="text-right">${stuffDto.cost}</td>
+                        <td>${stuff.name}</td>
+                        <td class="text-right">${stuff.cost}</td>
                         <td class="text-center">
                             <form action="<c:url value="/stuff/seeView"/>" method="post">
-                                <input type="hidden" name="id" value="${stuffDto.id}">
+                                <input type="hidden" name="id" value="${stuff.id}">
                                 <button type="submit" class="btn btn-link">
                                     <i class="fa fa-eye text-info"></i>
                                 </button>
@@ -53,7 +53,7 @@
                         </td>
                         <td class="text-center">
                             <form action="<c:url value="/stuff/editView"/>" method="post">
-                                <input type="hidden" name="id" value="${stuffDto.id}">
+                                <input type="hidden" name="id" value="${stuff.id}">
                                 <button type="submit" class="btn btn-link">
                                     <i class="fa fa-pencil text-dark"></i>
                                 </button>
@@ -61,7 +61,7 @@
                         </td>
                         <td class="text-center">
                             <form action="<c:url value="/stuff/delete" />" method="post">
-                                <input type="hidden" name="id" value="${stuffDto.id}">
+                                <input type="hidden" name="id" value="${stuff.id}">
                                 <button type="submit" class="btn btn-link">
                                     <i class="fa fa-remove text-danger"></i>
                                 </button>
@@ -73,7 +73,7 @@
                 <tfoot>
                 <tr>
                     <td>Total cost:</td>
-                    <td class="text-right">${stuffListModel.totalSum}</td>
+                    <td class="text-right">${stuffList.totalSum}</td>
                     <td></td>
                     <td></td>
                 </tr>

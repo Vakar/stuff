@@ -92,7 +92,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <path>/stuff</path>
+                    <path>/</path>
                     <server>tomcatRemote</server>
                     <url>http://192.168.88.217:8080/manager/text</url>
                 </configuration>

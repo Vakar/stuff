@@ -1,7 +1,5 @@
 package space.vakar.stuff.persistence.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -16,32 +14,30 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 @Table(name = "STUFF")
 public class Stuff implements Serializable {
 
-  public static final Stuff EMPTY_STUFF = new Stuff(0, "", "", "", BigDecimal.ZERO, new byte[1] ,null);
+  public static final Stuff EMPTY_STUFF =
+      new Stuff(0, "", "", "", BigDecimal.ZERO, new byte[1], null);
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @NotNull
-  private String name;
+  @NotNull private String name;
 
-  @NotNull
-  private String brand;
+  @NotNull private String brand;
 
   @NotNull
   @Length(max = 1024)
   private String description;
 
-  @NotNull
-  private BigDecimal cost;
+  @NotNull private BigDecimal cost;
 
-  @Lob
-  @NotNull
-  private byte[] picture;
+  @Lob @NotNull private byte[] picture;
 
   @ManyToOne(fetch = FetchType.LAZY)
   private User user;
@@ -59,7 +55,14 @@ public class Stuff implements Serializable {
    * @param cost {@link Stuff} cost
    * @param user {@link User} owner of this {@link Stuff}
    */
-  public Stuff(int id, String name, String brand, String description, BigDecimal cost,byte[] picture, User user) {
+  public Stuff(
+      int id,
+      String name,
+      String brand,
+      String description,
+      BigDecimal cost,
+      byte[] picture,
+      User user) {
     this.id = id;
     this.name = name;
     this.brand = brand;
@@ -196,16 +199,20 @@ public class Stuff implements Serializable {
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Stuff stuff = (Stuff) o;
-    return id == stuff.id &&
-            Objects.equals(name, stuff.name) &&
-            Objects.equals(brand, stuff.brand) &&
-            Objects.equals(description, stuff.description) &&
-            Objects.equals(cost, stuff.cost) &&
-            Arrays.equals(picture, stuff.picture);
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Stuff stuff = (Stuff) obj;
+    return id == stuff.id
+        && Objects.equals(name, stuff.name)
+        && Objects.equals(brand, stuff.brand)
+        && Objects.equals(description, stuff.description)
+        && Objects.equals(cost, stuff.cost)
+        && Arrays.equals(picture, stuff.picture);
   }
 
   @Override
@@ -217,13 +224,22 @@ public class Stuff implements Serializable {
 
   @Override
   public String toString() {
-    return "Stuff{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", brand='" + brand + '\'' +
-            ", description='" + description + '\'' +
-            ", cost=" + cost +
-            ", picture=" + Arrays.toString(picture) +
-            '}';
+    return "Stuff{"
+        + "id="
+        + id
+        + ", name='"
+        + name
+        + '\''
+        + ", brand='"
+        + brand
+        + '\''
+        + ", description='"
+        + description
+        + '\''
+        + ", cost="
+        + cost
+        + ", picture="
+        + Arrays.toString(picture)
+        + '}';
   }
 }

@@ -1,12 +1,11 @@
 package space.vakar.stuff.springmvc.model;
 
+import java.math.BigDecimal;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import java.math.BigDecimal;
 
 public class StuffDto {
 

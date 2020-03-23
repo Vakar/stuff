@@ -1,5 +1,6 @@
 package space.vakar.stuff.springmvc.presenter;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import space.vakar.stuff.email.api.EmailService;
@@ -7,8 +8,6 @@ import space.vakar.stuff.email.model.Email;
 import space.vakar.stuff.persistence.api.ServiceResetPassword;
 import space.vakar.stuff.persistence.model.ResetPassword;
 import space.vakar.stuff.persistence.model.User;
-
-import java.util.Optional;
 
 @Component
 public class ResetPasswordPresenter {

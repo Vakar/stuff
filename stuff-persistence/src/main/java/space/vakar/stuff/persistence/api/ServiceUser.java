@@ -1,8 +1,7 @@
 package space.vakar.stuff.persistence.api;
 
-import space.vakar.stuff.persistence.model.User;
-
 import java.util.Optional;
+import space.vakar.stuff.persistence.model.User;
 
 public interface ServiceUser extends Service<User> {
 

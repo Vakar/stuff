@@ -1,13 +1,13 @@
 package space.vakar.stuff.persistence.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 @Table(name = "RESET_PASSWORD")
@@ -16,8 +16,14 @@ public class ResetPassword implements Serializable {
   @NotNull @Id private String id;
   @NotNull @OneToOne private User user;
 
+  /** Default constructor. */
   public ResetPassword() {}
 
+  /**
+   * Constructor set id field with UUID.
+   *
+   * @param user user object
+   */
   public ResetPassword(User user) {
     this.id = UUID.randomUUID().toString();
     this.user = user;

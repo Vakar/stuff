@@ -1,5 +1,7 @@
 package space.vakar.stuff.springmvc.controller;
 
+import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +17,6 @@ import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.springmvc.model.ResetPasswordRequestForm;
 import space.vakar.stuff.springmvc.presenter.ResetPasswordPresenter;
 import space.vakar.stuff.springmvc.presenter.UserPresenter;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
 @Controller
 public class ForgotPasswordController {

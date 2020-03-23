@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import space.vakar.stuff.persistence.model.User;
 import space.vakar.stuff.springmvc.model.StuffListDto;
-import space.vakar.stuff.springmvc.presenter.StuffPresenter;
 import space.vakar.stuff.springmvc.model.StuffDto;
+import space.vakar.stuff.springmvc.presenter.StuffPresenter;
 import space.vakar.stuff.springmvc.presenter.UserPresenter;
 
 @Controller

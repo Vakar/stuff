@@ -1,13 +1,5 @@
 package space.vakar.stuff.email.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import space.vakar.stuff.email.EmailException;
-import space.vakar.stuff.email.api.EmailService;
-import space.vakar.stuff.email.model.Email;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -17,6 +9,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import space.vakar.stuff.email.EmailException;
+import space.vakar.stuff.email.api.EmailService;
+import space.vakar.stuff.email.model.Email;
 
 @Service
 public class EmailServiceImp implements EmailService {

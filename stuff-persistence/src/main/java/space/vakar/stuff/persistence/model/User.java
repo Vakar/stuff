@@ -1,7 +1,5 @@
 package space.vakar.stuff.persistence.model;
 
-import org.hibernate.validator.constraints.Email;
-
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -10,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name = "APP_USER")

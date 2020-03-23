@@ -1,5 +1,7 @@
 package space.vakar.stuff.springmvc.controller;
 
+import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,6 @@ import space.vakar.stuff.springmvc.constraint.PasswordValidator;
 import space.vakar.stuff.springmvc.model.ResetPasswordForm;
 import space.vakar.stuff.springmvc.presenter.ResetPasswordPresenter;
 import space.vakar.stuff.springmvc.presenter.UserPresenter;
-
-import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class ResetPasswordController {

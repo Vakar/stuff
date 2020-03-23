@@ -1,9 +1,8 @@
 package space.vakar.stuff.persistence.api;
 
+import java.util.Optional;
 import space.vakar.stuff.persistence.model.ResetPassword;
 import space.vakar.stuff.persistence.model.User;
-
-import java.util.Optional;
 
 public interface ServiceResetPassword {
 

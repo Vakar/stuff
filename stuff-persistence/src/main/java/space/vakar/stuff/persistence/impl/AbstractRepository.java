@@ -3,7 +3,6 @@ package space.vakar.stuff.persistence.impl;
 import java.io.Serializable;
 import java.util.List;
 import java.util.function.BiConsumer;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,15 +10,11 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import space.vakar.stuff.persistence.model.ResetPassword;
 import space.vakar.stuff.persistence.model.Stuff;
 import space.vakar.stuff.persistence.model.User;
 
 class AbstractRepository<T extends Serializable> implements Repository<T> {
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRepository.class);
 
   private static final String HIBERNATE_CONFIG = "hibernate.cfg.xml";
 
@@ -57,12 +52,11 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
   }
 
   @Override
-  @SuppressWarnings("unchecked")
   public void remove(Hql hql) {
     Transaction transaction = null;
-    Session session = getSession();
-    try {
+    try (Session session = getSession()) {
       transaction = session.beginTransaction();
+      @SuppressWarnings("unchecked")
       Query<T> query = session.createQuery(hql.getHql());
       query.executeUpdate();
       transaction.commit();
@@ -70,24 +64,18 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
       if (transaction != null) {
         transaction.rollback();
       }
-      LOGGER.error("Error happens during database transaction with hql: {}", hql.getHql());
-      LOGGER.error(e.getMessage());
-      throw new RepositoryException(e.getMessage(), e);
-    } finally {
-      if (session != null) {
-        session.close();
-      }
+      throw new RepositoryException(
+          "Error happened during removing entity from database with hql: " + hql.getHql(), e);
     }
   }
 
   @Override
-  @SuppressWarnings("unchecked")
   public List<T> query(Hql hql) {
     List<T> list;
     Transaction t = null;
-    Session session = getSession();
-    try {
+    try (Session session = getSession()) {
       t = session.beginTransaction();
+      @SuppressWarnings("unchecked")
       Query<T> query = session.createQuery(hql.getHql());
       list = query.list();
       t.commit();
@@ -95,13 +83,8 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
       if (t != null) {
         t.rollback();
       }
-      LOGGER.error("Error happens during database transaction with hql: {}", hql.getHql());
-      LOGGER.error(e.getMessage());
-      throw new RepositoryException(e.getMessage(), e);
-    } finally {
-      if (session != null) {
-        session.close();
-      }
+      throw new RepositoryException(
+          "Error happens during query transaction with hql: " + hql.getHql(), e);
     }
     return list;
   }
@@ -113,8 +96,7 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
   private BiConsumer<T, BiConsumer<Session, T>> entityConsumer =
       (entity, operation) -> {
         Transaction t = null;
-        Session session = getSession();
-        try {
+        try (Session session = getSession()) {
           t = session.beginTransaction();
           operation.accept(session, entity);
           t.commit();
@@ -122,13 +104,8 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
           if (t != null) {
             t.rollback();
           }
-          LOGGER.error("Error happens during database transaction with entity: {}", entity);
-          LOGGER.error(e.getMessage());
-          throw new RepositoryException(e.getMessage(), e);
-        } finally {
-          if (session != null) {
-            session.close();
-          }
+          throw new RepositoryException(
+              "Error happens during database transaction with hql: " + entity, e);
         }
       };
 }

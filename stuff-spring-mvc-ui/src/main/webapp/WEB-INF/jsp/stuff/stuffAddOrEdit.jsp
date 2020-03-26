@@ -35,7 +35,7 @@
 
     <%--ADD NEW STUFF FORM | START--%>
     <div>
-        <form:form method="POST" action="/stuff/stuff/save" commandName="stuffDto"
+        <form:form method="POST" action="/stuff/save" commandName="stuffDto"
                    enctype="multipart/form-data">
             <div>
                 <form:hidden path="id"/>

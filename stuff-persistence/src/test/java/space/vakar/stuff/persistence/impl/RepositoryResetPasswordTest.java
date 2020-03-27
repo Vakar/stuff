@@ -13,6 +13,7 @@ import space.vakar.stuff.persistence.util.DatabaseTestConfig;
 import space.vakar.stuff.persistence.util.PropertiesUtil;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
@@ -23,6 +24,7 @@ public class RepositoryResetPasswordTest extends DatabaseTestConfig {
   private DataFileLoader loader = new FlatXmlDataFileLoader();
 
   private static final String TABLE_NAME = "RESET_PASSWORD";
+  private static final String USER_ID_FIELD = "user";
 
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
@@ -75,6 +77,13 @@ public class RepositoryResetPasswordTest extends DatabaseTestConfig {
     ResetPassword actualToken = tokenList.get(0);
     System.out.println(actualToken);
     assertEquals(token1, actualToken);
+  }
+
+  public void testQueryByUser(){
+    List<ResetPassword> expectedTokens = Collections.singletonList(token1);
+    Hql hql = new HqlFindByFieldValue(ResetPassword.class, USER_ID_FIELD, String.valueOf(1));
+    List<ResetPassword> actualTokens = repository.query(hql);
+    assertEquals(expectedTokens, actualTokens);
   }
 
   private ITable getActualTable() throws Exception {

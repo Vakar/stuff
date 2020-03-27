@@ -17,7 +17,7 @@
 
     <%--RESET PASSWORD FORM | START--%>
     <div class="login-form">
-        <form:form method="POST" action="/stuff/resetPassword" commandName="resetPasswordForm">
+        <form:form method="POST" action="resetPassword" commandName="resetPasswordForm">
             <div class="form-group">
                 <form:hidden class="form-control" path="username"/>
             </div>

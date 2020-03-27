@@ -10,7 +10,7 @@ import space.vakar.stuff.persistence.model.User;
 public class ServiceResetPasswordImp implements ServiceResetPassword {
 
   private static final String ID_FIELD = "id";
-  private static final String USER_ID_FIELD = "USER_ID";
+  private static final String USER_ID_FIELD = "user";
 
   private Repository<ResetPassword> repository = new RepositoryResetPassword();
 

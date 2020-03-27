@@ -85,6 +85,7 @@ public class ResetPasswordController {
       User user = userOptional.get();
       user.setPswd(newPasswordHash);
       userPresenter.saveUser(user);
+      resetPasswordPresenter.removeTokens(user);
       model.addAttribute(TITLE_ATTRIBUTE_NAME, TITLE);
       model.addAttribute(MESSAGE_ATTRIBUTE_NAME, MESSAGE);
     } else {

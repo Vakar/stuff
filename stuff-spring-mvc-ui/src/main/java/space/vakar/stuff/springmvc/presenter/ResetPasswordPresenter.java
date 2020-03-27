@@ -38,4 +38,8 @@ public class ResetPasswordPresenter {
   public Optional<ResetPassword> getById(String id) {
     return serviceResetPassword.findById(id);
   }
+
+  public void removeTokens(User user) {
+    serviceResetPassword.removeByUser(user);
+  }
 }

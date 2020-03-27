@@ -72,17 +72,14 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
   @Override
   public List<T> query(Hql hql) {
     List<T> list;
-    Transaction t = null;
+    Transaction transaction;
     try (Session session = getSession()) {
-      t = session.beginTransaction();
+      transaction = session.beginTransaction();
       @SuppressWarnings("unchecked")
       Query<T> query = session.createQuery(hql.getHql());
       list = query.list();
-      t.commit();
+      transaction.commit();
     } catch (RuntimeException e) {
-      if (t != null) {
-        t.rollback();
-      }
       throw new RepositoryException(
           "Error happens during query transaction with hql: " + hql.getHql(), e);
     }

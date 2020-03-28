@@ -1,10 +1,16 @@
+# Ignore IDE files
 .classpath
 .gitignore
 .project
 .settings
 *.iml
 .idea/
+
+# Ignore compilation directory
 target/
+
+# Hiding Application Properties
 /stuff-spring-mvc-ui/src/main/resources/hibernate.properties
 /stuff-spring-mvc-ui/src/main/resources/googleReCaptcha.properties
 /stuff-spring-mvc-ui/src/main/resources/email.properties
+/stuff-spring-mvc-ui/src/main/resources/app.properties

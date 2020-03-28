@@ -9,7 +9,9 @@ import space.vakar.stuff.persistence.api.ServiceStuff;
 import space.vakar.stuff.persistence.model.Stuff;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -32,6 +34,7 @@ public class ServiceStuffImplTest {
           "stuff_one_description",
           new BigDecimal("10.1"),
           "picture".getBytes(),
+          new GregorianCalendar(1970, Calendar.JANUARY, 1),
           null);
   private List<Stuff> stuffList = Collections.singletonList(stuff);
 

@@ -14,7 +14,9 @@ import space.vakar.stuff.persistence.util.PropertiesUtil;
 
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Properties;
 
@@ -45,6 +47,7 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
           "stuff_one_description",
           new BigDecimal("10.10"),
           PICTURE_MOCK,
+          new GregorianCalendar(1970, Calendar.JANUARY, 1),
           owner);
   private Stuff stuffTwo =
       new Stuff(
@@ -54,6 +57,7 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
           "stuff_two_description",
           new BigDecimal("20"),
           PICTURE_MOCK,
+          new GregorianCalendar(1970, Calendar.JANUARY, 2),
           owner);
 
   public RepositoryStuffTest(String name) {

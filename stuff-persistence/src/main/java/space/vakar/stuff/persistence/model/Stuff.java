@@ -2,8 +2,11 @@ package space.vakar.stuff.persistence.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -21,7 +26,15 @@ import org.hibernate.validator.constraints.Length;
 public class Stuff implements Serializable {
 
   public static final Stuff EMPTY_STUFF =
-      new Stuff(0, "", "", "", BigDecimal.ZERO, new byte[1], null);
+      new Stuff(
+          0,
+          "",
+          "",
+          "",
+          BigDecimal.ZERO,
+          new byte[1],
+          new GregorianCalendar(1970, Calendar.JANUARY, 1),
+          null);
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +52,11 @@ public class Stuff implements Serializable {
 
   @Lob @NotNull private byte[] picture;
 
+  @NotNull
+  @Temporal(TemporalType.DATE)
+  @Column(name = "COMMISSION_DATE")
+  private Calendar commissionDate;
+
   @ManyToOne(fetch = FetchType.LAZY)
   private User user;
 
@@ -53,6 +71,8 @@ public class Stuff implements Serializable {
    * @param brand {@link Stuff} brand
    * @param description {@link Stuff} description
    * @param cost {@link Stuff} cost
+   * @param picture {@link Stuff} image
+   * @param commissionDate {@link Stuff} commission date in YYYY-MM-DD format
    * @param user {@link User} owner of this {@link Stuff}
    */
   public Stuff(
@@ -62,6 +82,7 @@ public class Stuff implements Serializable {
       String description,
       BigDecimal cost,
       byte[] picture,
+      Calendar commissionDate,
       User user) {
     this.id = id;
     this.name = name;
@@ -69,6 +90,7 @@ public class Stuff implements Serializable {
     this.description = description;
     this.cost = cost;
     this.picture = picture;
+    this.commissionDate = commissionDate;
     this.user = user;
   }
 
@@ -198,6 +220,24 @@ public class Stuff implements Serializable {
     this.picture = picture;
   }
 
+  /**
+   * Get stuff commission date.
+   *
+   * @return {@link Stuff} commission date
+   */
+  public Calendar getCommissionDate() {
+    return commissionDate;
+  }
+
+  /**
+   * Set stuff commission date.
+   *
+   * @param commissionDate {@link Stuff} commission date
+   */
+  public void setCommissionDate(Calendar commissionDate) {
+    this.commissionDate = commissionDate;
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {
@@ -212,12 +252,13 @@ public class Stuff implements Serializable {
         && Objects.equals(brand, stuff.brand)
         && Objects.equals(description, stuff.description)
         && Objects.equals(cost, stuff.cost)
-        && Arrays.equals(picture, stuff.picture);
+        && Arrays.equals(picture, stuff.picture)
+        && Objects.equals(commissionDate, stuff.commissionDate);
   }
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(id, name, brand, description, cost);
+    int result = Objects.hash(id, name, brand, description, cost, commissionDate);
     result = 31 * result + Arrays.hashCode(picture);
     return result;
   }
@@ -238,8 +279,8 @@ public class Stuff implements Serializable {
         + '\''
         + ", cost="
         + cost
-        + ", picture="
-        + Arrays.toString(picture)
+        + ", commissionDate="
+        + commissionDate
         + '}';
   }
 }

@@ -1,8 +1,11 @@
 package space.vakar.stuff.springmvc.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +31,9 @@ public class StuffDto {
   private BigDecimal cost = BigDecimal.ZERO;
 
   private MultipartFile picture;
+
+  @NotNull
+  private Date commissionDate;
 
   public int getId() {
     return id;
@@ -77,6 +83,14 @@ public class StuffDto {
     this.picture = picture;
   }
 
+  public Date getCommissionDate() {
+    return commissionDate;
+  }
+
+  public void setCommissionDate(Date commissionDate) {
+    this.commissionDate = commissionDate;
+  }
+
   @Override
   public String toString() {
     return "StuffDto{"
@@ -93,6 +107,8 @@ public class StuffDto {
         + '\''
         + ", cost="
         + cost
+        + ", commissionDate="
+        + commissionDate
         + '}';
   }
 }

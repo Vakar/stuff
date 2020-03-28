@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <title>Edit Stuff</title>
@@ -62,6 +63,11 @@
                 <form:label path="cost">Stuff Cost</form:label>
                 <form:input path="cost" cssClass="form-control"/>
                 <form:errors path="cost" cssClass="text-danger"/>
+            </div>
+            <div class="form-group">
+                <form:label path="commissionDate">Commission Date: ${stuffDto.commissionDate}</form:label>
+                <form:input type="date"  path="commissionDate" cssClass="form-control"/>
+                <form:errors path="commissionDate" cssClass="text-danger"/>
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>
         </form:form>

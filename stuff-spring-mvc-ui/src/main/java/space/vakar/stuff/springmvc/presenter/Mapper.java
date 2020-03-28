@@ -1,6 +1,8 @@
 package space.vakar.stuff.springmvc.presenter;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +24,9 @@ public class Mapper {
     stuff.setBrand(model.getBrand());
     stuff.setDescription(model.getDescription());
     stuff.setCost(model.getCost());
+    Date date = model.getCommissionDate();
+    Calendar calendar = dateToCalendar(date);
+    stuff.setCommissionDate(calendar);
     try {
       stuff.setPicture(model.getPicture().getBytes());
     } catch (IOException e) {
@@ -29,6 +34,12 @@ public class Mapper {
       throw new IllegalArgumentException("Can't get stuff picture data!");
     }
     return stuff;
+  }
+
+  private static Calendar dateToCalendar(Date date){
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    return calendar;
   }
 
   public static StuffDto from(Stuff stuff) {
@@ -39,6 +50,7 @@ public class Mapper {
     dto.setDescription(stuff.getDescription());
     dto.setCost(stuff.getCost());
     dto.setPicture(null);
+    dto.setCommissionDate(stuff.getCommissionDate().getTime());
     return dto;
   }
 

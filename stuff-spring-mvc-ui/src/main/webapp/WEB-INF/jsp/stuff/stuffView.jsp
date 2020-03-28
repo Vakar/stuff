@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Stuff view</title>
@@ -63,6 +64,10 @@
             <tr>
                 <td>Cost</td>
                 <td>${stuff.cost}</td>
+            </tr>
+            <tr>
+                <td>Commission Date</td>
+                <td><fmt:formatDate pattern="yyyy MMM dd" value="${stuff.commissionDate}" /></td>
             </tr>
             </tbody>
         </table>

@@ -12,26 +12,29 @@ import space.vakar.stuff.persistence.model.User;
 @Component
 public class ResetPasswordPresenter {
 
+  private String appUrl;
   private EmailService emailService;
   private ServiceResetPassword serviceResetPassword;
 
   @Autowired
   public ResetPasswordPresenter(
+      String appUrl,
       EmailService emailService,
       ServiceResetPassword serviceResetPassword) {
+    this.appUrl = appUrl;
     this.emailService = emailService;
     this.serviceResetPassword = serviceResetPassword;
   }
 
-  public void createNewPasswordRecoveryTokenForUser(User user, String baseUrl) {
+  public void createNewPasswordRecoveryTokenForUser(User user, String requestPath) {
     ResetPassword recoveryToken = new ResetPassword(user);
     serviceResetPassword.save(recoveryToken);
-    Email email = createResetPasswordEmail(recoveryToken.getId(), user.getEmail(), baseUrl);
+    Email email = createResetPasswordEmail(requestPath, recoveryToken.getId(), user.getEmail());
     emailService.sendEmail(email);
   }
 
-  private Email createResetPasswordEmail(String token, String emailAddress, String baseUrl) {
-    String resetPasswordUrl = "http://" + baseUrl + "?token=" + token;
+  private Email createResetPasswordEmail(String requestPath, String token, String emailAddress) {
+    String resetPasswordUrl = appUrl + requestPath + "?token=" + token;
     return new Email(emailAddress, "Password Recovery", resetPasswordUrl);
   }
 

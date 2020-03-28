@@ -64,11 +64,10 @@ public class ForgotPasswordController {
       return Views.FORGOT_PASSWORD_PAGE;
     }
     String email = resetPasswordRequestForm.getEmail();
-    String baseUrl = getBaseUrl(request);
     Optional<User> optional = userPresenter.findUserBeEmail(email);
     if (optional.isPresent()) {
       User user = optional.get();
-      resetPasswordPresenter.createNewPasswordRecoveryTokenForUser(user, baseUrl);
+      resetPasswordPresenter.createNewPasswordRecoveryTokenForUser(user, RESET_PASSWORD_REQUEST);
       model.addAttribute("title", TITLE);
       model.addAttribute("message", MESSAGE);
     } else {
@@ -80,13 +79,5 @@ public class ForgotPasswordController {
 
   private boolean isCaptchaSuccess(String resp) {
     return resp == null || googleReCaptchaService.processResponse(resp);
-  }
-
-  private String getBaseUrl(HttpServletRequest request) {
-    return request.getLocalName()
-        + ":"
-        + request.getServerPort()
-        + request.getContextPath()
-        + RESET_PASSWORD_REQUEST;
   }
 }

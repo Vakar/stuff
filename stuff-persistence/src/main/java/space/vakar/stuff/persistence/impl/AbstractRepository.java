@@ -56,7 +56,7 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
     Transaction transaction = null;
     try (Session session = getSession()) {
       transaction = session.beginTransaction();
-      @SuppressWarnings("unchecked")
+      @SuppressWarnings("unchecked") // You should write test to be sure it is work properly.
       Query<T> query = session.createQuery(hql.getHql());
       query.executeUpdate();
       transaction.commit();
@@ -75,7 +75,7 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
     Transaction transaction;
     try (Session session = getSession()) {
       transaction = session.beginTransaction();
-      @SuppressWarnings("unchecked")
+      @SuppressWarnings("unchecked") // You should write test to be sure it is work properly.
       Query<T> query = session.createQuery(hql.getHql());
       list = query.list();
       transaction.commit();

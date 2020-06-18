@@ -33,7 +33,7 @@
             <div class="form-group">
                 <input type="password" class="form-control" name="password"
                        placeholder="Password" required="required">
-                <p class="text-right"><a class="badge badge-info" href="forgotPassword">Forgot password?</a></p>
+                <p class="text-right"><a class="badge badge-info mt-2" href="forgotPassword">Forgot password?</a></p>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me"/>
@@ -43,7 +43,7 @@
                 <button type="submit" class="btn btn-dark btn-block">Log in</button>
             </div>
         </form>
-        <p class="text-center"><a class="badge badge-light" href="registration">Create an Account</a></p>
+        <p class="text-center"><a class="badge badge-light mt-2" href="registration">Create an Account</a></p>
     </div>
     <%--AUTHORIZATION SECTION | END--%>
 

@@ -1,21 +1,35 @@
-.container {
-    padding-top: 56px;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
 }
 
+body {
+    /* Margin top by header height */
+    padding-top: 60px;
+    /* Margin and padding by footer height */
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+/* Page elements
+-------------------------------------------------- */
 .page-header {
     margin-top: 2.5rem;
 }
 
-.badge {
-    margin-top: 0.4rem;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
+/* Form elements
+-------------------------------------------------- */
 i.fa {
     cursor: pointer;
 }

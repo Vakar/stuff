@@ -1,18 +1,13 @@
 package space.vakar.stuff.springmvc.controller;
 
 import java.security.Principal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,14 +25,6 @@ public class StuffAddOrEditController {
   @Autowired
   public StuffAddOrEditController(StuffPresenter stuffPresenter) {
     this.stuffPresenter = stuffPresenter;
-  }
-
-  @InitBinder("stuffDto")
-  public void customizeBinding (WebDataBinder binder) {
-    SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-    dateFormatter.setLenient(false);
-    binder.registerCustomEditor(Date.class, "commissionDate",
-            new CustomDateEditor(dateFormatter, true));
   }
 
   @PostMapping("/save")

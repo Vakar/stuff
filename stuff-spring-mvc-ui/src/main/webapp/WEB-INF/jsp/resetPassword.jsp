@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
+<html lang="en">
 <head>
     <title>Reset Password</title>
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
@@ -15,6 +15,12 @@
 <%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
+    <%--PAGE HEADER | START--%>
+    <div class="page-header text-center">
+        <h1 class="display-5">Reset Password</h1>
+    </div>
+    <%--PAGE HEADER | END--%>
+
     <%--RESET PASSWORD FORM | START--%>
     <div class="login-form">
         <form:form method="POST" action="resetPassword" commandName="resetPasswordForm">
@@ -24,14 +30,14 @@
             <div class="form-group">
                 <form:label path="password">New Password</form:label>
                 <form:password class="form-control" path="password"/>
-                <form:errors class="form-text text-danger" path="password"/>
+                <form:errors class="form-text text-error" path="password"/>
             </div>
             <div class="form-group">
                 <form:label path="passwordConfirm">Confirm Password</form:label>
                 <form:password class="form-control" path="passwordConfirm"/>
-                <form:errors class="form-text text-danger" path="passwordConfirm"/>
+                <form:errors class="form-text text-error" path="passwordConfirm"/>
             </div>
-            <input class="btn btn-primary btn-block" type="submit" value="Submit"/>
+            <input class="btn btn-dark btn-block" type="submit" value="Submit"/>
         </form:form>
     </div>
     <%--RESET PASSWORD FORM | END--%>

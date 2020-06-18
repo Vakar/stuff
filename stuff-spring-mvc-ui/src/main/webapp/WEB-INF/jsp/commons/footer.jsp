@@ -2,11 +2,11 @@
 <jsp:useBean id="now" class="java.util.Date"/>
 
 <!-- FOOTER | START -->
-<footer class="footer-copyright bg-light">
+<footer class="footer bg-dark">
 
     <!-- COPYRIGHT | START -->
-    <div class="text-center py-3">&copy; <fmt:formatDate value="${now}" pattern="yyyy"/> Copyright:
-        <a href="http://vakar.space"> vakar.space</a>
+    <div class="text-center text-muted py-3">&copy; <fmt:formatDate value="${now}" pattern="yyyy"/> Copyright:
+        <a class="text-muted" href="http://vakar.space"> vakar.space</a>
     </div>
     <!-- COPYRIGHT | END -->
 

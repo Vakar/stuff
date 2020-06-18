@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
+<html lang="en">
 <head>
     <title>Stuff view</title>
     <%--INCLUDE PAGE DEPENDENCIES--%>
@@ -16,7 +16,7 @@
 
     <%--PAGE HEADER | START--%>
     <div class="page-header text-center">
-        <h1 class="display-4">Stuff information</h1>
+        <h1 class="display-5">Stuff details</h1>
     </div>
     <%--PAGE HEADER | END--%>
 
@@ -25,14 +25,14 @@
         <c:when test="${isPictureExists}">
             <div>
                 <img src="<c:url value="/stuff/picture/${stuff.id}"/>"
-                     class="rounded mx-auto d-block"
+                     class="rounded mx-auto mb-3 d-block"
                      style="max-width: 200px" alt="stuff picture">
             </div>
         </c:when>
         <c:otherwise>
             <div>
                 <img src="<c:url value="/resources/img/no-image-available.png" />"
-                     class="rounded mx-auto d-block"
+                     class="rounded mx-auto mb-3 d-block"
                      style="max-width: 200px" alt="no picture">
             </div>
         </c:otherwise>
@@ -41,8 +41,9 @@
 
     <%--STUFF TABLE | START--%>
     <div>
-        <table class="table table-bordered">
-            <thead class="thead-light">
+        <table class="table table-bordered table-dark">
+            <caption>${stuff.name} details table</caption>
+            <thead>
             <tr>
                 <th class="text-center" scope="col">Name</th>
                 <th class="text-center" scope="col">Value</th>
@@ -58,7 +59,7 @@
                 <td>${stuff.brand}</td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td>Notes</td>
                 <td>${stuff.description}</td>
             </tr>
             <tr>
@@ -67,7 +68,7 @@
             </tr>
             <tr>
                 <td>Commission Date</td>
-                <td><fmt:formatDate pattern="yyyy MMM dd" value="${stuff.commissionDate}" /></td>
+                <td>${stuff.commissionDate}</td>
             </tr>
             </tbody>
         </table>

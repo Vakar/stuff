@@ -21,15 +21,16 @@
 
     <%--PAGE HEADER | START--%>
     <div class="page-header text-center">
-        <h1 class="display-4">Welcome to your stuff <sec:authentication property="principal"/>!</h1>
+        <h1 class="display-5">Stuff list</h1>
     </div>
     <%--PAGE HEADER | END--%>
 
     <%--STUFF TABLE | START--%>
     <div>
         <c:if test="${not empty stuffList.stuff}">
-            <table class="table table-bordered">
-                <thead class="thead-light">
+            <table class="table table-bordered table-dark">
+                <caption>List of your saved stuff</caption>
+                <thead>
                 <tr>
                     <th class="text-center" scope="col">Name</th>
                     <th class="text-center" scope="col">Cost</th>
@@ -44,27 +45,27 @@
                         <td>${stuff.name}</td>
                         <td class="text-right">${stuff.cost}</td>
                         <td class="text-center">
-                            <form action="<c:url value="/stuff/seeView"/>" method="post">
+                            <form class="m-0" action="<c:url value="/stuff/seeView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuff.id}">
-                                <button type="submit" class="btn btn-link">
+                                <a onclick="this.closest('form').submit();return false;">
                                     <i class="fa fa-eye text-info"></i>
-                                </button>
+                                </a>
                             </form>
                         </td>
                         <td class="text-center">
-                            <form action="<c:url value="/stuff/editView"/>" method="post">
+                            <form class="m-0" action="<c:url value="/stuff/editView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuff.id}">
-                                <button type="submit" class="btn btn-link">
-                                    <i class="fa fa-pencil text-dark"></i>
-                                </button>
+                                <a onclick="this.closest('form').submit();return false;">
+                                    <i class="fa fa-pencil text-white"></i>
+                                </a>
                             </form>
                         </td>
                         <td class="text-center">
-                            <form action="<c:url value="/stuff/delete" />" method="post">
+                            <form class="m-0" action="<c:url value="/stuff/delete" />" method="post">
                                 <input type="hidden" name="id" value="${stuff.id}">
-                                <button type="submit" class="btn btn-link">
+                                <a onclick="this.closest('form').submit();return false;">
                                     <i class="fa fa-remove text-danger"></i>
-                                </button>
+                                </a>
                             </form>
                         </td>
                     </tr>

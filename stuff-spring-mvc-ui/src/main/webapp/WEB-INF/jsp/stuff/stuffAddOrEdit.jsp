@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<html>
+<html lang="en">
 <head>
     <title>Edit Stuff</title>
     <%--INCLUDE PAGE DEPENDENCIES--%>
@@ -15,19 +15,25 @@
 <%--CONTAINER | START--%>
 <div class="container mb-3 mt-3">
 
+    <%--PAGE HEADER | START--%>
+    <div class="page-header text-center">
+        <h1 class="display-5">Stuff form</h1>
+    </div>
+    <%--PAGE HEADER | END--%>
+
     <%--STUFF IMG | START--%>
     <c:choose>
         <c:when test="${isPictureExists}">
             <div>
                 <img src="<c:url value="/stuff/picture/${stuffDto.id}"/>"
-                     class="rounded mx-auto d-block"
+                     class="rounded mx-auto mb-3 d-block"
                      style="max-width: 200px" alt="stuff picture" id="output">
             </div>
         </c:when>
         <c:otherwise>
             <div>
                 <img src="<c:url value="/resources/img/no-image-available.png" />"
-                     class="rounded mx-auto d-block"
+                     class="rounded mx-auto mb-3 d-block"
                      style="max-width: 200px" alt="no picture" id="output">
             </div>
         </c:otherwise>
@@ -41,35 +47,56 @@
             <div>
                 <form:hidden path="id"/>
             </div>
-            <div class="form-group">
-                <input type="file" name="picture" onchange="loadFile(event)">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="picture" id="picture" onchange="loadFile(event)">
+                    <label class="custom-file-label" for="picture">Choose file</label>
+                </div>
             </div>
-            <div class="form-group">
-                <form:label path="name">Stuff Name</form:label>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="nameLabel">Name</span>
+                </div>
                 <form:input path="name" cssClass="form-control"/>
-                <form:errors path="name" cssClass="text-danger"/>
+                <form:errors path="name" cssClass="text-error"/>
             </div>
-            <div class="form-group">
-                <form:label path="brand">Stuff Brand</form:label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="brandLabel">Brand</span>
+                </div>
                 <form:input path="brand" cssClass="form-control"/>
-                <form:errors path="brand" cssClass="text-danger"/>
+                <form:errors path="brand" cssClass="text-error"/>
             </div>
-            <div class="form-group">
-                <form:label path="description">Stuff Description</form:label>
-                <form:textarea path="description" cssClass="form-control"/>
-                <form:errors path="description" cssClass="text-danger"/>
-            </div>
-            <div class="form-group">
-                <form:label path="cost">Stuff Cost</form:label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="costLabel">Costs</span>
+                </div>
                 <form:input path="cost" cssClass="form-control"/>
-                <form:errors path="cost" cssClass="text-danger"/>
+                <form:errors path="cost" cssClass="text-error"/>
             </div>
-            <div class="form-group">
-                <form:label path="commissionDate">Commission Date: ${stuffDto.commissionDate}</form:label>
-                <form:input type="date"  path="commissionDate" cssClass="form-control"/>
-                <form:errors path="commissionDate" cssClass="text-danger"/>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="descriptionLabel">Notes</span>
+                </div>
+                <form:textarea path="description" cssClass="form-control"/>
+                <form:errors path="description" cssClass="text-error"/>
             </div>
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="commissionDateLabel">Commission Date</span>
+                </div>
+                <form:input type="date"  path="commissionDate" value="${stuffDto.commissionDate}" cssClass="form-control"/>
+                <form:errors path="commissionDate" cssClass="text-error"/>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-info" type="submit">Save stuff</button>
+            </div>
         </form:form>
     </div>
     <%--ADD NEW STUFF FORM | END--%>

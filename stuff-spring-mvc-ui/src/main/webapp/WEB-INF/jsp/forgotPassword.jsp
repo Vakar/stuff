@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form" %>
-<html>
+<html lang="en">
 <head>
     <title>Forgot Password</title>
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
@@ -18,7 +18,7 @@
 
     <%--PAGE HEADER | START--%>
     <div class="page-header text-center">
-        <h1 class="display-4">Reset Password Request</h1>
+        <h1 class="display-5">Reset Password Request</h1>
     </div>
     <%--PAGE HEADER | END--%>
 
@@ -28,13 +28,13 @@
             <div class="form-group">
                 <form:label path="email">E-mail</form:label>
                 <form:input class="form-control" path="email"/>
-                <form:errors class="form-text text-danger" path="email"/>
+                <form:errors class="form-text text-error" path="email"/>
             </div>
-            <div class="form-group" align="center">
-                <div class="g-recaptcha"
+            <div class="form-group d-flex justify-content-center">
+                <div class="g-recaptcha mx-auto"
                      data-sitekey="${reCaptchaSiteKey}"></div>
             </div>
-            <input class="btn btn-primary btn-block" type="submit" value="Send"/>
+            <input class="btn btn-dark btn-block" type="submit" value="Send"/>
         </form:form>
     </div>
     <%--REGISTRATION FORM | END--%>

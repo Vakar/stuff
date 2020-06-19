@@ -80,7 +80,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="costLabel">Costs</span>
                 </div>
-                <form:input path="cost" cssClass="form-control"/>
+                <form:input path="cost" cssClass="form-control" type="number" step="0.01"/>
                 <form:errors path="cost" cssClass="text-error"/>
             </div>
             <div class="input-group mb-3">

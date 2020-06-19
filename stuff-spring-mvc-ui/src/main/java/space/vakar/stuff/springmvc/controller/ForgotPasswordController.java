@@ -47,8 +47,10 @@ public class ForgotPasswordController {
   @GetMapping("forgotPassword")
   public ModelAndView passwordRecovery() {
     ModelAndView modelAndView = new ModelAndView("forgotPassword");
-    modelAndView.addObject("resetPasswordRequestForm", new ResetPasswordRequestForm());
-    modelAndView.addObject("reCaptchaSiteKey", googleReCaptchaKeyHolder.getSiteKey());
+    ResetPasswordRequestForm form = new ResetPasswordRequestForm();
+    String siteKey = googleReCaptchaKeyHolder.getSiteKey();
+    form.setReCaptchaSiteKey(siteKey);
+    modelAndView.addObject("resetPasswordRequestForm", form);
     return modelAndView;
   }
 

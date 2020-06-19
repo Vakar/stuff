@@ -25,6 +25,7 @@
     <%--REGISTRATION FORM | START--%>
     <div class="login-form">
         <form:form method="POST" action="generatePasswordResetToken" commandName="resetPasswordRequestForm">
+            <form:hidden path="reCaptchaSiteKey"/>
             <div class="form-group">
                 <form:label path="email">E-mail</form:label>
                 <form:input class="form-control" path="email"/>
@@ -32,7 +33,7 @@
             </div>
             <div class="form-group d-flex justify-content-center">
                 <div class="g-recaptcha mx-auto"
-                     data-sitekey="${reCaptchaSiteKey}"></div>
+                     data-sitekey="${resetPasswordRequestForm.reCaptchaSiteKey}"></div>
             </div>
             <input class="btn btn-dark btn-block" type="submit" value="Send"/>
         </form:form>

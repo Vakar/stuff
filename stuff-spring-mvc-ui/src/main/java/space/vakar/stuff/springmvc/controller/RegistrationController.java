@@ -41,8 +41,10 @@ public class RegistrationController {
   @GetMapping(value = "/registration")
   public ModelAndView view() {
     ModelAndView modelAndView = new ModelAndView(REGISTRATION_VIEW_PAGE);
-    modelAndView.addObject("command", new RegistrationForm());
-    modelAndView.addObject("reCaptchaSiteKey", googleReCaptchaKeyHolder.getSiteKey());
+    RegistrationForm form = new RegistrationForm();
+    String siteKey = googleReCaptchaKeyHolder.getSiteKey();
+    form.setReCaptchaSiteKey(siteKey);
+    modelAndView.addObject("registration", form);
     return modelAndView;
   }
 

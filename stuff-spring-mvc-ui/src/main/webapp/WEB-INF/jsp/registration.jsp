@@ -26,6 +26,7 @@
     <%--REGISTRATION FORM | START--%>
     <div class="login-form">
         <form:form method="POST" action="/registerUser" commandName="registration">
+            <form:hidden path="reCaptchaSiteKey"/>
             <div class="form-group">
                 <form:label path="username">User Name</form:label>
                 <form:input class="form-control" path="username"/>
@@ -43,7 +44,7 @@
             </div>
             <div class="form-group d-flex justify-content-center">
                 <div class="g-recaptcha"
-                     data-sitekey="${reCaptchaSiteKey}"></div>
+                     data-sitekey="${registration.reCaptchaSiteKey}"></div>
             </div>
             <input class="btn btn-dark btn-block" type="submit" value="Submit"/>
         </form:form>

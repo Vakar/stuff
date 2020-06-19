@@ -24,6 +24,8 @@ public class RegistrationForm {
   @Pattern(regexp = REGEX_PSWD_VALIDATION)
   private String password;
 
+  private String reCaptchaSiteKey;
+
   public String getUsername() {
     return username;
   }
@@ -46,5 +48,13 @@ public class RegistrationForm {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public String getReCaptchaSiteKey() {
+    return reCaptchaSiteKey;
+  }
+
+  public void setReCaptchaSiteKey(String reCaptchaSiteKey) {
+    this.reCaptchaSiteKey = reCaptchaSiteKey;
   }
 }

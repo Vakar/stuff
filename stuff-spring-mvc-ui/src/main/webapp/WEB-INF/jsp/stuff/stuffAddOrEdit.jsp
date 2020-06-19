@@ -42,22 +42,25 @@
 
     <%--ADD NEW STUFF FORM | START--%>
     <div>
-        <form:form method="POST" action="/stuff/save" commandName="stuffDto"
+        <form:form id="stuffForm" method="POST" action="/stuff/save" commandName="stuffDto"
                    enctype="multipart/form-data">
             <div>
                 <form:hidden path="id"/>
             </div>
 
             <div class="input-group mb-3">
+                <span id="pictureErrors" class="text-error"></span>
                 <div class="input-group-prepend">
                     <span class="input-group-text">Image</span>
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="picture" id="picture" onchange="loadFile(event)">
-                    <label class="custom-file-label" for="picture">Choose file</label>
+                    <input type="file" class="custom-file-input" name="picture" id="picture" accept="image/*">
+                    <label id="imgName" class="custom-file-label" for="picture">Choose image file</label>
+                </div>
+                <div class="input-group-append">
+                    <button id="resetImg" class="btn btn-outline-secondary" type="button">Reset image</button>
                 </div>
             </div>
-
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -109,7 +112,7 @@
 
 <%--IMPORT JS FILES | START--%>
 <jsp:include page="../commons/js.jsp"/>
-<script src="<c:url value="/resources/js/showUploadImg.js" />"></script>
+<script src="<c:url value="/resources/js/validateImgSize.js" />"></script>
 <%--IMPORT JS FILES | END--%>
 
 </body>

@@ -16,7 +16,7 @@
     </modules>
     <packaging>pom</packaging>
 
-    <url>http://vakar.space/stuff</url>
+    <url>http://stuff.vakar.space</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

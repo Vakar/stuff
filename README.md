@@ -127,6 +127,14 @@ Please look at the file content example below.
         </configuration>
     </plugin>
     ```
+ 
+ 1. Change the global Tomcat context.xml file as follows 
+  to enabled multipart support.   
+     ```xml
+     <Context allowCasualMultipartParsing="true">
+         ...
+     </Context>
+     ```
     
  1. Now you can run tomcat7 plugin with the next command
  inside 

@@ -37,6 +37,7 @@
                 <form:password class="form-control" path="passwordConfirm"/>
                 <form:errors class="form-text text-error" path="passwordConfirm"/>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input class="btn btn-dark btn-block" type="submit" value="Submit"/>
         </form:form>
     </div>

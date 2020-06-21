@@ -80,6 +80,7 @@
         <form action="<c:url value="/stuff/editView"/>" method="post">
             <input type="hidden" name="id" value="${stuff.id}">
             <input type="submit" class="btn btn-info" value="Edit">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </div>
     <%--STUFF EDITE BUTTON | END--%>

@@ -9,6 +9,7 @@
     </div>
     <sec:authorize access="isAuthenticated()">
         <form class="form-inline my-2 my-lg-0" action="<c:url value="/logout" />" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button>
         </form>
     </sec:authorize>

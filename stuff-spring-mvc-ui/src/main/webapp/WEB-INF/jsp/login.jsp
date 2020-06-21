@@ -42,6 +42,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-dark btn-block">Log in</button>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
         <p class="text-center"><a class="badge badge-light mt-2" href="registration">Create an Account</a></p>
     </div>

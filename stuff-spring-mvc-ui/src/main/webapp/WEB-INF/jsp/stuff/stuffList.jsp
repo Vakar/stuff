@@ -47,6 +47,7 @@
                         <td class="text-center">
                             <form class="m-0" action="<c:url value="/stuff/seeView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuff.id}">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <a onclick="this.closest('form').submit();return false;">
                                     <i class="fa fa-eye text-info"></i>
                                 </a>
@@ -55,6 +56,7 @@
                         <td class="text-center">
                             <form class="m-0" action="<c:url value="/stuff/editView"/>" method="post">
                                 <input type="hidden" name="id" value="${stuff.id}">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <a onclick="this.closest('form').submit();return false;">
                                     <i class="fa fa-pencil text-white"></i>
                                 </a>
@@ -63,6 +65,7 @@
                         <td class="text-center">
                             <form class="m-0" action="<c:url value="/stuff/delete" />" method="post">
                                 <input type="hidden" name="id" value="${stuff.id}">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <a onclick="this.closest('form').submit();return false;">
                                     <i class="fa fa-remove text-danger"></i>
                                 </a>

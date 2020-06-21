@@ -35,6 +35,7 @@
                 <div class="g-recaptcha mx-auto"
                      data-sitekey="${resetPasswordRequestForm.reCaptchaSiteKey}"></div>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input class="btn btn-dark btn-block" type="submit" value="Send"/>
         </form:form>
     </div>

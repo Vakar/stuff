@@ -100,6 +100,7 @@
             <div class="float-right">
                 <button class="btn btn-info" type="submit">Save stuff</button>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form:form>
     </div>
     <%--ADD NEW STUFF FORM | END--%>

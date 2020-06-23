@@ -5,54 +5,42 @@
 <head>
     <title>Reset Password</title>
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
-    <%--INCLUDE PAGE DEPENDENCIES--%>
     <jsp:include page="/WEB-INF/jsp/commons/style.jsp"/>
 </head>
 <body>
 
-<%--INCLUDE TOP NAVIGATION BAR--%>
 <jsp:include page="commons/navbar.jsp"/>
 
-<%--CONTAINER | START--%>
-<div class="container mb-3 mt-3">
+<header class="page-header text-center">
+    <h1 class="display-5">Reset Password</h1>
+</header>
 
-    <%--PAGE HEADER | START--%>
-    <div class="page-header text-center">
-        <h1 class="display-5">Reset Password</h1>
-    </div>
-    <%--PAGE HEADER | END--%>
+<main class="container mb-3 mt-3">
+    <section about="reset password form">
+        <div class="login-form">
+            <form:form method="POST" action="resetPassword" commandName="resetPasswordForm">
+                <div class="form-group">
+                    <form:hidden class="form-control" path="username"/>
+                </div>
+                <div class="form-group">
+                    <form:label path="password">New Password</form:label>
+                    <form:password class="form-control" path="password"/>
+                    <form:errors class="form-text text-error" path="password"/>
+                </div>
+                <div class="form-group">
+                    <form:label path="passwordConfirm">Confirm Password</form:label>
+                    <form:password class="form-control" path="passwordConfirm"/>
+                    <form:errors class="form-text text-error" path="passwordConfirm"/>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input class="btn btn-dark btn-block" type="submit" value="Submit"/>
+            </form:form>
+        </div>
+    </section>
+</main>
 
-    <%--RESET PASSWORD FORM | START--%>
-    <div class="login-form">
-        <form:form method="POST" action="resetPassword" commandName="resetPasswordForm">
-            <div class="form-group">
-                <form:hidden class="form-control" path="username"/>
-            </div>
-            <div class="form-group">
-                <form:label path="password">New Password</form:label>
-                <form:password class="form-control" path="password"/>
-                <form:errors class="form-text text-error" path="password"/>
-            </div>
-            <div class="form-group">
-                <form:label path="passwordConfirm">Confirm Password</form:label>
-                <form:password class="form-control" path="passwordConfirm"/>
-                <form:errors class="form-text text-error" path="passwordConfirm"/>
-            </div>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input class="btn btn-dark btn-block" type="submit" value="Submit"/>
-        </form:form>
-    </div>
-    <%--RESET PASSWORD FORM | END--%>
-
-</div>
-<%--CONTAINER | END--%>
-
-<%--INCLUDE FOOTER--%>
 <jsp:include page="commons/footer.jsp"/>
-
-<%--IMPORT JS FILES | START--%>
 <jsp:include page="commons/js.jsp"/>
-<%--IMPORT JS FILES | END--%>
 
 </body>
 </html>

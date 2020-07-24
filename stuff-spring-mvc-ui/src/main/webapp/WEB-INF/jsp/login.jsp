@@ -7,7 +7,6 @@
     <link href="<c:url value="/resources/css/loginForm.css" />" rel="stylesheet">
     <jsp:include page="/WEB-INF/jsp/commons/style.jsp"/>
 </head>
-<body onload='document.loginForm.username.focus();'>
 
 <jsp:include page="commons/navbar.jsp"/>
 
@@ -16,34 +15,37 @@
 </header>
 
 <main class="container">
-    <section about="login form">
-        <div class="login-form">
-            <form name='loginForm' action="<c:url value="/login" />" method="post">
+    <div class="login-form">
+        <form name='loginForm' action="<c:url value="/login" />" method="post">
+            <section about="Form header">
                 <h2 class="text-center">Log in</h2>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="username" placeholder="Username"
-                           required="required">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password"
-                           placeholder="Password" required="required">
-                    <p class="text-right"><a class="badge badge-info mt-2" href="forgotPassword">Forgot
-                        password?</a></p>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="remember-me"
-                           id="remember-me"/>
-                    <label for="remember-me" class="form-check-label">remember me</label>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-dark btn-block">Log in</button>
-                </div>
+            </section>
+            <section about="User name input" class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required="required" autofocus>
+            </section>
+            <section about="User password input" class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required="required">
+            </section>
+            <section about="Forgot password">
+                <p class="text-right"><a class="badge badge-info mt-2" href="forgotPassword">Forgot password?</a></p>
+            </section>
+            <section about="Remember me input" class="form-check">
+                <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me"/>
+                <label for="remember-me" class="form-check-label">remember me</label>
+            </section>
+            <section about="Submit form button" class="form-group">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-            <p class="text-center"><a class="badge badge-light mt-2" href="registration">Create an
-                Account</a></p>
-        </div>
-    </section>
+                <button type="submit" class="btn btn-dark btn-block">Log in</button>
+            </section>
+            <section about="Link to registration page">
+                <p class="text-center">
+                    <a class="badge badge-light mt-2" href="registration">Create an Account</a>
+                </p>
+            </section>
+        </form>
+    </div>
 </main>
 
 <jsp:include page="commons/footer.jsp"/>

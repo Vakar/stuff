@@ -92,14 +92,14 @@ class AbstractRepository<T extends Serializable> implements Repository<T> {
 
   private BiConsumer<T, BiConsumer<Session, T>> entityConsumer =
       (entity, operation) -> {
-        Transaction t = null;
+        Transaction transaction = null;
         try (Session session = getSession()) {
-          t = session.beginTransaction();
+          transaction = session.beginTransaction();
           operation.accept(session, entity);
-          t.commit();
+          transaction.commit();
         } catch (RuntimeException e) {
-          if (t != null) {
-            t.rollback();
+          if (transaction != null) {
+            transaction.rollback();
           }
           throw new RepositoryException(
               "Error happens during database transaction with hql: " + entity, e);

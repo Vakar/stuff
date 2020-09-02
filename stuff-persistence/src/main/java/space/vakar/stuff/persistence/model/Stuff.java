@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Objects;
+import java.util.StringJoiner;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,16 +26,16 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "STUFF")
 public class Stuff implements Serializable {
 
-  public static final Stuff EMPTY_STUFF =
-      new Stuff(
-          0,
-          "",
-          "",
-          "",
-          BigDecimal.ZERO,
-          new byte[1],
-          new GregorianCalendar(1970, Calendar.JANUARY, 1),
-          null);
+  public static final Stuff EMPTY_STUFF = new Builder()
+          .id(0)
+          .name("")
+          .brand("")
+          .description("")
+          .cost(BigDecimal.ZERO)
+          .picture(new byte[1])
+          .commissionDate(new GregorianCalendar(1970, Calendar.JANUARY, 1))
+          .user(null)
+          .build();
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,38 +64,7 @@ public class Stuff implements Serializable {
   /** Default constructor. */
   public Stuff() {}
 
-  /**
-   * {@link Stuff} parametrised constructor.
-   *
-   * @param id {@link Stuff} entity id
-   * @param name {@link Stuff} name
-   * @param brand {@link Stuff} brand
-   * @param description {@link Stuff} description
-   * @param cost {@link Stuff} cost
-   * @param picture {@link Stuff} image
-   * @param commissionDate {@link Stuff} commission date in YYYY-MM-DD format
-   * @param user {@link User} owner of this {@link Stuff}
-   */
-  public Stuff(
-      int id,
-      String name,
-      String brand,
-      String description,
-      BigDecimal cost,
-      byte[] picture,
-      Calendar commissionDate,
-      User user) {
-    this.id = id;
-    this.name = name;
-    this.brand = brand;
-    this.description = description;
-    this.cost = cost;
-    this.picture = picture;
-    this.commissionDate = commissionDate;
-    this.user = user;
-  }
-
-  /**
+   /**
    * Get {@link Stuff} entity id.
    *
    * @return {@link Stuff} entity id
@@ -265,22 +235,81 @@ public class Stuff implements Serializable {
 
   @Override
   public String toString() {
-    return "Stuff{"
-        + "id="
-        + id
-        + ", name='"
-        + name
-        + '\''
-        + ", brand='"
-        + brand
-        + '\''
-        + ", description='"
-        + description
-        + '\''
-        + ", cost="
-        + cost
-        + ", commissionDate="
-        + commissionDate
-        + '}';
+    return new StringJoiner(", ", Stuff.class.getSimpleName() + "[", "]")
+            .add("id=" + id)
+            .add("name='" + name + "'")
+            .add("brand='" + brand + "'")
+            .add("description='" + description + "'")
+            .add("cost=" + cost)
+            .add("picture=" + Arrays.toString(picture))
+            .add("commissionDate=" + commissionDate)
+            .add("user=" + user)
+            .toString();
+  }
+
+  public static class Builder {
+    private int id;
+    private String name;
+    private String brand;
+    private String description;
+    private BigDecimal cost;
+    private User user;
+    private byte[] picture;
+    private Calendar commissionDate;
+
+    public Builder id(int val) {
+      id = val;
+      return this;
+    }
+
+    public Builder name(String val) {
+      name = val;
+      return this;
+    }
+
+    public Builder brand(String val) {
+      brand = val;
+      return this;
+    }
+
+    public Builder description(String val) {
+      description = val;
+      return this;
+    }
+
+    public Builder cost(BigDecimal val) {
+      cost = val;
+      return this;
+    }
+
+    public Builder user(User val) {
+      user = val;
+      return this;
+    }
+
+    public Builder picture(byte[] val) {
+      picture = val;
+      return this;
+    }
+
+    public Builder commissionDate(Calendar val) {
+      commissionDate = val;
+      return this;
+    }
+
+    public Stuff build() {
+      return new Stuff(this);
+    }
+  }
+
+  private Stuff(Builder builder) {
+    id = builder.id;
+    name = builder.name;
+    brand = builder.brand;
+    description = builder.description;
+    cost = builder.cost;
+    user = builder.user;
+    picture = builder.picture;
+    commissionDate = builder.commissionDate;
   }
 }

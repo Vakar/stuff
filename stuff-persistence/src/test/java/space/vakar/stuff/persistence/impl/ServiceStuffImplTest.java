@@ -22,21 +22,21 @@ public class ServiceStuffImplTest {
 
   @Mock private Repository<Stuff> repository;
 
-  @InjectMocks private ServiceStuff service = new ServiceStuffImpl();
+  @InjectMocks private final ServiceStuff service = new ServiceStuffImpl();
 
   private static final int ONCE = 1;
 
-  private Stuff stuff =
-      new Stuff(
-          1,
-          "stuff_one_name",
-          "noname",
-          "stuff_one_description",
-          new BigDecimal("10.1"),
-          "picture".getBytes(),
-          new GregorianCalendar(1970, Calendar.JANUARY, 1),
-          null);
-  private List<Stuff> stuffList = Collections.singletonList(stuff);
+  private final Stuff stuff = new Stuff.Builder()
+          .id(1)
+          .name("stuff_one_name")
+          .brand("noname")
+          .description("stuff_one_description")
+          .cost(new BigDecimal("10.1"))
+          .picture("picture".getBytes())
+          .commissionDate(new GregorianCalendar(1970, Calendar.JANUARY, 1))
+          .user(null)
+          .build();
+  private final List<Stuff> stuffList = Collections.singletonList(stuff);
 
   @Test
   public void add() {

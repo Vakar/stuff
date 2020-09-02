@@ -22,8 +22,8 @@ import java.util.Properties;
 
 public class RepositoryStuffTest extends DatabaseTestConfig {
 
-  private Repository<Stuff> repositoryStuff = new RepositoryStuff();
-  private DataFileLoader loader = new FlatXmlDataFileLoader();
+  private final Repository<Stuff> repositoryStuff = new RepositoryStuff();
+  private final DataFileLoader loader = new FlatXmlDataFileLoader();
 
   private static final String TABLE_NAME = "STUFF";
 
@@ -38,27 +38,27 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
   private static final int USER_ID = 1;
   private static final byte[] PICTURE_MOCK = "picture".getBytes();
 
-  private User owner = new User(1, "username", "user1@domain.com", "one");
-  private Stuff stuffOne =
-      new Stuff(
-          1,
-          "stuff_one_name",
-          "noname",
-          "stuff_one_description",
-          new BigDecimal("10.10"),
-          PICTURE_MOCK,
-          new GregorianCalendar(1970, Calendar.JANUARY, 1),
-          owner);
-  private Stuff stuffTwo =
-      new Stuff(
-          2,
-          "stuff_two_name",
-          "brand_name",
-          "stuff_two_description",
-          new BigDecimal("20"),
-          PICTURE_MOCK,
-          new GregorianCalendar(1970, Calendar.JANUARY, 2),
-          owner);
+  private final User owner = new User(1, "username", "user1@domain.com", "one");
+  private final Stuff stuff = new Stuff.Builder()
+          .id(1)
+          .name("stuff_one_name")
+          .brand("noname")
+          .description("stuff_one_description")
+          .cost(new BigDecimal("10.10"))
+          .picture(PICTURE_MOCK)
+          .commissionDate(new GregorianCalendar(1970, Calendar.JANUARY, 1))
+          .user(owner)
+          .build();
+  private final Stuff stuff2 = new Stuff.Builder()
+          .id(2)
+          .name("stuff_two_name")
+          .brand("brand_name")
+          .description("stuff_two_description")
+          .cost(new BigDecimal("20"))
+          .picture(PICTURE_MOCK)
+          .commissionDate(new GregorianCalendar(1970, Calendar.JANUARY, 2))
+          .user(owner)
+          .build();
 
   public RepositoryStuffTest(String name) {
     super(name);
@@ -81,20 +81,20 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
   }
 
   public void testAdd() throws Exception {
-    repositoryStuff.add(stuffTwo);
+    repositoryStuff.add(stuff2);
     Assertion.assertEquals(getExpectedTable(CREATE_DATASET), getActualTable());
   }
 
   public void testQueryById() {
-    List<Stuff> stuffList = repositoryStuff.query(new HqlGetById(Stuff.class, stuffOne.getId()));
+    List<Stuff> stuffList = repositoryStuff.query(new HqlGetById(Stuff.class, stuff.getId()));
     Stuff actualStuff = stuffList.get(0);
-    assertEquals(stuffOne, actualStuff);
+    assertEquals(stuff, actualStuff);
   }
 
   public void testQueryAll() {
     List<Stuff> stuffList = repositoryStuff.query(new HqlGetAll(Stuff.class));
     Stuff actualStuff = stuffList.get(0);
-    assertEquals(stuffOne, actualStuff);
+    assertEquals(stuff, actualStuff);
   }
 
   public void testQueryByUserId() {
@@ -102,23 +102,23 @@ public class RepositoryStuffTest extends DatabaseTestConfig {
         new HqlFindByFieldValue(
             Stuff.class, ServiceStuffImpl.FIELD_USER_ID, String.valueOf(USER_ID));
     List<Stuff> stuffList = repositoryStuff.query(hql);
-    assertEquals(Collections.singletonList(stuffOne), stuffList);
+    assertEquals(Collections.singletonList(stuff), stuffList);
   }
 
   public void testUpdate() throws Exception {
-    stuffOne.setName("stuff_one_new_name");
-    stuffOne.setCost(new BigDecimal("22.13"));
-    repositoryStuff.update(stuffOne);
+    stuff.setName("stuff_one_new_name");
+    stuff.setCost(new BigDecimal("22.13"));
+    repositoryStuff.update(stuff);
     Assertion.assertEquals(getExpectedTable(UPDATE_DATASET), getActualTable());
   }
 
   public void testRemove() throws Exception {
-    repositoryStuff.remove(stuffOne);
+    repositoryStuff.remove(stuff);
     Assertion.assertEquals(getExpectedTable(DELETE_DATASET), getActualTable());
   }
 
   public void testRemoveById() throws Exception {
-    repositoryStuff.remove(new HqlRemoveById(Stuff.class, stuffOne.getId()));
+    repositoryStuff.remove(new HqlRemoveById(Stuff.class, stuff.getId()));
     Assertion.assertEquals(getExpectedTable(DELETE_DATASET), getActualTable());
   }
 

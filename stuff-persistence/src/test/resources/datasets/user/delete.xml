@@ -1,4 +1,6 @@
 <!DOCTYPE dataset SYSTEM "user.dtd">
 <dataset>
     <APP_USER/>
+    <STUFF/>
+    <RESET_PASSWORD/>
 </dataset>

@@ -1,9 +1,12 @@
 <?xml encoding="UTF-8"?>
 
-        <!ELEMENT dataset (APP_USER)+>
+        <!ELEMENT dataset (APP_USER+, STUFF, RESET_PASSWORD)>
         <!ELEMENT APP_USER EMPTY>
         <!ATTLIST APP_USER
                 ID CDATA #IMPLIED
                 USERNAME CDATA #IMPLIED
                 EMAIL CDATA #IMPLIED
                 PSWD CDATA #IMPLIED>
+
+        <!ELEMENT STUFF EMPTY>
+        <!ELEMENT RESET_PASSWORD EMPTY>

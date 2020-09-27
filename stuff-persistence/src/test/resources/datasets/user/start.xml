@@ -1,4 +1,6 @@
 <!DOCTYPE dataset SYSTEM "user.dtd">
 <dataset>
     <APP_USER ID="1" USERNAME="user1" EMAIL="user1@domain.com" PSWD="one"/>
+    <STUFF/>
+    <RESET_PASSWORD/>
 </dataset>

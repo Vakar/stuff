@@ -2,4 +2,7 @@
 <dataset>
     <APP_USER ID="1" USERNAME="user1" EMAIL="user1@domain.com" PSWD="one"/>
     <APP_USER ID="2" USERNAME="user2" EMAIL="user2@domain.com" PSWD="two"/>
+
+    <STUFF/>
+    <RESET_PASSWORD/>
 </dataset>

@@ -14,3 +14,7 @@ target/
 /stuff-spring-mvc-ui/src/main/resources/googleReCaptcha.properties
 /stuff-spring-mvc-ui/src/main/resources/email.properties
 /stuff-spring-mvc-ui/src/main/resources/app.properties
+
+# Hide vscode files
+*/.factorypath
+.vscode/

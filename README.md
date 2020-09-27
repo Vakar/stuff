@@ -1,6 +1,6 @@
 # Stuff
 
-####This is a simple app for saving data about your stuff. This app fully base on Java technologies such as Hibernate, Spring MVC, Spring Security, JSP etc.
+### This is a simple app for saving data about your stuff. This app fully base on Java technologies such as Hibernate, Spring MVC, Spring Security, JSP etc.
 
 ## Pre requirements
 

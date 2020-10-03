@@ -94,7 +94,7 @@
                 <configuration>
                     <path>/</path>
                     <server>tomcatRemote</server>
-                    <url>http://pi:8080/manager/text</url>
+                    <url>http://pi/manager/text</url>
                 </configuration>
             </plugin>
         </plugins>

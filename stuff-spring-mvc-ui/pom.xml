@@ -85,7 +85,7 @@
     </dependencies>
 
     <build>
-        <finalName>stuff</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

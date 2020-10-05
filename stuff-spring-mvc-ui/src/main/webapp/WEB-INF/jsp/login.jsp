@@ -11,14 +11,15 @@
 <jsp:include page="commons/navbar.jsp"/>
 
 <header class="page-header text-center">
-    <h1 class="display-5">Welcome to Stuff</h1>
+    <h5>Demo credentials:</h5>
+    <p><b>Username:</b> demo<br/><b>Password:</b> qwer1234</p>
 </header>
 
 <main class="container">
     <div class="login-form">
         <form name='loginForm' action="<c:url value="/login" />" method="post">
             <section about="Form header">
-                <h2 class="text-center">Log in</h2>
+                <h2 class="text-center">Login</h2>
             </section>
             <section about="User name input" class="form-group">
                 <label for="username">Username</label>
@@ -37,7 +38,7 @@
             </section>
             <section about="Submit form button" class="form-group">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <button type="submit" class="btn btn-dark btn-block">Log in</button>
+                <button type="submit" class="btn btn-dark btn-block">Login</button>
             </section>
             <section about="Link to registration page">
                 <p class="text-center">

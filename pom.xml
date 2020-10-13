@@ -24,7 +24,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Dependencies -->
         <log4j-slf4j.version>2.13.3</log4j-slf4j.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mockito-core.version>3.2.0</mockito-core.version>
         <!-- Reporting plugins -->
         <jacoco-maven.version>0.8.4</jacoco-maven.version>

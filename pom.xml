@@ -23,7 +23,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Dependencies -->
-        <log4j-slf4j.version>2.13.3</log4j-slf4j.version>
+        <log4j-slf4j.version>2.16.0</log4j-slf4j.version>
         <junit.version>4.12</junit.version>
         <mockito-core.version>3.2.0</mockito-core.version>
         <!-- Reporting plugins -->

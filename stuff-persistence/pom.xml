@@ -13,7 +13,7 @@
 
     <properties>
         <dbunit.version>2.6.0</dbunit.version>
-        <h2database.version>1.4.200</h2database.version>
+        <h2database.version>2.1.210</h2database.version>
         <hibernate.version>5.2.18.Final</hibernate.version>
         <hibernate-validator.version>5.4.3.Final</hibernate-validator.version>
         <javax.el.version>2.2.4</javax.el.version>
